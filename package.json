@@ -13,6 +13,6 @@
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
     "commit": "vuepress build docs && git add docs/.vuepress/dist -f && git commit -m 'Subtree commit'",
-    "deploy": "git push origin `git subtree split --prefix ./docs/.vuepress/dist main`:gh-pages --force"
+    "deploy": "git push origin `git subtree split --prefix docs/.vuepress/dist main`:gh-pages --force"
   }
 }
