@@ -14,9 +14,9 @@ jobs:
         with:
           node-version: '10.x'
 
-      - run: npm install -D vuepress
+      - run: yarn install -D vuepress
 
-      - run: npm run docs:build
+      - run: yarn build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2
