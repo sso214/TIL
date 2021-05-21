@@ -1,11 +1,11 @@
 {
   "name": "TIL",
   "version": "1.0.0",
-  "description": "Today Leo Learned",
+  "description": "sso214's TIL",
   "main": "index.js",
   "repository": "https://github.com/sso214/TIL.git",
-  "author": "sojam214@gmail.com",
-  "license": "leo",
+  "author": "sso214",
+  "license": "sso214",
   "devDependencies": {
     "vuepress": "^1.8.2"
   },
