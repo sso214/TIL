@@ -1,2 +1,2 @@
-#Study
+# Log
 Today I Learned

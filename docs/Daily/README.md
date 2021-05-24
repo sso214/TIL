@@ -1,2 +1,2 @@
-#Study
-Today I Learned
+# Daily
+

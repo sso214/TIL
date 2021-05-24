@@ -1,3 +1,3 @@
-# Study Guide
+# Study
 
 Today I Learned
