@@ -48,37 +48,34 @@ $ yarn add -D eslint-config-prettier eslint-plugin-prettier
 <br>
 
 ## ESlint 설정
-최상위 경로에 (src 같은) .eslintrc(ESLint 설정파일) 생성  
+최상위 경로에 (src 같은) .eslintrc.js(ESLint 설정파일) 생성  
 
-```json
-{
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
-  "extends": [
-    "airbnb",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint"
+```js
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
+  extends: [
+    'airbnb',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
+    "prettier"
   ],
-  "rules": {
-    "linebreak-style": 0,
-    "import/prefer-default-export": 0,
-    "prettier/prettier": 0,
-    "import/extensions": 0,
-    "no-use-before-define": 0,
-    "import/no-unresolved": 0,
-    "import/no-extraneous-dependencies": 0,
-    "no-shadow": 0,
-    "react/prop-types": 0,
-    "react/jsx-filename-extension": [
-      2,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ],
-    "jsx-a11y/no-noninteractive-element-interactions": 0
-  }
-}
+  rules: {
+    'linebreak-style': 0,
+    'import/prefer-default-export': 0,
+    'prettier/prettier': 0,
+    'import/extensions': 0,
+    'no-use-before-define': 0,
+    'import/no-unresolved': 0,
+    'import/no-extraneous-dependencies': 0, // 테스트 또는 개발환경을 구성하는 파일에서는 devDependency 사용을 허용
+    'no-shadow': 0,
+    'react/prop-types': 0,
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+  },
+};
 ```
 
 package.json 파일에 스크립트 추가  
@@ -93,7 +90,7 @@ src 파일 내부 ts, tsx, js, jsx 파일을 linting 할 수 있음.
 {
   "singleQuote": true,
   "semi": true,
-  "useTabs": true,
+  "useTabs": false,
   "tabWidth": 2,
   "trailingComma": "all",
   "printWidth": 120,
@@ -120,10 +117,17 @@ lint 실행 시 제외할 파일, 폴더 설정
 
 <br>
 
+## webstorm에서 eslint사용
+preferences -> ESLint -> manual ESLint configuration 에서 설정
+
+<br>
+
 ## 실행
 * `npm run prettier` : 자동으로 코드 스타일 변경  
 * `npm run lint` : 규칙에 맞는지 검사  
 코드 입력 -> prettier -> eslint -> 코드 수정
+  
+
 
 <br>
 <br>
