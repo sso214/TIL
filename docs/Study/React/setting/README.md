@@ -1,5 +1,5 @@
 ---
-title : create-react-app setting  
+title : CRA setting  
 date : 2021.06.17
 ---
 
