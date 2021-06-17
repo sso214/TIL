@@ -39,7 +39,7 @@ $ yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
 # airbnb 설정 (eslint-config-airbnb : 리액트 관련 규칙이 모두 들어있음, eslint-config-airbnb-base : 리액트를 제외한 규칙이 들어있음)
 $ yarn add -D eslint-config-airbnb
 
-# eslint-config-prettier : 불필요하거나 prettier와 충돌할 수 있는 규칙 끔
+# eslint-config-prettier : 불필요하거나 prettier와 충돌할 수 있는 규칙 끔 (ex. prettier와 ESLint 들여 쓰기 설정 중복)
 # eslint-plugin-prettier : prettier를 ESLint 규칙으로 실행하고 차이점을 개별 ESLint 문제로 보고
 $ yarn add -D eslint-config-prettier eslint-plugin-prettier
 ```
@@ -48,24 +48,82 @@ $ yarn add -D eslint-config-prettier eslint-plugin-prettier
 <br>
 
 ## ESlint 설정
-ESLint 설정파일을 생성 : 최상위 경로에 (src 같은) .eslintrc 파일 생성
+최상위 경로에 (src 같은) .eslintrc(ESLint 설정파일) 생성  
+
 ```json
 {
-  "scripts": {
-    "lint": ""
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "airbnb",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "rules": {
+    "linebreak-style": 0,
+    "import/prefer-default-export": 0,
+    "prettier/prettier": 0,
+    "import/extensions": 0,
+    "no-use-before-define": 0,
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-shadow": 0,
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "jsx-a11y/no-noninteractive-element-interactions": 0
   }
 }
 ```
 
 package.json 파일에 스크립트 추가  
 src 파일 내부 ts, tsx, js, jsx 파일을 linting 할 수 있음.
+
+<br>
+
+## Prettier 설정
+최상위 경로에 (src 같은) .prettierrc(prettier 설정파일) 생성
+
+```json
+{
+  "singleQuote": true,
+  "semi": true,
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "printWidth": 120,
+  "arrowParens": "always"
+}
+```
+
+<br>
+
+## package.json
 ```json
 {
   "scripts": {
-    
+    "prettier": "prettier --write --config ./.prettierrc \"**/*.{ts,tsx}\"",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'"
   }
 }
 ```
+
+## eslint ignore 설정
+lint 실행 시 제외할 파일, 폴더 설정  
+.eslintignore 파일 생성 후 gitignore 처럼 파일명이나 폴더명 입력
+
+<br>
+
+## 실행
+* `npm run prettier` : 자동으로 코드 스타일 변경  
+* `npm run lint` : 규칙에 맞는지 검사  
+코드 입력 -> prettier -> eslint -> 코드 수정
 
 <br>
 <br>
