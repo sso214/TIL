@@ -93,7 +93,7 @@ src 파일 내부 ts, tsx, js, jsx 파일을 linting 할 수 있음.
 {
   "singleQuote": true,
   "semi": true,
-  "useTabs": false,
+  "useTabs": true,
   "tabWidth": 2,
   "trailingComma": "all",
   "printWidth": 120,
@@ -108,8 +108,8 @@ src 파일 내부 ts, tsx, js, jsx 파일을 linting 할 수 있음.
 {
   "scripts": {
     "prettier": "prettier --write --config ./.prettierrc \"**/*.{ts,tsx}\"",
-    "lint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'"
+    "lint": "eslint './src/**/*.{ts,tsx}'", //src 파일 내부의 ts, tsx 파일을 linting
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'" //자동으로 lint에 맞게 수정
   }
 }
 ```
