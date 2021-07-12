@@ -12,7 +12,18 @@ Javascript 개발자가 패키지 된 코드 모듈을 쉽게 공유할 수 있�
 
 
 ## npx 란? 
-npx는 npm 5.2.0 버전부터 새로 추가된 도구로, npm 레지스트리에 올라가 있는 패키지를 쉽게 설치/관리할 수 있게 도와주는 CLI 도구이다.  
+npx는 npm 5.2.0 버전부터 새로 추가된 도구로,  
+npm 레지스트리에 올라가 있는 패키지를 쉽게 설치/관리할 수 있게 도와주는 CLI 도구.
+
+npm을 사용해 패키지를 실행하려면 package.json 파일에서 해당 패키지를 지정해야 함.  
+npm 패키지를 통해 실행 파일 설치 -> npm이 해당 파일에 연결.  
+1. 로컬 설치 : ./node_modules/.bin/디렉토리에 링크가 생성됨
+    - `npm install some-package`
+    - `some-package` //패키지 이름만 입력 시 전역으로 설치된 패키지만 실행 가능
+2. 전역 설치 : Linux or Windows의 전역 bin/디렉토리에 링크 생성됨
+- 
+- 로컬에 설치된 패키지 실행하기 위해서는 로컬 경로를 입력해야 함
+
 기존 npm 설치방법과 다르게 설치/실행/제거할 필요 없이 일회성으로 npm 레지스트리에 접근해 실행시키고 설치하는 실행도구.
 
 npx가 등장하기 전 npm으로 패키지를 설치하는 방법으로는 두 가지 방법이 존재했다. 
@@ -36,9 +47,11 @@ npx가 등장하기 전 npm으로 패키지를 설치하는 방법으로는 두 
 * 
 
 
+<br>
+<br>
+<br>
 
 
 
 > ### Reference
 > * [About npm](https://docs.npmjs.com/about-npm)
-> * [About npm](https://www.npmjs.com/about)
