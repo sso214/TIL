@@ -15,6 +15,7 @@ title: 관심있는 개발 블로그 및 github
 * 프론트엔드 엔지니어 진유림 : [https://milooy.wordpress.com/](https://milooy.wordpress.com/)
 * 아이다르 : [https://github.com/Sukhanberliyev](https://github.com/Sukhanberliyev)
 * Inkyo : [https://ingg.dev/](https://ingg.dev/)
+* JoMingyu : [https://github.com/JoMingyu](https://github.com/JoMingyu)
 
 
 ## 회사
