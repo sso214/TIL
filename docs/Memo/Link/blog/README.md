@@ -16,6 +16,7 @@ title: 관심있는 개발 블로그 및 github
 * 아이다르 : [https://github.com/Sukhanberliyev](https://github.com/Sukhanberliyev)
 * Inkyo : [https://ingg.dev/](https://ingg.dev/)
 * JoMingyu : [https://github.com/JoMingyu](https://github.com/JoMingyu)
+* Dev Ed Youtube : [https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q](https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q)
 
 
 ## 회사
