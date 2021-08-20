@@ -138,3 +138,38 @@ preferences -> ESLint -> manual ESLint configuration 에서 설정
 > * [CRA - react typescript ESlint + Prettier 설정 @super_iaan](https://velog.io/@super_iaan/CRA-react-typescript-ESlint-Prettier-%EC%84%A4%EC%A0%95)
 > * [ESLint, Prettier 적용하기 @기록맨](https://velog.io/@recordboy/ESLint-Prettier-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)
 > * [Eslint 적용하기(React + Typescript + Prettier) @플타 앞발자](https://flamingotiger.github.io/javascript/eslint-setup/)
+> * [ESLint + Prettier + React(CRA) + TypeScript + AirBnB 설정하기](https://yeonhapark.github.io/posts/configure-eslint-with-typescript-react/)
+
+
+---
+---
+---
+
+
+## ESLint
+ECMAScript에 기반한 자바스크립트 코드 상의 버그를 개선하고 일관성 있는 코드 작ㅇ성을 위한 리포팅 동구.  
+사용자가 원하는 방식대로 플러그인을 이용해 다양한 룰을 적용할 수 있다.  
+(CRA에서는 react-scripts를 통해 이미 eslint가 포함되어있으므로 패키지 매니저를 설치할 필요가 없음)
+
+
+## Prettier
+ESLint의 플러그인 중 하나. 
+파일들을 스캔하고 사용자가 설정한 룰에 부합하도록 코드를 포맷팅하는 툴.  
+적용함으로 설정한 룰에 포맷팅 적용 가능함.  
+(prettier / @typescript-eslint/parser 같은 필수 패키지를 제외하고는 취향에 맞춰 플러그인 적용 가능)  
+jsx, Typescript, scss, less, JSON, markdown 등 다양한 언어를 지원  
+
+## ESLint + Prettier setting
+1. `yarn add @typescript-eslint/parser @typescript-eslint/eslint-plugin -D`  
+  * `@typescript-eslint/parser` : Typescript 코드를 linting 하도록 함
+  * `@typescript-eslint/eslint-plugin` : Typescript를 위한 ESLint 룰을 포함하는 플러그인
+
+2. `yarn add eslint-plugin-react eslint-config-airbnb eslint-config-airbnb-typescript eslint-plugin-jsx-a11y eslint-plugin-import prettier eslint-config-prettier eslint-plugin-prettier -D`
+  * `eslint-plugin-react` : react와 타입스크립트를 함께 사용하려면 설치해줘야 함 (devDependencies)
+  * `eslint-config-airbnb` : airbnb의 리액트 관련 규칙 적용  
+  * `eslint-config-airbnb-typescript` : 위 플러그인의 적용범위를 타입스크립트까지 확대 (별도의 규칙을 가지고 있진 않음)
+  * `eslint-plugin-jsx-a11y` : eslint-config-airbnb 와 같이 설치해줘야하는 플러그인 (eslint-plugin-import, eslint-plugin-react 도)
+  * `prettier` : prettier를 적용하기 위한 라이브러리
+  * `eslint-plugin-prettier` : ESLint 룰로 프리티어 실행
+  * `eslint-config-prettier` : prettier와 충돌/중복되는 ESLint 룰 비활성화. 
+
