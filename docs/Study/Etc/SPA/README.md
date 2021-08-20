@@ -27,5 +27,17 @@ SPA는 초기에 페이지 전체를 로드하고 이후부터는 특정 부분�
 외부에 노출될 위험이 있다.
 
 
+
+* SSR :   
+  과거의 대부분 웹사이트들이 SSR로 동작됨.  
+  한 번에 렌더링되기 때문에 초기로딩 속도 빠름. page 이동시 중복되는 파일까지 모두 받아야 함으로 CSR보다 느림.  
+  스마트폰이 대중화되면서 예전 웹들은 모바일에 최적화되어있지 않기 떄문에 사용에 불편함 커짐.
+
+* CSR (Client Side Rendering) :   
+  초기 로딩 속도 느림. 첫 로딩 시 모든 파일 받음으로 페이지 이동시에는 필요한 데이터만 불러서 사용 가능
+
+* SPA (Single Page Application) :   
+  1개의 페이지에서 여러 동작이 이루어지는 방식
+
 참조 : 
 - [https://velog.io/@ru_bryunak/SPA-%EC%82%AC%EC%9A%A9%EC%97%90%EC%84%9C%EC%9D%98-SSR%EA%B3%BC-CSR](https://velog.io/@ru_bryunak/SPA-%EC%82%AC%EC%9A%A9%EC%97%90%EC%84%9C%EC%9D%98-SSR%EA%B3%BC-CSR)
