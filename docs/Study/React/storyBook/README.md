@@ -69,6 +69,8 @@ react의 경우는 react-docgen 등을 사용하면 컴포넌트 소스로 문�
 > * [Storybook](https://storybook.js.org/)
 > * [Storybook의 유용함](https://medium.com/@j_podracer/storybook%EC%9D%98-%EC%9C%A0%EC%9A%A9%ED%95%A8-8581ea618c32)
 > * [[Storybook] 스토리북에 대해 알아보자](https://kjwsx23.tistory.com/541)
+> * [Storybook, React, TypeScript and Jest](https://medium.com/@mtiller/storybook-react-typescript-and-jest-c9059ea06fa7)
+> * [React + TypeScript + Storybook 프로젝트 설정](https://github.com/hohoya33/react-typescript-storybook)
 
 
 
