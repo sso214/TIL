@@ -1,0 +1,135 @@
+---
+title : 자바스크립트 기초  
+date : 2021.08.22
+---
+
+
+# 자바스크립트 기초
+
+자바스크립트는?
+- 1995년 브렌던 아이크가 만든 프로그래밍 언어  
+- 웹 페이지를 만들기 위한 필수적인 언어  
+
+HTML 자바스크립트 삽입 방식
+- `<script type="text/javascript"> javscript code </script>`
+- `<script src="script link"></script>`  
+  파일을 따로 분리해 한번에 다운로드하고 캐시하게 하는 것이 좋음.  
+  캐시된 버전의 파일을 사용할 수 있으므로 성능상 이점도 있음
+  
+
+
+## 변수
+### 변수란?   
+값을 담기 위한 공간.  
+ES6 이전에는 `var`로 변수 선언했지만 현재에는 `let`, `const` 사용  
+값을 재할당해야 하는 상황이 아니라면 항상 `const`를 사용하는게 좋음
+
+###변수 명명법  
+* 숫자로 시작할 수 없음  
+* 공백, 기호, 마침표 들어갈 수 없음  
+* 예약어 사용할 수 없음  
+* 변수명만 보고도 어떤 변수인지 알 수 있게 지어야 함  
+* camelCase(lastLoggedIn) 이나 snake_case(last_logged_in)를 이용해 일관성 있게 연관 단어를 이어 변수명 작성
+
+
+## 자료형
+
+자바스크립트에는 6개의 원시 자료형과 1개의 object 자료형이 존재함.
+
+> 자바스크립트는 동적언어이므로 변수 정의 시 자료형 정의가 필요 없음.  
+이것은 편리해보이지만 대규모 프로젝트에서는 버그의 원인이 될 수 있음.  
+때문에 강타입 언어인 타입스크립트를 사용하기도 함. 
+
+### 원시 자료형
+객체가 아닌 자료형으로 하나의 값을 담을 수 있으며 메서드를 가지지 않는다.  
+* string : 문자열
+* number : 숫자 (JS에는 정수형만을 표현하는 자료형이 따로 없음)
+* boolean : true/false
+* null : 값이 없음을 정의
+* undefined : 정의되지 않은 값
+* symbol : 고유하고 변경될 수 없는 값. ES6에 추가
+
+### 객체
+키/값 쌍으로 데이터를 저장.  
+여러 속성의 모음을 저장하는데 사용할 수 있다.
+
+#### 빈 객체 생성
+* `const car = new Object();`
+* `const car = {}` : 객체 리터럴 방식. 주로 이 방식을 사용함
+```js
+let intern = {
+  leo: 25,
+  sam: 28,
+  max: 30,
+  "so young": 23,
+};
+intern.mark = 29; // 점 표기법을 사용해 객체 car에 새 속성 추가
+console.log(intern.leo); // 점 표기법 이용해 객체 속성 접근
+console.log(intern['leo']); // 대괄호 표기법 이용해 객체 속성 접근
+console.log(intern.so young); // 여러 단어로 이루어진 속성의 경우 점 표기법 사용 불가
+const key = 'leo';
+console.log(intern.key); // undefined
+console.log(intern['key']); // undefined : key는 문자열이 아닌 변수이름. 따옴표 표기 X
+console.log(intern[key]); // 25 : 변수에 저장된 키를 통해 객체 속성에 접근하려면 대괄호 표기법을 사용
+```
+
+#### 객체의 복사
+원시 자료형과 달리 객체 복사는 참조 방식이 사용됨.  
+```js
+let car = {color: 'black'};
+let secondCar = car; // car에 대한 참조(주소)를 저장하게 됨
+car.spped = 'fast'; // 때문에 car를 수정하면 secondCar도 같이 수정
+console.log(car); // {color:'black',speed:'fast'}
+console.log(secondCar); // {color:'black',speed:'fast'}
+console.log(car === secondCar); // true
+
+let emptyObject01 = {};
+let emptyObject02 = {};
+console.log(emptyObject01 == emptyObject02); //false
+console.log(emptyObject01 === emptyObject02); //false
+emptyObject01.a = 1;
+emptyObject02.a = 1;
+console.log(emptyObject01 == emptyObject02); //false
+console.log(emptyObject01 === emptyObject02); //false
+// 객체는 동일한 객체를 비교할 때만 true
+```
+
+`Object.assign(복사본에 해당하는 객체, 원본객체)` : 객체 복사하는 빠른 방법
+```js
+const car = {color: 'red'};
+const secondCar = Object.assign({}, car);
+car.wheels = 4; // Object.assign 사용 시 car 업데이트해도 secondCar에는 영향 X
+console.log(car); // {color:'red', wheels:4}
+console.log(secondCar); // {color:'red'}
+```
+
+### 배열
+순서대로 값을 저장하는 객체. 
+```js
+const fruitBasket = ['apple', 'banana', 'orange'];
+console.log(fruitBasket[0]); // apple
+console.log(fruitBasket.length); // 배열길이 확인
+console.log(fruitBasket.push('pear')); //배열 끝에 새 값 추가
+console.log(fruitBasket.unshift('melon')); //배열 시작에 새 값 추가
+console.log(fruitBasket.pop()); //배열 끝에 값 하나 제거
+console.log(fruitBasket.shift()); // 배열 시작에 값 하나 제거
+```
+
+### typeof 자료형 확인
+```js
+typeof "hello"; // string
+typeof 12; // number
+typeof [1,2,3]; // object
+typeof {prop: 'value'}; // object
+typeof null // object : 버그
+```
+
+
+## 함수
+### 함수 선언
+1. 함수 정의 
+
+
+
+
+## 함수 스코프와 this 키워드의 이해
