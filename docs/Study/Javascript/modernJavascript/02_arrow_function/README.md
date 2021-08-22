@@ -14,6 +14,9 @@ const greeting = function(name) {
 }
 
 //화살표 함수 사용
+var greeting = (name) => {
+    return `hello ${name}`;
+}
 var greeting = name => {
     return `hello ${name}`;
 }
@@ -23,7 +26,7 @@ var greeting = () => {
 }
 ```
 
-## 일시적 반환
+## 암시적 반환
 * 화살표 함수 사용시 명시적 반환을 생략하고 다음과 같이 반환 가능.
 * 기존보다 더 간결하게 사용 가능
 * 주의할 점은 코드의 간결함보다 가독성이 더 중요. 
@@ -93,7 +96,7 @@ const person1 = {
         console.log(this.age)
     },
 };
-person1.grow(); //25
+person1.grow(); //26
 
 const person2 = {
     age: 25,
