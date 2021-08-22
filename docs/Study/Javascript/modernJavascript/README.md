@@ -18,3 +18,5 @@ date : 2021.08
 1. [var, let, const](01_var_let_const/README.md)
 1. [화살표 함수](02_arrow_function/README.md)
 1. [함수 기본값 인수](03_function_arguments/READEME.md)
+1. [템플릿 리터럴](04_template_literals/README.md)
+1. [문자열 메서드](05_string_methods/READEME.md)
