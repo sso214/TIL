@@ -47,3 +47,5 @@ react-router보다 코드 스플리팅 구조가 잘 되어있어 사용하기 �
 > ### Reference
 > * [https://nextjs.org/](https://nextjs.org/)
 > * [Next.js 제대로 알고 쓰자](https://medium.com/@msj9121/next-js-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%95%8C%EA%B3%A0-%EC%93%B0%EC%9E%90-8727f76614c9)
+> * [Next.js 에서 타입스크립트, emotion 적용하기](https://blog.naver.com/PostView.naver?blogId=minhyupp&logNo=222239244566&from=search&redirect=Log&widgetTypeCall=true&directAccess=false)
+> 

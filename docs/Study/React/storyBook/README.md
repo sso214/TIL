@@ -62,6 +62,19 @@ react의 경우는 react-docgen 등을 사용하면 컴포넌트 소스로 문�
 <br/>
 <br/>
 
+와 세팅하는데 생각보다 삽질을 많이 했다.  
+storybook 공식 문서를 보고 cli로 설치했는데   
+`npx sb init`  
+npm run storybook 으로 시작할 때는 잘 나오는데 npm start가 안되서 고생했다.  
+보니까 CRA에서 지원하는 babel-loader랑 webpack 버전이 storybook에서 지원하는 버전과 달라 겹쳐서 에러가 발생했는데  
+이리저리 방법을 찾다가 package.json에  
+```json
+  "resolutions": {
+    "babel-loader": "8.1.0",
+    "webpack": "4.44.2"
+  },
+```
+을 넣어 버전을 정의하는 방식으로 해결했다.
 
 > ### Reference
 > * [모두싸인 엔지니어 지원자를 위한 가이드](https://www.notion.so/975a991feaa44450bfb29c3832091c24#b48e50e419f1431eae6a275fc1e4e555)
@@ -71,6 +84,6 @@ react의 경우는 react-docgen 등을 사용하면 컴포넌트 소스로 문�
 > * [[Storybook] 스토리북에 대해 알아보자](https://kjwsx23.tistory.com/541)
 > * [Storybook, React, TypeScript and Jest](https://medium.com/@mtiller/storybook-react-typescript-and-jest-c9059ea06fa7)
 > * [React + TypeScript + Storybook 프로젝트 설정](https://github.com/hohoya33/react-typescript-storybook)
-
+> * [Storybook: Actions, Knobs, Docs addon 소개 및 설치](https://www.howdy-mj.me/storybook/02-addon-intro/)
 
 
