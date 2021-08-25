@@ -18,6 +18,7 @@ const createSidebar = () => {
 module.exports = {
     title: "sso214's TIL",
     description: "Today I Learned",
+    base: '/prove.io/',
     themeConfig: {
         nav: [
             {text: 'Study', link: '/study/'},
