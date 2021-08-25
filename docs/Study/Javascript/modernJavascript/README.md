@@ -20,3 +20,4 @@ date : 2021.08
 1. [문자열 메서드](05_string_methods/READEME.md)
 1. [디스트럭처링](06_destructuring/README.md)
 1. [루프](07_loop/README.md)
+1. [배열 메서드](08_array_methods/README.md)
