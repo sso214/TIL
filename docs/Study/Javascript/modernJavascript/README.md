@@ -21,3 +21,5 @@ date : 2021.08
 1. [디스트럭처링](06_destructuring/README.md)
 1. [루프](07_loop/README.md)
 1. [배열 메서드](08_array_methods/README.md)
+1. [스프레드 연산자와 레스트 매개변수](09_spread_rest/README.md)
+1. [객체 리터럴의 업그레이드](10_object_initializer/README.md)

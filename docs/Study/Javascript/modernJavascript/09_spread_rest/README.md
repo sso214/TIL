@@ -62,9 +62,33 @@ doStuff.apply(null, args);
 // 스프레드 문법 사용
 doStuff(...args);
 console.log(args); //[0,1,2]
+
+// 지정된 인수보다 너 많은 값을 제공하는 경우
+const name = ['leo', 'park', 'mark'];
+function greet(first, last) {
+    console.log(`hello ${first} ${last}`);
+}
+greet(...name); //hello leo park
 ```
 
 ### 객체 리터럴과 스프레드(ES2018)
+* ES2018에서 도입된 객체에 대한 스프레드 연산자의 예시
+```js
+let person = {
+    name: 'leo',
+    surname: 'park',
+    age: 25
+};
+let clone = {...person};
+console.log(clone); // {name: 'leo', surnameL : 'park', age:25}
+```
 
 
 ## 레스트 매개변수
+* 레스트 문법은 점 3개로 이루어졌다는 점에서 스프레드 문법과 똑같음. But 기능적으로는 반대
+* 스프레드는 배열을 확장하고, 레스트는 여러 원소를 하나의 원소로 압축함
+```js
+const runners = ['leo', 'max', 'mark', 'emily'];
+const [first, second, ...losers] = runners; // 나머지 원소는 레스트 연산자를 사용해 losers 변수에 배열로 담음
+console.log(...losers); // mark emily
+```
