@@ -18,6 +18,7 @@ const createSidebar = () => {
 module.exports = {
     title: "sso214's TIL",
     description: "Today I Learned",
+    base: '/TIL/',
     themeConfig: {
         nav: [
             {text: 'Study', link: '/study/'},
