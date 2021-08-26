@@ -5,7 +5,8 @@ title : 자바스크립트 33가지 개념
 # 자바스크립트 33가지 개념
 
 1. [Call Stack](01_call_stack/README.md)
-2. [Primitive Type](02_primitive_type/README.md)
+1. [Primitive Type](02_primitive_type/README.md)
+1. [Value Types and Reference Types](03_value_and_reference/README.md)
 
 <br/>
 <br/>
