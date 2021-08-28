@@ -112,6 +112,67 @@ leo.nicknames; //Your nickname is sso214
 
 
 ## 클래스 상속하기
+* 기존 클래스로부터 상속된 새로운 클래스를 만들기 위해서는 extends 키워드 사용
+```js
+// 기존 클래스
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hi, my name is ${this.name}, and I'm ${this.age} years old`);
+  }
+}
+
+class Adult extends Person { //Person의 모든 속성과 메소드 상속함
+  constructor(name, age, work) {
+    super(name, age); //새로운 클래스에서 this를 사용하기 전에 super()를 호출해야함
+    //내부에서 super()호출 시 Person이 만들어짐
+    //Adult 클래스는 Person으로부터 이름과 나이를 상속받기 떄문에 Person을 다시 선언하고 초기화할 필요 없음 (suepr() 생성자가 하는 일)
+    this.work = work;
+  }
+}
+
+const leo = new Adult('leo', 25, "frontend developer");
+console.log(leo.age); //25
+console.log(leo.work); //frontend developer
+leo.greet(); //Hi, my name is leo, and I'm 25 years old
+```
 
 
 ## 배열 확장하기
+```js
+class Classroom extends Array { //Array 상속
+  // 레스트 연산자 이용해 가변 인수로 입력받은 학생들의 정보를 배열 형태로 students에 저장
+  constructor(name, ...students) {
+    // 스프레드 연산자 사용해 배열 원소들을 풀어헤쳐 생성자 호출
+    // 스프레드 연산자를 사용하지 않으면 `학생들의 정보가 들어있는 배열`을 원소로 가진 Array가 생성됨
+    super(...students);
+    this.name = name;
+  }
+
+  add(student) {
+    this.push(student);
+  }
+}
+
+const myClass = new Classroom('1A',
+        {name: 'Leo', mark: 2},
+        {name: 'Max', mark: 3},
+        {name: 'Jim', mark: 1},
+        {name: 'Jon', mark: 5},
+);
+myClass.add({name: 'Mark', mark: 9});
+myClass[4]; //{name: 'Mark', mark:9}
+
+for (const student of myClass) {
+  console.log(student);
+  // {name:'Leo', mark:2}
+  // {name:'Max', mark:3}
+  // {name:'Jim', mark:1}
+  // {name:'Jon', mark:5}
+  // {name:'Mark', mark:9}
+}
+```

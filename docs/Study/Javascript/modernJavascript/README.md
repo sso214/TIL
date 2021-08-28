@@ -25,3 +25,4 @@ date : 2021.08
 1. [객체 리터럴의 업그레이드](10_object_initializer/README.md)
 1. [심볼](11_symbol/README.md)
 1. [클래스](12_class/README.md)
+1. [프로미스](13_promise/README.md)
