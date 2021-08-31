@@ -23,7 +23,7 @@ rm -rf TIL
 # 이제 add + commit + push를 차례대로 실행해주면 끝
 # $1은 문자열 인자
 git add .
-git commit -m '$1'
+git commit -m "$1"
 
 # https://<USERNAME>.github.io/<REPO> 에 배포하는 경우
 # git push origin master
