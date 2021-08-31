@@ -12,9 +12,9 @@ webGL, canvas 등 그래픽 표현이나 인터랙티브한 웹에 흥미를 가
 
 * email : sojam214@gmail.com
 * github : [https://github.com/sso214](https://github.com/sso214)
-* motto : 가장 유능한 사람은 가장 배움에 힘쓰는 사람이다.
 
 <!--
+* motto : 가장 유능한 사람은 가장 배움에 힘쓰는 사람이다.
 ```ts
 const me = {
     id: 'sso214',
