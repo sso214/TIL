@@ -110,16 +110,24 @@ Atomics는 생성자가 아니며 Atomics의 모든 속성과 메서드는 정�
 Atomics를 new 연산자와 함께 사용하거나 함수 형태로 호출할 수 없다
 
 Atomics는 범용 고정 길이 바이너리 데이터 버퍼를 표현하는 SharedArrayBuffer 객체와 함께 사용됨
+
 Atomics의 메서드
 * add / sub
 * and / or / xor
 * load / store
 
-### Atomics.add()
-* Atomics.add()  
-  호출시 3개의 인수(배열, 인덱스, 값)을 받고, 더하기를 수행하기 전 해당 인덱스에 존재하던 이전 값을 반환함
-* Atomics.load()  
-  배열에서 특정 값 가져오기 위해 배열과 인덱스를 인수로 전달
+### Atomics 메서드
+* Atomics.add() :  
+  호출시 3개의 인수(배열, 인덱스, 값)을 받음  
+  더하기 수행하기 전 해당 인덱스에 존재하던 이전 값을 반환
+* Atomics.load() :  
+  배열에서 특정 값 가져오기 위해 배열, 인덱스를 인수로 전달
+* Atomics.sub() :  
+  Atomics.add()와 같은 방식으로 동작하지만 값을 뺌  
+  Atomics.add()와 마찬가지로 해당 인덱스의 이전 값을 반환
+* Atomics.store() :  
+  특정 값을 배열의 특정 인덱스에 저장  
+  방금 전달한 값을 반환함
 ```js
 // SharedArrayBuffer 생성
 const buffer = new SharedArrayBuffer(16);
@@ -129,11 +137,18 @@ uint8[0] = 10; //0번 인덱스에 값 추가
 
 //Atomics.add() 호출 시 해당 배열 인덱스에 존재하던 이전 값 반환
 console.log(Atomics.add(uint8, 0, 5)); //10
-
 console.log(uint8[0]); //15 : 10 + 5
+
 // 배열에서 특정 값 가져오기 위해서는 Atomics.load()에 배열과 인덱스 인수로 전달
-consoel.log(Atomics.load(uint8, 0)); //15
+console.log(Atomics.load(uint8, 0)); //15
+
+console.log(Atomics.sub(uint8, 0, 5)); //10 : uint8[0] 위치의 값에서 5를 뺌
+console.log(uint8); //10
+
+console.log(Atomics.store(uint8, 0, 3)); //3 : 3을 배열의 0 인덱스에 저장
+console.log(Atomics.load(uint8, 0)); //3
 ```
 
-
+### Atomics.and(), Atomics.or(), Atomics.xor()
+세 가지 메서드 모두 배열의 지정된 위치에서 비트 AND, OR, XOR 연산을 수행
 
