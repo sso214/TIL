@@ -31,3 +31,5 @@ date : 2021.08
 1. [세트, 위크셋, 맵, 위크맵](16_set_weakSet_map_weakMap/README.md)
 1. [ES2016의 새로운 기능](17_ES2016/README.md)
 1. [ES2017 - 문자열 패딩, Object.entries(), Object.values() 등](18_ES2017_1/README.md)
+1. [ES2017 - async와 await](19_async_await/README.md)
+1. [ES2018의 새로운 기능](20_ES2018/README.md)
