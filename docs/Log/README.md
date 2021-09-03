@@ -1,2 +1,2 @@
 # Log
-Today I Learned
+잡다한 기록들

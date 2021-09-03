@@ -1,10 +1,7 @@
 const routes = [
     'Study',
-    'Daily',
     'Log',
     'Memo',
-    'ToyProject',
-    'Wiki',
 ];
 
 const createSidebar = () => {
@@ -22,11 +19,8 @@ module.exports = {
     themeConfig: {
         nav: [
             {text: 'Study', link: '/study/'},
-            {text: 'Daily', link: '/daily/'},
             {text: 'Log', link: '/log/'},
             {text: 'Memo', link: '/memo/'},
-            {text: 'ToyProject', link: '/toyProject/'},
-            {text: 'Wiki', link: '/wiki/'},
             {
                 text: 'sso214',
                 items: [
