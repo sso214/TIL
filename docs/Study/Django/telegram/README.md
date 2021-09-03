@@ -45,6 +45,7 @@ bot = telegram.Bot(token = telgm_token)
 bot.sendMessage(chat_id='방금 받은 chat_id', text='보낼 메세지') // 텍스트 전송됨
 ```
 
+`pip freeze > requirements.txt` freeze 꼭 해줘야 함!
 <br/>
 
 위처럼 텔레그램으로 메세지나 이미지, 파일까지도 전송할 수 있는데 문제가 하나 생겼다.  
