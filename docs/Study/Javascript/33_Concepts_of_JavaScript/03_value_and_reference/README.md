@@ -6,12 +6,12 @@ date : 2021.08.26
 # 값(value)과 참조(reference)
 
 ## 자바스크립트에서 값과 참조
-* 값에 의한 전달(passed by value)이 일어나는 5가지 원시 타입 (Boolean, Null, Undefined, String, Number)
-* 참조에 의한 전달(passed by reference)이 일어나는 3가지의 객체 타입 (Array, Function, Object)
+* 값에 의한 전달(passed by value)이 일어나는 5가지 원시 타입 : Boolean, Null, Undefined, String, Number
+* 참조에 의한 전달(passed by reference)이 일어나는 3가지의 객체 타입 : Array, Function, Object
 
 
 ## 원시타입
-* 원시타입이 변수에 할당되면 해당 변수를 원시타입을 가진 타입이라고 볼 수 있음
+* 원시타입이 변수에 할당되면 해당 변수는 원시타입을 가졌다고 볼 수 있음
 * 해당 변수를 다른 변수에 `=` 키워드를 이용해 할당하면 새로운 변수에 값을 복사하게 됨  
   (같은 값을 가지게 되지만 분리되어 있음. 값을 바꾸더라도 다른 변수에는 영향 X)
 ```js
@@ -60,7 +60,7 @@ console.log(reference, refCopy); // [1,2], [1,2]
 | reference | <#001> | | |
 
 ### 참조 재할당하기
-* 참조 재할당은 오래된 참조를 대체함
+참조 재할당은 오래된 참조를 대체함
 1. 객체 생성
 ```js
 var obj = {first: 'reference'};
@@ -78,13 +78,14 @@ obj = {second: 'ref2'};
 |--|--|--|--|
 | obj | <#678> | #234 | [first: 'reference']|
 |   |   | #678 | [second: 'ref2']|
-* 객체를 가리키는 참조가 남아있지 않을 때 자바스크립트 엔진은 `가비지 컬렉션(garbage collection)`을 동작시킬 수 있음  
-* 가비지 컬렉션(garbage collection) : 프로그래머가 모든 참조를 날려 객체를 사용하지 못하게 된 뒤 자바스크립트 엔진은 주소로 가 사용되지 않는 객체를 메모리로부터 안전하게 지워버리는 것  
+* 객체를 가리키는 참조가 남아있지 않을 때 자바스크립트 엔진은  
+  `가비지 컬렉션(garbage collection)`을 동작시킬 수 있음  
+* `가비지 컬렉션(garbage collection)` : 프로그래머가 모든 참조를 날려 객체를 사용하지 못하게 된 뒤 자바스크립트 엔진은 주소로 가 사용되지 않는 객체를 메모리로부터 안전하게 지워버리는 것  
   (위 코드 같은 경우 객체 {first: 'reference'} 더 이상 접근 불가능하고 가비지 콜렉션 될 수 있음)
 
 ### == 와 ===
 * 동등함을 비교하는 연산자 `==`와  `===`는 참조 타입 변수의 참조를 체크함
-* 2개의 구분 가능한 객체들이 있고 그 객체들의 프로퍼티가 같은지 알고 싶으면  
+* 2개의 구분 가능한 객체들이 있고 그 객체들의 프로퍼티가 같은지 알고 싶으면 아래와 같은 방법이 있음  
   * 두 객체를 문자열로 변경 후 문자열로 비교 (동등 연산자가 원시타입 비교시에는 값이 같은지만 확인함)
   * 객체를 이용해 재귀적으로 반복 (각각의 프로퍼티가 동일한지 확인)
 ```js
@@ -148,8 +149,11 @@ console.log(changeLeo); //{name:'leo', age:25}
 // 순수 함수
 function changeAgePure(person) {
   var newPerson = JSON.parse(JSON.stringify(person));
-  // 넘겨받은 객체를 문자열로 변화시키기 위해 JSON.stringify 함수 사용 => JSON.parse 함수를 이용해 다시 객체로 만듬 => 새로운 객체 생성하고 새로운 변수에 저장
-  // 다른 방법으로 원본 객체의 프로퍼티를 반복해 새로운 객체에 할당하는 방법도 있음
+  // 넘겨받은 객체를 문자열로 변화시키기 위해 JSON.stringify 함수 사용 
+  // => JSON.parse 함수를 이용해 다시 객체로 만듬 
+  // => 새로운 객체 생성하고 새로운 변수에 저장
+  
+  // 원본 객체의 프로퍼티를 반복해 새로운 객체에 할당하는 방법도 있음
   // 새로운 객체는 원본과 같은 프로퍼티들을 가지지만 메모리 상에서 두 객체는 다른 주소값을 가지고 구분됨
   newPerson.age = 25;
   return newPerson; // 새롭게 만들어진 객체 반환
@@ -158,7 +162,8 @@ var leo = {
   name: 'leo',
   age: 20
 };
-var changeLeo = changeAgePure(leo); // 프로퍼티를 변경해도 원본에 영향을 주지 않음. (바깥 스코프에 영향 미치지 않음. 인자로 받은 객체까지)
+// 프로퍼티를 변경해도 원본에 영향을 주지 않음. (바깥 스코프에 영향 미치지 않음. 인자로 받은 객체까지)
+var changeLeo = changeAgePure(leo); 
 // 새롭게 만들어진 객체 반환해서 새로운 변수에 저장되어야 함. 
 // 그렇지 않으면 결과값은 가비지 콜렉션 되고 객체는 어디에도 남지 않게 됨
 console.log(leo); //{name:'leo', age:20}
@@ -169,7 +174,8 @@ console.log(changeLeo); //{name:'leo', age:25}
 ```js
 function changeAgeAndReference(person) {
   person.age = 25; //넘겨진 원본객체 age 변경
-  person = { //person을 새로운 객체로 재할당 (새로운 참조를 갖게 되어 원본 객체에 더 이상 영향 미치지 않음)
+  //person을 새로운 객체로 재할당 (새로운 참조를 갖게 되어 원본 객체에 더 이상 영향 미치지 않음)
+  person = { 
     name: 'John',
     age: 50
   };

@@ -8,6 +8,7 @@ title : 자바스크립트 33가지 개념
 1. [Primitive Type](02_primitive_type/README.md)
 1. [Value Types and Reference Types](03_value_and_reference/README.md)
 1. [Implicit, Explicit, Nominal, Structuring and Duck Typing](04_implicit_coercion/README.md)
+1. [== vs === vs typeof](05_==_vs_===/README.md)
 
 <br/>
 <br/>
