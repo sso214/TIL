@@ -18,6 +18,7 @@ title: 관심있는 개발 블로그 및 github
 * [JoMingyu](https://github.com/JoMingyu)
 * [Dev Ed Youtube](https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q)
 * [modolee](https://velog.io/@modolee)
+* [모던 자바스크립트 핵심 가이드 저자 블로그](https://inspiredwebdev.com/)
 
 
 ## 회사

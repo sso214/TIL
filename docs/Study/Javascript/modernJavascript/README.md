@@ -35,3 +35,5 @@ date : 2021.08
 1. [ES2018의 새로운 기능](20_ES2018/README.md)
 1. [ES2019의 새로운 기능](21_ES2019/README.md)
 1. [ES2020의 새로운 기능](22_2020/README.md)
+1. [타입스크립트 기초](23_typescriptBasic/README.md)
+1. [부록 : ES2021](24_ES2021/README.md)
