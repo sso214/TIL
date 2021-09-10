@@ -157,4 +157,7 @@ function makeCake(flavor) {
 }
 ```
 
+### 클로져로 private 변수 만들기
 
+
+## 개발자도구로 스코프 디버깅하기
