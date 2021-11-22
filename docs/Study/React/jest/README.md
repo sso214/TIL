@@ -13,7 +13,7 @@ date : 2021.08.20
 ## 설치 및 간단한 테스트 작성
 1. `npm init` 으로 package.json 생성
 2. `npm install jest --save-dev` jest install (개발할 때만 사용하기 때문에 개발 의존성으로 설치)
-3. package.json 파일의 test부분을 jest로 변경
+3. package.json 파일의 scripts test 부분을 "jest"로 변경
 ```json
 "scripts": {"test": "jest"}
 ```
@@ -110,15 +110,23 @@ npm ERR! Test failed.  See above for more details.
 Mathcher : .toBe 부분에서 사용하는 함수
 
 ### Common Matchers
+[https://jestjs.io/docs/en/expect](https://jestjs.io/docs/en/expect) 참고
 
 #### `toBe()`
 * 숫자나 문자 같은 원시데이터 일치 여부
 * object 값에 사용하면 같은 객체를 가리키고 있는지 확인함 (객체의 내용이 같더라도 다른 메모리에 있는 객체면 false)
+* 객체나 배열은 값을 재귀적으로 돌면서 확인해줘야하기 떄문에 toEqual() 사용해야 함
  
 #### `toEqual()`
 * 객체의 내용이 같은지 확인
 * jest는 `toBe()` 대신 `toEqual()` 함수 사용을 추천함  
 * 실제 테스트 코드 작성시에는 객체 검증할 일이 많기 떄문에 `toEqual()` 함수를 가장 많이 접함
+
+
+### `toStrictEqual()`
+* `toEqual()` 엄격 모드
+* undefined 있을 시 에러 노출
+
 
 #### `not`
 * 불일치 여부 확인
