@@ -57,6 +57,7 @@ const double = function(){
     console.log(a * 2);
 }
 ```
+
 * 함수 선언 사용 시 호이스팅 발생
 ```js
 const a = 7;
