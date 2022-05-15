@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>07장. 연산자 | sso214&#39;s TIL</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Today I Learned">
+    
+    <link rel="preload" href="/TIL/assets/css/0.styles.dd5ac3b9.css" as="style"><link rel="preload" href="/TIL/assets/js/app.843ec6ea.js" as="script"><link rel="preload" href="/TIL/assets/js/2.e5153bce.js" as="script"><link rel="preload" href="/TIL/assets/js/49.605a2f63.js" as="script"><link rel="prefetch" href="/TIL/assets/js/10.96c1a137.js"><link rel="prefetch" href="/TIL/assets/js/100.b1459728.js"><link rel="prefetch" href="/TIL/assets/js/101.4f86b063.js"><link rel="prefetch" href="/TIL/assets/js/102.69694640.js"><link rel="prefetch" href="/TIL/assets/js/103.ac64c567.js"><link rel="prefetch" href="/TIL/assets/js/104.1b37f617.js"><link rel="prefetch" href="/TIL/assets/js/105.9d6f16a2.js"><link rel="prefetch" href="/TIL/assets/js/106.b00c7237.js"><link rel="prefetch" href="/TIL/assets/js/107.71e318c0.js"><link rel="prefetch" href="/TIL/assets/js/108.8e743824.js"><link rel="prefetch" href="/TIL/assets/js/109.58eeed5e.js"><link rel="prefetch" href="/TIL/assets/js/11.99afb125.js"><link rel="prefetch" href="/TIL/assets/js/110.33080e6c.js"><link rel="prefetch" href="/TIL/assets/js/111.fcb93c43.js"><link rel="prefetch" href="/TIL/assets/js/112.59d07d5b.js"><link rel="prefetch" href="/TIL/assets/js/113.63822ed8.js"><link rel="prefetch" href="/TIL/assets/js/114.30c98f76.js"><link rel="prefetch" href="/TIL/assets/js/115.68acf3f0.js"><link rel="prefetch" href="/TIL/assets/js/116.d81f6acb.js"><link rel="prefetch" href="/TIL/assets/js/117.03125a3c.js"><link rel="prefetch" href="/TIL/assets/js/118.8a0de8f7.js"><link rel="prefetch" href="/TIL/assets/js/119.b5320f12.js"><link rel="prefetch" href="/TIL/assets/js/12.c8d94d1d.js"><link rel="prefetch" href="/TIL/assets/js/120.9364b41f.js"><link rel="prefetch" href="/TIL/assets/js/121.f2a6338b.js"><link rel="prefetch" href="/TIL/assets/js/122.8fb7cb8b.js"><link rel="prefetch" href="/TIL/assets/js/123.a56fc875.js"><link rel="prefetch" href="/TIL/assets/js/124.d176545b.js"><link rel="prefetch" href="/TIL/assets/js/13.8e3b28f9.js"><link rel="prefetch" href="/TIL/assets/js/14.1fe39c87.js"><link rel="prefetch" href="/TIL/assets/js/15.a0460a6a.js"><link rel="prefetch" href="/TIL/assets/js/16.1288494f.js"><link rel="prefetch" href="/TIL/assets/js/17.7c30efa0.js"><link rel="prefetch" href="/TIL/assets/js/18.90533dc8.js"><link rel="prefetch" href="/TIL/assets/js/19.952e0f91.js"><link rel="prefetch" href="/TIL/assets/js/20.186e629f.js"><link rel="prefetch" href="/TIL/assets/js/21.78e259c2.js"><link rel="prefetch" href="/TIL/assets/js/22.b69cf6df.js"><link rel="prefetch" href="/TIL/assets/js/23.011ff92a.js"><link rel="prefetch" href="/TIL/assets/js/24.70f2766d.js"><link rel="prefetch" href="/TIL/assets/js/25.23899a6c.js"><link rel="prefetch" href="/TIL/assets/js/26.d71fe930.js"><link rel="prefetch" href="/TIL/assets/js/27.d08c8eea.js"><link rel="prefetch" href="/TIL/assets/js/28.bae20eac.js"><link rel="prefetch" href="/TIL/assets/js/29.bd09bf57.js"><link rel="prefetch" href="/TIL/assets/js/3.4756cd1b.js"><link rel="prefetch" href="/TIL/assets/js/30.7e7b16b6.js"><link rel="prefetch" href="/TIL/assets/js/31.833424bd.js"><link rel="prefetch" href="/TIL/assets/js/32.a516518f.js"><link rel="prefetch" href="/TIL/assets/js/33.d39e8de4.js"><link rel="prefetch" href="/TIL/assets/js/34.0b0a2238.js"><link rel="prefetch" href="/TIL/assets/js/35.6f8012c1.js"><link rel="prefetch" href="/TIL/assets/js/36.f181f457.js"><link rel="prefetch" href="/TIL/assets/js/37.0d37632b.js"><link rel="prefetch" href="/TIL/assets/js/38.dc529a56.js"><link rel="prefetch" href="/TIL/assets/js/39.657ee849.js"><link rel="prefetch" href="/TIL/assets/js/4.e52e661e.js"><link rel="prefetch" href="/TIL/assets/js/40.bcf52805.js"><link rel="prefetch" href="/TIL/assets/js/41.b80cbb20.js"><link rel="prefetch" href="/TIL/assets/js/42.4e6893ee.js"><link rel="prefetch" href="/TIL/assets/js/43.b68dd0bb.js"><link rel="prefetch" href="/TIL/assets/js/44.41a910a6.js"><link rel="prefetch" href="/TIL/assets/js/45.2b0edd78.js"><link rel="prefetch" href="/TIL/assets/js/46.72d40211.js"><link rel="prefetch" href="/TIL/assets/js/47.022571e7.js"><link rel="prefetch" href="/TIL/assets/js/48.7915ebe1.js"><link rel="prefetch" href="/TIL/assets/js/5.e68a1f97.js"><link rel="prefetch" href="/TIL/assets/js/50.529166f5.js"><link rel="prefetch" href="/TIL/assets/js/51.75b2f138.js"><link rel="prefetch" href="/TIL/assets/js/52.e4fb0478.js"><link rel="prefetch" href="/TIL/assets/js/53.8a21c58c.js"><link rel="prefetch" href="/TIL/assets/js/54.391b5ead.js"><link rel="prefetch" href="/TIL/assets/js/55.6fb2a677.js"><link rel="prefetch" href="/TIL/assets/js/56.7f957147.js"><link rel="prefetch" href="/TIL/assets/js/57.3fcec167.js"><link rel="prefetch" href="/TIL/assets/js/58.d3b5ef35.js"><link rel="prefetch" href="/TIL/assets/js/59.0e4095eb.js"><link rel="prefetch" href="/TIL/assets/js/6.852d803a.js"><link rel="prefetch" href="/TIL/assets/js/60.e9e11954.js"><link rel="prefetch" href="/TIL/assets/js/61.3e2a1ed7.js"><link rel="prefetch" href="/TIL/assets/js/62.fc084c29.js"><link rel="prefetch" href="/TIL/assets/js/63.7fb881e9.js"><link rel="prefetch" href="/TIL/assets/js/64.c41c6651.js"><link rel="prefetch" href="/TIL/assets/js/65.78abb841.js"><link rel="prefetch" href="/TIL/assets/js/66.c13d8856.js"><link rel="prefetch" href="/TIL/assets/js/67.6de3f6a1.js"><link rel="prefetch" href="/TIL/assets/js/68.e685c830.js"><link rel="prefetch" href="/TIL/assets/js/69.7abf0bd5.js"><link rel="prefetch" href="/TIL/assets/js/7.9c4b094e.js"><link rel="prefetch" href="/TIL/assets/js/70.f8f6904a.js"><link rel="prefetch" href="/TIL/assets/js/71.ed2b8c08.js"><link rel="prefetch" href="/TIL/assets/js/72.3e27ea18.js"><link rel="prefetch" href="/TIL/assets/js/73.31b79daf.js"><link rel="prefetch" href="/TIL/assets/js/74.57325ef8.js"><link rel="prefetch" href="/TIL/assets/js/75.85890aea.js"><link rel="prefetch" href="/TIL/assets/js/76.abd62c6c.js"><link rel="prefetch" href="/TIL/assets/js/77.d8661401.js"><link rel="prefetch" href="/TIL/assets/js/78.59845dcf.js"><link rel="prefetch" href="/TIL/assets/js/79.51ebb4b5.js"><link rel="prefetch" href="/TIL/assets/js/8.1e78461a.js"><link rel="prefetch" href="/TIL/assets/js/80.6b050f05.js"><link rel="prefetch" href="/TIL/assets/js/81.72ebf823.js"><link rel="prefetch" href="/TIL/assets/js/82.a79d656d.js"><link rel="prefetch" href="/TIL/assets/js/83.56618b43.js"><link rel="prefetch" href="/TIL/assets/js/84.873e022a.js"><link rel="prefetch" href="/TIL/assets/js/85.36781a94.js"><link rel="prefetch" href="/TIL/assets/js/86.20dfa96e.js"><link rel="prefetch" href="/TIL/assets/js/87.2359d724.js"><link rel="prefetch" href="/TIL/assets/js/88.1495e794.js"><link rel="prefetch" href="/TIL/assets/js/89.6f9dc312.js"><link rel="prefetch" href="/TIL/assets/js/9.2e87f05e.js"><link rel="prefetch" href="/TIL/assets/js/90.8bec33ba.js"><link rel="prefetch" href="/TIL/assets/js/91.7008d3fe.js"><link rel="prefetch" href="/TIL/assets/js/92.8b43b7ab.js"><link rel="prefetch" href="/TIL/assets/js/93.55a89967.js"><link rel="prefetch" href="/TIL/assets/js/94.4f4a7b23.js"><link rel="prefetch" href="/TIL/assets/js/95.ec497a2e.js"><link rel="prefetch" href="/TIL/assets/js/96.89de302d.js"><link rel="prefetch" href="/TIL/assets/js/97.5afe27b9.js"><link rel="prefetch" href="/TIL/assets/js/98.6d27de70.js"><link rel="prefetch" href="/TIL/assets/js/99.47df2e74.js">
+    <link rel="stylesheet" href="/TIL/assets/css/0.styles.dd5ac3b9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/TIL/" class="home-link router-link-active"><!----> <span class="site-name">sso214's TIL</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/TIL/study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/TIL/log/" class="nav-link">
+  Log
+</a></div><div class="nav-item"><a href="/TIL/memo/" class="nav-link">
+  Memo
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="sso214" class="dropdown-title"><span class="title">sso214</span> <span class="arrow down"></span></button> <button type="button" aria-label="sso214" class="mobile-dropdown-title"><span class="title">sso214</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TIL/info/" class="nav-link">
+  Info
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/sso214" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/TIL/study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/TIL/log/" class="nav-link">
+  Log
+</a></div><div class="nav-item"><a href="/TIL/memo/" class="nav-link">
+  Memo
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="sso214" class="dropdown-title"><span class="title">sso214</span> <span class="arrow down"></span></button> <button type="button" aria-label="sso214" class="mobile-dropdown-title"><span class="title">sso214</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TIL/info/" class="nav-link">
+  Info
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/sso214" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/TIL/Study/" aria-current="page" class="sidebar-link">Study</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Canvas</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Django</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Etc</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>React</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ReactNative</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>TypeScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nodeJs</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_07장-연산자"><a href="#_07장-연산자" class="header-anchor">#</a> 07장. 연산자</h1> <p>연산자는 하나 이상의 표현식을 대상으로 산술, 할당, 비교, 논리, 타입, 지수 연산 등을 수행해 하나의 값을 만듬<br>
+이때 연산자의 대상을 피연산자라고 하며, 피연산자는 값으로 평가될 수 있는 표현식이어야 함<br>
+피연산자와 연산자의 조합으로 이뤄진 연산자 표현식도 값으로 평가될 수 있는 표현식이어야 함</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//산술 연산자</span>
+<span class="token number">5</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment">//20</span>
+
+<span class="token comment">//문자열 연결 연산자</span>
+<span class="token string">'My name is  '</span> <span class="token operator">+</span> <span class="token string">'Leo'</span><span class="token punctuation">;</span> <span class="token comment">//'My Name is Leo'</span>
+
+<span class="token comment">//할당 연산자</span>
+color <span class="token operator">=</span> <span class="token string">'skyblue'</span><span class="token punctuation">;</span> <span class="token comment">//'sky blue'</span>
+
+<span class="token comment">//비교 연산자</span>
+<span class="token number">3</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+
+
+<span class="token comment">//논리 연산자</span>
+<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token boolean">false</span> <span class="token comment">//false</span>
+
+
+<span class="token comment">//타입 연산자</span>
+<span class="token keyword">typeof</span> <span class="token string">'Hi'</span> <span class="token comment">//string</span>
+</code></pre></div><h2 id="_1-산술-연산자"><a href="#_1-산술-연산자" class="header-anchor">#</a> 1. 산술 연산자</h2> <ul><li>피연산자를 대상으로 수학적 계산을 수행해 새로운 숫자 값을 만듬</li> <li>산술이 불가능한 경우 NaN을 반환</li> <li>피연산자의 개수에 따라 이항 산술 연산자와 단항 산술 연산자로 구분</li></ul> <h3 id="_1-1-이항-산술-연산자"><a href="#_1-1-이항-산술-연산자" class="header-anchor">#</a> 1-1. 이항 산술 연산자</h3> <ul><li>(+ : 덧셈), (- : 뺼셈), (* : 곱셈), (/ : 나눗셈), (% : 나머지)</li> <li>2개의 피연산자를 산술 연산해 숫자 값을 만듬</li> <li>모든 이항 연술자는 피연산자의 값을 변경하는 부수효과가 없음<br>
+(어떤 산술 연산을 해도 피연산자의 값이 바뀌는 경우 없고 언제나 새로운 값만 만들 뿐)</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token number">5</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//7</span>
+<span class="token number">5</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//3</span>
+<span class="token number">5</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//10 </span>
+<span class="token number">5</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//2.5</span>
+<span class="token number">5</span> <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//1 </span>
+</code></pre></div><h3 id="_1-2-단항-산술-연산자"><a href="#_1-2-단항-산술-연산자" class="header-anchor">#</a> 1-2. 단항 산술 연산자</h3> <ul><li>(++ : 증기), (-- : 감소), (+ : 아무 효과 X), (- : 양수 &lt;-&gt; 음수 반전)</li> <li>1개의 피연산자를 산술 연산해 숫자 값을 만듬</li> <li>이항 산술 연산자와 달리 증가/감소(++/--) 연산자는 피연산자의 값을 변경하는 부수효과가 있음<br>
+(증가/감소 연산을 하면 피연산자의 값을 변경하는 암묵적 할당 아뤄짐)</li> <li>증가/감소(++/--) 연산자는 위치에 의미가 있음
+<ul><li>전위 증가/감소 연산자(++x) : 먼저 피연산자의 값을 증가/감소시킨 후,다른 연산 수행</li> <li>후위 증가/감소 연산자(x++) : 먼저 다른 연산 수행 후, 피연산자의 값을 증가/감소시킴</li></ul></li> <li>숫자 타입이 아닌 피연산자에 + 단항 연산자 사용 시 피연산자를 숫자 타입으로 변환해 반환함<br>
+(피연산자를 변경하는 건 아님. 숫자 타입으로 변환한 값을 생성해 반환 -&gt; 부수 효과 없음)</li> <li>-단항 연산자는 피연산자의 부호를 반전한 값으로 반환.<br>
++연산자와 마찬가지로 피연산자에 사용하면 피연산자를 숫자 타입으로 변환해 반환. 부수 효과 없음</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 증가/감소 연산자는 피연산자의 값을 변경하는 암묵적 할당 이뤄짐</span>
+<span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+x<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// x = x + 1;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2</span>
+
+x<span class="token operator">--</span><span class="token punctuation">;</span> <span class="token comment">// x = x - 1;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+
+
+<span class="token comment">// 전위, 후위 증가/감소 연산자</span>
+<span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+result <span class="token operator">=</span> x<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//선할당 후증가</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//5 6</span>
+
+result <span class="token operator">=</span> <span class="token operator">++</span>x<span class="token punctuation">;</span> <span class="token comment">//선증가 후할당</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//7 7</span>
+
+result <span class="token operator">=</span> x<span class="token operator">--</span><span class="token punctuation">;</span> <span class="token comment">//선할당 후감소</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//7 6</span>
+
+result <span class="token operator">=</span> <span class="token operator">--</span>x<span class="token punctuation">;</span> <span class="token comment">//선감소 후할당</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//5 5</span>
+
+
+<span class="token comment">// + 단항 연산자</span>
+<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">//10</span>
+<span class="token operator">+</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//-10</span>
+
+<span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token string">'1'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">+</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//'1'</span>
+
+x <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">+</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+x <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">+</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//NaN</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//'hello'</span>
+
+
+<span class="token comment">// - 단항 연산자</span>
+<span class="token operator">-</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//10</span>
+<span class="token operator">-</span><span class="token string">'10'</span><span class="token punctuation">;</span> <span class="token comment">//-10</span>
+<span class="token operator">-</span><span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">//-1</span>
+<span class="token operator">-</span><span class="token string">'hello'</span><span class="token punctuation">;</span> <span class="token comment">//NaN</span>
+</code></pre></div><h3 id="_1-3-문자열-연결-연산자"><a href="#_1-3-문자열-연결-연산자" class="header-anchor">#</a> 1-3. 문자열 연결 연산자</h3> <ul><li>+연산자는 피연산자 중 하나 이상이 문자열인 경우 문자열 연산자로 동작함</li> <li>개발자의 의도와 상관없이 자바스크립트 엔진에 의해 암묵적으로 타입 변환되기도 함<br>
+(false -&gt; 0, true -&gt; 1)<br>
+이를 암묵적 타입 변환, 타입 간제 변환이라고 함</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token string">'1'</span><span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//12</span>
+<span class="token number">1</span> <span class="token operator">+</span> <span class="token string">'2'</span><span class="token punctuation">;</span> <span class="token comment">//12</span>
+<span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//3</span>
+<span class="token number">1</span> <span class="token operator">+</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">//2</span>
+<span class="token number">1</span> <span class="token operator">+</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+<span class="token number">1</span> <span class="token operator">+</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+<span class="token number">1</span> <span class="token operator">+</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span> <span class="token comment">//NaN (undefined는 숫자로 타입 변환되지 않음)</span>
+</code></pre></div><h2 id="_2-할당-연산자"><a href="#_2-할당-연산자" class="header-anchor">#</a> 2. 할당 연산자</h2> <ul><li>=, +=, -=, *=, /=, %=</li> <li>우항에 있는 피연산자의 평가 결과를 좌항에 있는 변수에 할당</li> <li>할당 연산자는 좌항의 변수에 값을 할당하므로 변수 값이 변하는 부수 효과 있음</li> <li>할당문은 값으로 평가되는 표현식인 문으로서 할당된 값으로 평가됨. 따라 할당문을 다른 변수에 할당 가능</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> x<span class="token punctuation">;</span>
+
+x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//10</span>
+
+x <span class="token operator">+=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//15</span>
+
+x <span class="token operator">-=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//10</span>
+
+x <span class="token operator">*=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//50</span>
+
+x <span class="token operator">/=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//10</span>
+
+x <span class="token operator">%=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0</span>
+
+<span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'My Name is  '</span><span class="token punctuation">;</span>
+str <span class="token operator">+=</span> <span class="token string">'Leo'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//'My Name is Leo'</span>
+
+<span class="token keyword">var</span> a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">;</span>
+a <span class="token operator">=</span> b <span class="token operator">=</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//연쇄 할당. 오른쪽에서 왼쪽으로 진행 </span>
+consle<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0 0 0 </span>
+</code></pre></div><h2 id="_3-비교-연산자"><a href="#_3-비교-연산자" class="header-anchor">#</a> 3. 비교 연산자</h2> <ul><li>좌항과 우항의 피연산자를 비교 후 그 결과를 불리언 값으로 반환</li> <li>if문이나 for문 같은 제어문 조건식에서 주로 사용됨</li></ul> <h3 id="_3-1-동등-일치-비교-연산자"><a href="#_3-1-동등-일치-비교-연산자" class="header-anchor">#</a> 3-1. 동등/일치 비교 연산자</h3> <ul><li>(== : x,y 값이 같음), (=== : x,y 값과 타입 같음), (!= : x,y 값이 다름), (!== : x,y 값과 타입 다름)</li> <li>좌항과 우항의 피연산자가 같은 값으로 평가되는지 비교해 불리언 값을 반환</li> <li>동등 비교 연산자 (==) : 느슨한 비교.
+<ul><li>비교 시 먼저 암묵적 타입 변환을 통해 타입을 일치시킨 후 비교함</li> <li>결과를 예측하기 어렵고 실수가 쉬움 -&gt; 따라 동등 비교 연산자는 사용 지양 필요</li> <li>부동등 비교 연산자 (!=)는 동등 비교 연산자의 반대 개념</li></ul></li> <li>일치 비교 연산자 (===) : 엄격한 비교.
+<ul><li>좌항과 우항의 피연산자가 값과 타입이 같은 경우에 한해 true 반환</li> <li>암묵적 타입 변환하지 않고 값 비교함. 예측하기 쉬움.</li> <li>다만 NaN은 자신과 일치하지 않는 유일한 값. NaN인지 확인하려면 비트인 함수 Number.isNaN을 사용</li> <li>숫자 0도 주의. +0 === -0</li> <li>부일치 비교 연산자 (!==)는 일치 비교 연산자의 반대 개념</li></ul></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token number">5</span> <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token number">5</span> <span class="token operator">==</span> <span class="token string">'5'</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+<span class="token comment">//안티 패턴 (지양하는 패턴)</span>
+<span class="token string">'0'</span> <span class="token operator">==</span>  <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+<span class="token number">0</span> <span class="token operator">==</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token number">0</span> <span class="token operator">==</span> <span class="token string">'0'</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token boolean">false</span> <span class="token operator">==</span> <span class="token string">'false'</span><span class="token punctuation">;</span> <span class="token comment">//false;</span>
+<span class="token boolean">false</span> <span class="token operator">==</span> <span class="token string">'0'</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token boolean">false</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+<span class="token boolean">false</span> <span class="token operator">==</span> undeinfed<span class="token punctuation">;</span> <span class="token comment">//false</span>
+
+<span class="token number">5</span> <span class="token operator">===</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token number">5</span> <span class="token operator">===</span> <span class="token string">'5'</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+
+<span class="token number">NaN</span> <span class="token operator">===</span> <span class="token number">NaN</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+<span class="token number">0</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token number">0</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><blockquote><p>비교 연산자와 일치 비교 연산자는 +0과 -0을 동등하다고 평가함.<br>
+또한 동일한 값인 NaN과 NaN을 비교하면 다른 값이라고 평가함.<br>
+ES6에서 도입된 Object.is 메서드는 다음과 같이 정확한 비교 결과를 반환함.<br>
+그 외에는 일치 비교 연산자와 동일하게 동작<br>
+-0 === +0; //true, NaN === NaN; //false<br>
+Object.is(-0, +0); //false, Object.is(NaN, NaN); //true</p></blockquote> <h3 id="_3-2-대소-관계-비교-연산자"><a href="#_3-2-대소-관계-비교-연산자" class="header-anchor">#</a> 3-2. 대소 관계 비교 연산자</h3> <ul><li>&lt;, &gt;, &lt;=, &gt;=</li> <li>피연산자의 크기를 비교해 불리언 값 반환</li></ul> <h2 id="_4-삼항-조건-연산자"><a href="#_4-삼항-조건-연산자" class="header-anchor">#</a> 4. 삼항 조건 연산자</h2> <ul><li><code>조건식 ? 조건식 ture일 시 반환 값 : 조건식 false일 시 반환 값</code></li> <li>조건식의 평가 결과에 따라 반환할 값 결정</li> <li>자바스크립트의 유일한 삼항 연산자이며 부수 효과는 없음</li> <li>조건식의 평가 결과가 불리언 값이 아닐 경우 불리언 값으로 암묵적 타입 변환됨</li> <li>삼항 조건 연산자 표현식은 값으로 평가할 수 있는 표현식인 문<br>
+if ...else 문을 사용해도 삼항 조건 연산자 표현식과 유사하게 처리 가능하지만<br>
+삼항 조건 연산자 표현식은 값처럼 사용할 수 있는 반면 if ...else 문은 값처럼 사용할 수 없음<br>
+조건에 따라 어떤 값을 결정해야 한다면 if ...else 문보다 삼항 조건 연산자 표현식을 사용하는 편이 유리<br>
+하지만 조건에 따라 수행해야 할 문이 여러개라면 if ..else 문이 가독성이 더 좋음</li></ul> <h2 id="_5-논리-연산자"><a href="#_5-논리-연산자" class="header-anchor">#</a> 5. 논리 연산자</h2> <ul><li>(|| : 논리합(OR)), (&amp;&amp; : 논리곱(AND)), (! : 부정(NOT))</li> <li>우항과 좌항의 피연산자 (부정 논리 연산자의 경우 우항의 피연산자)를 논리 연산함. 부수효과 없음</li> <li>논리 부정 연산자는 언제나 불리언 값을 반환함<br>
+피연산자가 불리언 값이 아닐 경우 불리언 값으로 암묵적 타입 변환됨</li> <li>논리합, 논리곱 연산자 표현식의 평가 결과는 불리언 값이 아닐 수 있음.<br>
+언제나 2개의 피연산자 중 어느 한 쪽으로 평가됨</li></ul> <blockquote><p>논리 연산자로 구성된 복잡한 표현식은 가독성이 좋지 않아 한 눈에 이해하기 어려울 때 있음<br>
+이런 경우 드 모르간의 법칙을 활용하면 더 가독성 좋은 표현식이 됨<br>
+드 모르간 법칙 : 논리합은 논리곱과 부정기호로, 논리곱은 논리합과 부정기호로 표현 가능<br>
+!(x || y) === (!x &amp;&amp; !y)<br>
+!(x &amp;&amp; y) === (!x || !y)</p></blockquote> <h2 id="_6-쉼표-연산자"><a href="#_6-쉼표-연산자" class="header-anchor">#</a> 6. 쉼표 연산자</h2> <ul><li>왼쪽부터 차례대로 피연산자를 평가하고 마지막 피연산자의 평가가 끝나면 마지막 피연산자의 평가 결과를 반환</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">;</span>
+x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">//3</span>
+</code></pre></div><h2 id="_7-그룹-연산자"><a href="#_7-그룹-연산자" class="header-anchor">#</a> 7. 그룹 연산자</h2> <ul><li>연산자의 우선순위 조절 가능</li> <li>연산자 중 우선순위가 가장 높음</li> <li>소괄호로 피연산자를 감싸는 그룹 연산자는 자신의 피연산자인 표현식을 가장 먼저 평가함</li></ul> <h2 id="_8-typeof-연산자"><a href="#_8-typeof-연산자" class="header-anchor">#</a> 8. typeof 연산자</h2> <ul><li>피연산자의 데이터 타입을 문자열로 반환함</li> <li>'string', 'number', 'boolean', 'undefined', 'symbol', 'object', 'function' 중 하나를 반환</li> <li>null은 'object'를, 함수는 'function'을 반환함<br>
+-&gt; 이처럼 typeof 연산자가 반환하는 문자열은 7개의 데이터 타입과 정확히 일치하지는 않음<br>
+(자바스크립트의 버그지만, 기존 코드에 영향을 줄 수 있기 떄문에 수정하지 못함)</li> <li>값이 null 타입인지 확인할 때는 typeof 연산자가 아니라 일치 연산자를 사용해야 함 (=== 'null')</li> <li>선언하지 않은 식별자를 typeof 연산자로 연산하면 ReferenceError가 아닌 undefined를 반환함</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">typeof</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment">//'string'</span>
+<span class="token keyword">typeof</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//'number'</span>
+<span class="token keyword">typeof</span> <span class="token number">NaN</span><span class="token punctuation">;</span> <span class="token comment">//'number'</span>
+<span class="token keyword">typeof</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">//'boolean'</span>
+<span class="token keyword">typeof</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span> <span class="token comment">//'undefined'</span>
+<span class="token keyword">typeof</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//'symbol'</span>
+<span class="token keyword">typeof</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">//'object'</span>
+<span class="token keyword">typeof</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//'object'</span>
+<span class="token keyword">typeof</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//'object'</span>
+<span class="token keyword">typeof</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//'object'</span>
+<span class="token keyword">typeof</span> <span class="token operator">/</span>test<span class="token operator">/</span>gi<span class="token punctuation">;</span> <span class="token comment">//'object'</span>
+<span class="token keyword">typeof</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//'function'</span>
+
+<span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> foo <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+foo <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+<span class="token keyword">typeof</span> undeclared<span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+</code></pre></div><h2 id="_9-지수-연산자"><a href="#_9-지수-연산자" class="header-anchor">#</a> 9. 지수 연산자</h2> <ul><li>ES7에서 도입됨.<br>
+지수 연산자가 도입되기 전에는 Math.pow 메서드를 사용함 (지수 연산자가 가독성 더 좋음)</li> <li>좌항의 연산자를 밑으로, 우항의 연산자를 지수로 거듭 제곱해 숫자값을 반환함</li> <li>음수를 거듭제곱의 밑으로 사용해 계산하려면 괄호로 묶어야 함</li> <li>다른 산술 연산자와 마찬가지로 할당 연산자와 함께 사용 가능</li> <li>이항 연산자 중 지수 연산자가 우선순위가 제일 높음</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//4</span>
+<span class="token number">2</span> <span class="token operator">**</span> <span class="token number">2.5</span><span class="token punctuation">;</span> <span class="token comment">//5.65685424949238</span>
+<span class="token number">2</span> <span class="token operator">**</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+<span class="token number">2</span> <span class="token operator">**</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//0.25</span>
+
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//4</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//5.65685424949238</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0.25</span>
+
+<span class="token number">2</span> <span class="token operator">**</span> <span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//512</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//512</span>
+
+<span class="token operator">-</span><span class="token number">5</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">;</span><span class="token comment">//SyntaxError</span>
+<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">;</span>  <span class="token comment">//25</span>
+
+<span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+num <span class="token operator">**=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//25</span>
+
+<span class="token number">2</span> <span class="token operator">*</span> <span class="token number">5</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//50</span>
+</code></pre></div><h2 id="_10-그-외의-연산자"><a href="#_10-그-외의-연산자" class="header-anchor">#</a> 10, 그 외의 연산자</h2> <ul><li><code>?.</code> : 옵셔널 체이닝 연산자</li> <li><code>??</code> : null 병합 연산자</li> <li><code>delete</code> : 프로퍼티 삭제</li> <li><code>new</code> : 생성자 함수를 호출할 때 사용해 인스턴스를 생성</li> <li><code>instanceof</code> : 좌변의 객체가 우변의 생성자 함수와 연결된 인스턴스인지 판별</li> <li><code>in</code> : 프로퍼티 존재 확인</li></ul> <h2 id="_11-연산자의-부수-효과"><a href="#_11-연산자의-부수-효과" class="header-anchor">#</a> 11. 연산자의 부수 효과</h2> <ul><li>대부분의 연산자는 다른 코드에 영향을 주지 않지만 일부 연산자는 다른 코드에 영향을 주는 부수 효과가 있음<br>
+할당 연산자 (=), 증가/감소 연산자 (++/--), delete 연산자</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> x<span class="token punctuation">;</span>
+
+x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+
+x<span class="token operator">++</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2</span>
+
+<span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span> a <span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">delete</span> o<span class="token punctuation">.</span>a<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{}</span>
+</code></pre></div><h2 id="_12-연산자-우선순위"><a href="#_12-연산자-우선순위" class="header-anchor">#</a> 12. 연산자 우선순위</h2> <p>여러 개로 이뤄진 문이 실행될 때 연산자가 실행되는 순서를 말함<br>
+우선순위가 높을 수록 먼저 실행됨<br>
+연산자가 종류가 많아 우선순위를 기억하기 어려우므로 우선순위가<br>
+가장 높은 그룹 연산자를 사용해 우선순위를 명시적으로 조절하는 것을 권장함</p> <ol><li>()</li> <li>new(매개변수 존재), .[](프로퍼티 접근), ()(함수 호출), ?.(옵셔널 체이닝 연산자)</li> <li>new(매개변수 미존재)</li> <li>x++, x--</li> <li>!x, +x, -x, ++x, --x, typeof, delete</li> <li>** (이항 연산자 중 우선순위 제일 높음)</li> <li>*, /, %</li> <li>+, -</li> <li>&lt;, &lt;=, &gt;, &gt;=, in, instanceof</li> <li>==, !=, ===, !==</li> <li>??(null 병합 연산자)</li> <li>&amp;&amp;</li> <li>||</li> <li>? ... : ...</li> <li>할당 연산자(=, +=, -=, ...)</li> <li>,</li></ol> <h2 id="_13-연산자-결합-순서"><a href="#_13-연산자-결합-순서" class="header-anchor">#</a> 13. 연산자 결합 순서</h2> <p>연산자의 어느 쪽(좌항 또는 우항)부터 평가를 수행할 것인지 나타내는 순서를 말함</p> <ul><li>좌항 -&gt; 우항 : +, -, /, %, &lt;, &gt;=, &gt;, &gt;=, &amp;&amp;, ||, ., [], (), ??, ?., in, instanceof</li> <li>우항 -&gt; 좌항 : ++, --, 할당 연산자(=, +=, ...), !x, +x, -x, ++x, --x, typeof, delete, ? ... : ..., **</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/TIL/assets/js/app.843ec6ea.js" defer></script><script src="/TIL/assets/js/2.e5153bce.js" defer></script><script src="/TIL/assets/js/49.605a2f63.js" defer></script>
+  </body>
+</html>
