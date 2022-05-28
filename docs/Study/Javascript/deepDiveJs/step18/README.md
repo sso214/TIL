@@ -1,421 +1,279 @@
 ---
-title : 17장. 생성자 함수에 의한 객체 생성   
-date : 2022.05.25
+title : 18장. 함수와 일급 객체   
+date : 2022.05.27
 ---
 
-# 17장. 생성자 함수에 의한 객체 생성
-객체 리터럴에 의한 객체 생성 방식은 가장 일반적이고 간단한 객체 생성 방식이지만    
-그 외의 다양한 방법으로도 객체 생성 가능함  
-이번 장에서는 생성자 함수를 이용해 객체 생성하는 방식을 살펴봄
+# 18장. 함수와 일급 객체
 
-## 1. Object 생성자 함수
-new 연산자와 함께 Object 생성자 함수 호출 시 빈 객체를 생성해 반환함   
-빈 객체 생성 이후 프로퍼티나 메서드를 추가해 객체를 완성할 수 있음
+## 1. 일급 객체
+* 아래 조건을 만족하는 객체를 일급 객체라고 함  
+  * 무명의 리터럴로 생성할 수 있다. 즉, 런타임에 생성이 가능하다.
+  * 변수나 자료구조(객체, 배열 등)에 저장할 수 있다.
+  * 함수의 매개변수에 전달할 수 있다.
+  * 함수의 반환값으로 사용할 수 있다.
+  
+* 자바스크립트의 함수는 조건을 모두 만족하므로 일급 객체
+  * 함수가 일급 객체라는 건 함수를 객체와 동일하게 사용 가능하다는 의미 
+  * 객체는 값이므로 함수는 값과 동일하게 취급 가능   
+    (따라 함수는 값을 사용할 수 있는 곳이라면 어디든 리터럴로 정의할 수 있으며, 런타임에 함수 객체로 평가됨)
+  * 함수는 일반 객체와 같이 함수의 매개변수에 전달할 수 있으며 함수의 반환값으로 사용 가능   
+    (함수형 프로그래밍 가능케 함)
+  * 함수는 객체지만 호출 가능하며 함수 고유의 프로퍼티를 소유함으로 일반 객체와 차이가 있음
+
 ```js
-//빈 객체 생성
-const person = new Object();
-
-//프로퍼티 추가
-person.name = 'Leo';
-person.sayHello = function(){
-    console.log('Hi! My Name is' + this.name);
+//1. 함수는 무명의 리터럴로 생성 가능
+//2. 함수는 변수에 저장 가능
+//런타임(할당 단계)에 함수 리터럴이 평가되어 함수 객체가 생성되고 변수에 할당됨
+const increase = function (num) {
+    return ++num;
+};
+const decrease = function (num) {
+    return --num;
 };
 
-console.log(person); //{name: 'Leo', sayHello: f}
-person.sayHello(); //Hi! My Name is Leo
+//2. 함수는 객체에 저장 가능
+const auxs = {increase, decrease};
+
+//3. 함수의 매개변수에 전달 가능
+//4. 함수의 반환값으로 사용 가능
+function makeCounter(aux) {
+    let num = 0;
+    return function () {
+        num = aux(num);
+        return num;
+    };
+}
+
+//3. 함수는 매개변수에게 함수를 전달 가능
+const increaser = makeCounter(auxs.increase);
+console.log(increaser()); //1
+console.log(increaser()); //2
+const decreaser = makeCounter(auxs.decrease);
+console.log(decreaser()); //-1
+console.log(decreaser()); //-2
 ```
 
-### 생성자 함수
-* new 연산자와 함께 호출해 객체(인스턴스)를 생성하는 함수  
-* 생성자 함수에 의해 생성된 객체를 인스턴스라고 함  
-* 자바스크립트는 String, Number, Boolean, Function, Array, Date, RegExp, Promise, Object 등의   
-빌트인 생성자 함수를 제공함
+## 2. 함수 객체의 프로퍼티
+함수는 객체이므로 함수도 프로퍼티를 가질 수 있음
 ```js
-//String 생성자 함수에 의한 String 객체 생성
-const strObj = new String('Leo');
-console.log(typeof strObj); //object
-console.log(strObj); //String {'Leo'}
+function square(number) {
+    return number * number;
+}
 
-//Number 생성자 함수에 의한 Number 객체 생성
-const numObj = new Number(123);
-console.log(typeof numObj); //object
-console.log(numObj); //Number {123}
+console.log(Object.getOwnPropertyDescriptors(square));
+/*
+{
+    length: {value: 1, writable: false, enumerable: false, configurable: true},
+    name: {value: "square", writable: false, enumerable: false, configurable: true},
+    arguments: {value: null, writable: false, enumerable: false, configurable: false},
+    caller: {value: null, writable: false, enumerable: false, configurable: false} 
+    prototype: {value: {...}, writable: true, enumerable: false, configurable: false} 
+}
+*/
 
-//Boolean 생성자 함수에 의한 Boolean 객체 생성
-const boolObj = new Boolean(true);
-console.log(typeof boolObj); //object
-console.log(boolObj); //Boolean {true}
+//__proto__는 square 함수의 프로퍼티가 아님
+console.log(Object.getOwnPropertyDescriptor(square, '__proto__')); //undefined
 
-//Function 생성자 함수에 의한 Function 객체(함수) 생성
-const func = new Function('x', 'return x * x');
-console.log(typeof func); //function
-console.log(func); //f anonymous(x)
-
-//Array 생성자 함수에 의한 Array 객체(배열) 생성
-const arr = new Array(1,2,3);
-console.log(typeof arr); //object
-console.log(arr); //[1,2,3]
-
-//RegExp 생성자 함수에 의한 RegExp 객체(정규 표현식) 생성
-const regExp = new RegExp(/ab+c/i);
-console.log(typeof regExp); //object
-console.log(regExp); // /ab+c/i
-
-//Date 생성자 함수에 의한 Date 객체 생성
-const date = new Date();
-console.log(typeof date); //object
-console.log(date); // Mon May 04 ...
+//__proto__는 Object.prototype 객체의 접근자 프로퍼티
+//square 함수는 Object.prototype 객체로부터 __proto__ 접근자 프로퍼티를 상속받음
+console.log(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__'));
+// {get:f, set:f, enumerable: false, configurable: true}
 ```
-객체 생성 방법은 객체 리터럴을 사용하는 것이 더 간편함.  
-Object 생성자 함수를 사용한 객체 생성 방식은 특별한 이유가 없으면 유용해 보이지 않음
+* arguments, caller, length, name, prototype 프로퍼티는   
+  일반 객체에는 없는 함수 객체 고유의 데이터 프로퍼티
+* __proto__는 접근자 프로퍼티이며, 함수 객체 고유의 프로퍼티가 아니라   
+  Object.prototype 객체의 프로퍼티를 상속 받은 것.  
+* Object.prototype 객체의 프로퍼티는 모든 객체가 상속 받아 사용 가능함  
+  (=Object.prototype 객체의 __proto__접근자 프로퍼티는 모든 객체가 사용 가능함)
 
 
-## 2. 생성자 함수
+### 2-1. arguments 프로퍼티
+* 함수 객체의 arguments 프로퍼티 값 = arguments 객체  
+* arguments 객체는 함수 호출 시 전달된 인수들의 정보를 담고 있는 순회 가능한 유사 배열 객체.  
+  함수 내부에서 지역 변수처럼 사용됨 (함수 외부에서는 참조 불가)
+* 함수 객체의 arguments 프로퍼티는 ES3부터 표준에서 폐지됨.  
+  따라 Function.arguments 같은 사용법은 권장하지 않으며  
+  함수 내부에서 지역 변수처럼 사용할 수 있는 arguments 객체를 참조하도록 함  
 
-### 2-1. 객체 리터럴에 의한 객체 생성 방식의 문제점
-객체 리터럴에 의해 객체를 생성하는 경우 사용하기 직관적이고 간편하지만   
-프로퍼티 구조가 동일한 경우에도 매번 같은 프로퍼티와 메서드를 기술해야 함 => 비효율적
 ```js
-const circle1 = {
-  radius: 5,
-  getDiameter() {
-    return 2 * this.radius;
+function multiply(x, y) {
+    console.log(arguments);
+    return x * y;
+}
+
+console.log(multiply()); //NaN
+console.log(multiply(1)); //NaN
+console.log(multiply(1, 2)); //2
+console.log(multiply(1, 2, 3)); //2
+```
+자바스크립트는 함수의 매개변수와 인수의 개수가 일치하는지 확인하지 않음 (에러 발생 X)   
+매개변수 개수보다 인수를 적게 전달했을 경우 인수가 전달되지 않은 매개변수는 undefined로 초기화된 상태 유지함  
+매개변수보다 인수를 더 많이 전달한 경우 초과된 인수는 무시됨.  
+초과된 인수가 버려지는 것은 아니고 모든 인수는 암묵적으로 arguments 객체의 프로퍼티로 보관됨
+
+arguments 객체는 인수를 프로퍼티 값으로 소유하며, 프로퍼티 키는 인수의 순서를 나타냄  
+arguments 객체의 callee 프로퍼티 : 호출되어 arguments 객체를 생성한 함수 (=함수 자신)을 가리킴   
+arguments 객체의 length 프로퍼티 : 인수의 개수를 가리킴
+
+* arguments 객체는 매개변수 개수를 확정할 수 없는 가변 인자 함수를 구현할 떄 유용함
+* arguments 객체는 배열 형태로 인자 정보를 담고 있지만 실제 배열이 아닌 유사 배열 객체  
+  (유사 배열 객체 : length 프로퍼티를 가진 객체로 for 문으로 순회 가능한 객체를 말함)
+```js
+function sum() {
+  let res = 0;
+
+  //arguments 객체는 length 프로퍼티가 있는 유사 배열 객체이므로 for 문 순회 가능
+  for (let i = 0; i < arguments.length; i++) {
+    res += arguments[i];
   }
-};
-console.log(circle1.getDiameter()); //10
-
-const circle2 = {
-  radius: 10,
-  getDiameter() {
-    return 2 * this.radius;
-  }
+  return res;
 }
-console.log(circle2.getDiameter()); //20
+
+console.log(sum()); //0
+console.log(sum(1, 2)); //3
+console.log(sum(1, 2, 3)); //6
 ```
 
-### 2-2. 생성자 함수에 의한 객체 생성 방식의 장점
-마치 객체(인스턴스)를 생성하기 위한 템플릿(클래스)처럼 생성자 함수를 사용해  
-프로퍼티 구조가 동일한 객체 여러 개를 간편하게 생성할 수 있음   
-만약 new 연산자 없이 생성자 함수 호출하면 일반 함수로 동작함
+#### <arguments 객체의 Symbol(Symbol.iterator) 프로퍼티>
+arguments 객체의 Symbol(Symbol.iterator) 프로퍼티는   
+arguments 객체를 순회 가능한 자료구조인 이터러블로 만들기 위한 프로퍼티    
+Symbol.iterator를 프로퍼티 키로 사용한 메서드를 구현하는 것에 의해 이터러블이 됨
 ```js
-//생성자 함수
-function Circle(radius) {
-    //생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킴
-    this.radius = radius;
-    this.getDiameter = function(){
-        return 2 * this.radius;
-    };
+function multiply(x, y) {
+    //이터레이터
+  const iterator = arguments[Symbol.iterator]();
+  
+  //이터레이터의 next 메서드를 호출해 이터러블 객체 arguments를 순회
+  console.log(iterator.next()); //{ value: 1, done: false }
+  console.log(iterator.next()); //{ value: 2, done: false }
+  console.log(iterator.next()); //{ value: 3, done: false }
+  console.log(iterator.next()); //{ value: undefined, done: true }
+  
+  return x * y;
 }
-
-//인스턴스으 ㅣ생성
-const circle1 = new Circle(5); //반지름이 5인 Circle 객체를 생성
-const circle2 = new Circle(10); //반지름이 10인 Circle 객체를 생성
-const circle3 = Circle(15); //일반 함수로 호출됨
-
-console.log(circle1.getDiameter()); //10
-console.log(circle2.getDiameter()); //20
-console.log(circle3); //undefined : 일반함수로서 호출된 Circle은 반환문이 없으므로 undefined 반환
-console.log(radius); //15 : 일반 함수로 호출된 Circle 내의 this는 전역 객체를 가리킴
+multiply(1,2,3);
 ```
 
-#### this
-* 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수
-* this 바인딩(this가 가리키는 값)은 함수 호출 방식에 따라 동적으로 결정됨  
+#### <유사 배열 객체와 이터러블>
+ES6에서 도입된 이터레이션 프로토콜을 준수하면 순회 가능한 자료구조인 이터러블이 됨  
+이터러블의 개념이 없었던 ES5에서 arguments 객체는 유사 배열 객체로 구분되었음  
+하지만 이터러블이 되입된 ES6부터 arguments 객체는 유사 배열 객체면서 동시에 이터러블
 
-|함수 호출 방식|this 바인딩|  
-|:-|:-|  
-|일반 함수로서 호출|전역 객체|  
-|메서드로서 호출|메서드를 호출한 객체(마침표 앞의 객체)|  
-|생성자 함수로서 호출|생성자 함수가 (미래에) 생성할 인스턴스|  
-
+유사 배열 객체는 배열이 아니므로 배열 메서드를 사용할 경우 에러 발생함  
+따라 배열 메서드를 사용하려면 Function.prototype.call, Function.apply를 사용해  
+간접 호출해야 하는 번거로움이 있음  
+-> 이런 번거로움을 해결하기 위해 ES6에서는 Rest 파라미터를 도입함  
+(ES6 Rest 파라미터의 도입으로 arguments 객체의 중요성이 많이 낮아짐)
 ```js
-//일반적인 함수로서 호출
-function foo(){
-    console.log(this);
+function sum(){
+    //arguments 객체를 배열로 변환
+  const array = Array.prototype.slice.call(arguments);
+  return array.reduce(function (pre, cur) {
+      return pre + cur;
+  }, 0);
 }
-foo(); //window (전역 객체는 브라우저 환경에서 window, Node.js 환경에서 global을 가리킴)
+console.log(sum(1,2)); //3
+console.log(sum(1,2,3,4,5)); //15
 
-//메서드로서 호출
-const obj = { foo }; //ES6 프로퍼티 축약 표현
-obj.foo(); //obj
-
-//생성자 함수로서 호출
-const inst = new foo(); //inst
+//ES6 Rest Parameter
+function sum(...args) {
+    return args.reduce((pre, cur) => pre + cur, 0);
+}
+console.log(sum(1,2)); //3
+console.log(sum(1,2,3,4,5)); //15
 ```
 
-### 2-3. 생성자 함수의 인스턴스 생성 과정
-생성자 함수의 역할  
-- 인스턴스를 생성하는 것 (필수) 
-- 생성된 인스턴스를 초기화(인스턴스 프로퍼티 추가 및 초기값 할당)하는 것 (옵션)  
 
-생성자 함수 내부 코드를 살펴보면  
-this에 프로퍼티를 추가하고 필요에 따라 전달된 인수를 프로퍼티의 초기값으로 할당해 인스턴스를 초기화 함  
-인스턴스를 생성하고 반환하는 코드는 보이지 않는데 new 연산자와 함께 생성자 함수를 호출 시  
-자바스크립트 엔진이 아래와 같은 과정을 거쳐 암묵적 처리를 통해 인스턴스를 생성하고 반환함  
+### 2-2. caller 프로퍼티
+* ECMAScript 사양에 포함되지 않은 비표준 프로퍼티 (이후 표준화될 예정도 없음. 참고로만 알아두면 됨)
+* 함수 객체의 caller 프로퍼티는 함수 자신을 호출한 함수를 가리킴
 ```js
-//생성자 함수
-function Circle(radius) {
-    //인스턴스 초기화
-    this.radius = radius;
-    this.getDiameter = function (){
-        return 2 * this.radius;
-    };
+function foo(func){
+    return func();
 }
-//인스턴스 생성
-const circle1 = new Circle(5); //반지름이 5인 Circle 객체를 생성
+
+function bar(){
+    return 'caller : ' + bar.caller;
+}
+//브라우저에서 실행한 결과
+console.log(foo(bar)); //caller : function foo(func) {...}
+console.log(bar()); //caller : null
+```
+모듈 때문에 브라우저에서 실행할 때와 Node.js에서 실행할 때 다른 결과가 노출됨
+
+### 2-3. length 프로퍼티
+* 함수 객체의 length 프로퍼티는 함수 정의 시 선언한 매개변수의 개수를 가리킴
+* arguments 객체의 length 프로퍼티와 함수 객체의 length 프로퍼티 값은 다를 수 있으므로 주의해야 함  
+  * arguments 객체의 length 프로퍼티 : 인자의 개수를 가리킴  
+  * 함수 객체의 length 프로퍼티 : 매개변수의 개수를 가리킴
+```js
+function foo() {
+}
+console.log(foo.length); //0
+
+function bar(x) {
+  return x;
+}
+console.log(bar.length); //1
+
+function baz(x, y) {
+  return x * y;
+}
+console.log(baz.length); //2
 ```
 
-#### <생성자 함수의 인스턴스 생성 과정>
-1. 인스턴스 생성과 this 바인딩
-   * 암묵적으로 빈 객체 생성됨    
-     이 객체가 바로 생성자 함수가 생성한 인스턴스 (아직 미완성)
-   * 인스턴스(암묵적으로 생성된 빈 객체)는 this에 바인딩 됨   
-     생성자 함수 내부의 this가 생성자 함수가 생성할 인스턴스를 가리키는 이유가 바로 이 때문  
-     이 처리는 함수 몸체 코드가 한줄씩 실행되는 런타임 이전에 실행됨
-
-2. 인스턴스 초기화   
-   생성자 함수에 기술되어 있는 코드가 한줄씩 실행되어 this에 바인딩되어 있는 인스턴스를 초기화 함  
-   해당 처리는 개발자가 기술함
-
-3. 인스턴스 반환  
-   생성자 함수 내부의 모든 처리가 끝나면 "완성된 인스턴스가 바인딩된 this"가 암묵적으로 반환됨    
-   
-   만약 this가 아닌 다른 객체를 명시적으로 반환하면 this가 반환되지 못하고 명시한 객체가 반환됨  
-   하지만 명시적으로 원시 값을 반환하면 원시 값 반환은 무시되고 암묵적으로 this가 반환됨  
-   이 같은 행동은 생성자 함수의 기본 동작을 훼손하므로 **생성자 함수 내부에선 return 문을 반드시 생략**해야 함
-
+### 2-4. name 프로퍼티
+* 함수 객체의 name 프로퍼티는 함수명을 나타냄
+* ES6이전까지는 비표준이었다가 ES6에서 정식 표준이됨
+* name 프로퍼티는 ES5와 ES6에서 동작을 달리하므로 주의해야 함   
+  * ES5 익명 함수 표현식의 경우 : name 프로퍼티는 빈 문자열을 값으로 가짐  
+  * ES6 익명 함수 표현식의 경우 : name 프로퍼티는 함수 객체를 가리키는 식별자를 값으로 가짐
 ```js
-function Circle(radius) {
-    //1. 암묵적으로 인스턴스가 생성되고 this에 바인딩 됨
-    console.log(this); //Circle {}
+//기명 함수 표현식
+var namedFunc = function foo(){};
+console.log(namedFunc.nam); //foo
 
-    //2. this에 바인딩되어 있는 인스턴스를 초기화함
-    this.radius = radius;
-    this.getDiameter = function (){
-        return 2 * this.radius;
-    };
-    //3. 완성된 인스턴스가 바인딩된 this가 암묵적으로 반환됨
-}
+//익명 함수 표현식
+var anonymousFunc = function(){};
+console.log(anonymousFunc.name); //anonymousFunc
+//ES5 : name 프로퍼티는 빈 문자열을 값으로 가짐
+//ES6 : name 프로퍼티는 함수 객체를 가리키는 변수명을 값으로 가짐
 
-//인스턴스 생성. Circle 생성자 함수는 암묵적으로 this를 반환함
-const circle = new Circle(1);
-console.log(circle); //Circle {radius:1, getDiameter: f}
-```
-```js
-//this가 아닌 다른 객체를 명시적으로 반환
-function Circle(radius) {
-    this.radius = radius;
-    this.getDiameter = function (){
-        return 2 * this.radius;
-    };
-    return {};
-}
-
-const circle = new Circle(1);
-console.log(circle); //{}
-
-//this가 아닌 원시 값을 명시적으로 반환
-function Circle(radius) {
-    this.radius = radius;
-    this.getDiameter = function (){
-        return 2 * this.radius;
-    };
-    return 100;
-}
-
-const circle = new Circle(1);
-console.log(circle); //Circle {radius:1, getDiameter: f}
+//함수 선언문
+function bar(){}
+console.log(bar.name); //bar
 ```
 
-> 바인딩 : 식별자와 값을 연결하는 과정  
-> 예를 들어 변수 선언은 변수명과 확보된 메모리 공간의 주소를 바인딩하는 것  
-> this 바인딩은 this와 this(키워드로 분류되지만 식별자 역할함)가 가리킬 객체를 바인딩하는 것
-
-### 2-4. 내부 메서드 [[Call]]과 [[Construct]]  
-* 함수 선언문 또는 함수 표현식으로 정의한 함수는 일반적인 함수로서 또는 생성자 함수로서 호출 가능  
-  (생성자 함수로서 호출한다는 것은 new 연산자와 함께 호출해 객체를 생성하는 것)  
-
-* 함수는 일반 객체가 가지고 있는 내부 슬롯과 내부 메서드를 모두 가지고 있어 일반 객체와 동일하게 동작 가능  
-  또한 함수는 객체지만 일반 객체와 달리 호출할 수 있기 때문에 함수로서 동작하기 위해 함수 객체만을 위한  
-  [[Environment]], [[FormalParameters]] 등의 내부 슬롯과  
-  [[Call]], [[Construct]] 같은 내부 메서드를 추가로 가지고 있음  
-
-* 함수가 일반 함수로서 호출되면 함수 객체의 내부 메서드 [[Call]]이 호출되고  
-  new 연산자와 함께 생성자 함수로서 호출되면 내부 메서드 [[Construct]]가 호출됨  
-
-  * **callable**  
-    내부 메서드 [[Call]]을 갖는 함수 객체 : 호출할 수 있는 객체(=함수)를 의미함   
-    호출할 수 없는 객체는 함수 객체가 아니므로 함수 객체는 반드시 callable이어야 함   
-  * **constructor**   
-    [[Construct]]를 갖는 함수 객체 : 생성자 함수로서 호출할 수 있는 함수   
-    (일반 함수 또는 생성자 함수로서 호출할 수 있는 객체를 말함)
-  * **non-constructor**   
-    [[Construct]]를 갖지 않는 함수 객체 : 생성자 함수로서 호출할 수 없는 함수   
-    (일반 함수로서만 호출할 수 있는 객체를 말함)
-
-  모든 함수 객체는 호출할 수 있지만 모든 함수 객체를 생성자 함수로서 호출할 수 있는 것은 아님 
-
-
+### 2-5. \__proto__ 접근자 프로퍼티
+* 모든 객체는 [[Prototype]]이라는 내부 슬롯을 가짐.   
+  [[Prototype]] 내부 슬롯 : 객체지향 프로그래밍의 상속을 구현하는 프로토타입 객체를 가리킴  
+* \__proto__ 프로퍼티는 [[Prototype]] 내부 슬롯이 가리키는 프로토타입 객체에   
+  접근하기 위해 사용하는 접근자 프로퍼티  
+* 내부 슬롯에는 직접 접근 불가하며 간접적인 접근 방법을 제공하는 경우에 한해 접근 가능함.    
+  [[Prototype]] 내부 슬롯에도 직접 접근 불가해 \__proto__ 접근자 프로퍼티를 통해   
+  간접적으로 프로토타입 객체에 접근 가능함
 ```js
-//함수는 객체
-function foo(){}
+const obj = { a:1 };
 
-//함수는 객체이므로 프로퍼티와 메서드 소유 가능
-foo.prop = 10;
-foo.method = function(){
-    console.log(this.prop);
-}
+//객체 리터럴 방식으로 생성한 객체의 프로토타입 객체는 Object.prototype
+console.log(obj.__proto__ === Object.prototype); //true
 
-foo.method(); //10
-
-foo(); //일반적인 함수로서 호출 : [[Call]] 호출됨
-new foo(); //생성자 함수로서 호출 : [[Construct]] 호출됨
+//객체 리터럴 방식으로 생성한 객체는 프로토타입 객체인 Object.prototype의 프로퍼티를 상속받음
+console.log(obj.hasOwnProperty('a')); //true
+console.log(obj.hasOwnProperty('__proto__')); //false
 ```
+> hasOwnProperty 메서드 :   
+> 인수로 전달받은 프로퍼티 키가 객체 고유의 프로퍼티 키인 경우에만 true 반환  
+> 상속받은 프로토타입의 프로퍼티 키인 경우 false 반환
 
-### 2-5. constructor와 non-constructor의 구분
-자바스크립트 엔진은 함수 객체 생성 시 함수 정의 방식에 따라 함수를 constructor와 non-constructor로 구분함  
-non-constructor인 함수 객체는 내부 메서드[[Construct]]를 갖지 않으므로 생성자 함수로서 호출하면 에러 발생함    
-* constructor : 함수 선언문, 함수 표현식, 클래스(클래스도 함수)
-* non-constructor : 메서드(ES6 메서드 축약 표현), 화살표 함수
-
-주의할 것은 ECMAScript 사양에서 메서드로 인정하는 범위가 일반적인 의미의 메서드보다 좁다는 것    
-함수를 프로퍼티 값으로 사용하면 일반적으로 메서드로 통칭하지만   
-ECMAScript 사양에서 메서드란 ES6의 메서드 축약 표현만을 의미함
+### 2-6. prototype 프로퍼티
+* prototype 프로퍼티는 생성자 함수로 호출할 수 있는 함수 객체(=constructor) 만이 소유하는 프로퍼티
+* 일반 객체와 생성자 함수로 호출 불가한 non-constructor에는 prototype 프로퍼티가 없음
+* prototype 프로퍼티는 생성자 함수로 호출될 때 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킴
 ```js
-//constructor : 일반 함수로 정의된 함수만이 constructor
-function foo(){} //일반 함수 정의 : 함수 선언문
-const bar = function(){}; //일반 함수 정의 : 함수 표현식
-const baz = {
-    x : function(){} //프로퍼티 x의 값으로 할당된 것은 일반 함수로 정의된 함수. 메서드로 인정하지 않음
-};
-new foo(); // -> foo {}
-new bar(); // -> bar {}
-new baz.x(); // -> x {}
+//함수 객체는 prototype 프로퍼티를 소유함
+(function(){}).hasOwnProperty('prototype'); //true
 
-//non-constructor
-const arrow = () => {}; //화살표 함수 정의
-const obj = { x(){} }; //메서드 정의 : ES6의 메서드 축약 표현만 메서드로 인정
-new arrow(); //TypeError
-new obj.x(); //TypeError
-```
-생성자 함수로서 호출될 것을 기대하고 정의하지 않은 일반 함수(callable이면서 constructor)에   
-new 연산자를 붙여 호출 시 생성자 함수처럼 동작할 수 있으므로 주의 필요
-
-### 2-6. new 연산자
-일반 함수와 생성자 함수에 특별한 형식적 차이는 없음.   
-new 연산자와 함께 함수 호출 시 생성자 함수로 동작하고 new 연산자 없이 함수 호출 시 일반 함수로 호출됨  
-(단 new 연산자와 함께 호출하는 함수는 constructor이어야 함)  
-생성자 함수는 일반적으로 파스칼 케이스로 명명해 일반 함수와 구별할 수 있게 함
-```js
-function add(x, y){ //원시 값을 반환하는 일반 함수
-    return x + y;
-}
-let inst = new add(); //일반 함수를 new 연산자와 함께 호출
-console.log(inst); //{} : 함수가 객체를 반환하지 않았으므로 반환문 무시되고 빈 객체 생성되어 반환됨
-
-function createUser(name, role) { //객체를 반환하는 일반 함수
-    return {name, role};
-}
-inst = new createUser('Leo', 'admin'); //일반 함수를 new 연산자와 함께 호출
-console.log(inst); //{name: 'Leo', role: 'admin'} : 함수가 생성한 객체를 반환
-
-
-//생성자 함수
-function Circle(radius) { //생성자 함수
-    this.radius = radius;
-    this.getDiameter = function(){
-        return 2 * radius;
-    };
-}
-const circle = Circle(5); //new 연산자 없이 생성자 함수 호출하면 일반 함수로서 호출됨
-console.log(circle); //undefined
-console.log(radius); //5 : 일반 함수 내부의 this는 전역 객체 window를 가리킴
-console.log(getDiameter()); //10
-circle.getDiameter(); //TypeError
-```
-Circle 함수는 일반 함수로서 호출되었기 때문에 Circle 함수 내부의 this는 전역 객체가 됨.  
-따라 radius 프로퍼티와 getDiameter 메서드는 전역 객체의 프로퍼티와 메서드가 됨  
-
-### 2-7. new.target
-생성자 함수가 new 연산자 없이 호출되는 것을 막기 위해 파스칼 케이스 컨벤션을 사용한다 하더라도 실수 가능성 존재  
-이런 위험성을 피하기 위해 ES6에서는 new.target을 지원함 (IE는 new.target 지원하지 않음)
-
-new.target은 this와 유사하게 constructor인 모든 함수 내부에서   
-암묵적인 지역 변수와 같이 사용되며 메타 프로퍼티라고 부름.  
-
-함수 내부에서 new.target 사용 시 new 연산자와 함께 생성자 함수로서 호출되었는지 확인 가능함  
-생성자 함수로서 호출되면 new.target = 함수 자신  
-일반 함수로서 호출되면 new.target = undefined  
-
-따라 함수 내부에서 new.target을 이용해 생성자 함수로서 호출했는지 확인해   
-그렇지 않은 경우 new 연산자와 함께 재귀호출을 통해 생성자 함수로서 호출할 수 있음
-```js
-//생성자 함수
-function Circle(radius) {
-    if (!new.target) { //함수가 생성자 함수로 호출되지 않았다면 new.target = undeifned
-        return new Circle(radius); //new 연산자와 함께 재귀 호출하여 생성된 인스턴스를 반환함
-    }
-    this.radius = radius;
-    this.getDiameter = function () {
-        return 2 * this.radius;
-    };
-}
-
-//new 연산자 없이 생성자 함수 호출해도 new.target을 통해 생성자 함수로서 호출됨
-const circle = Circle(5);
-console.log(circle.getDiameter());
-```
-
-#### 스코프 세이프 생성자 패턴
-new.target은 ES6에서 도입된 최신 문법으로 IE에서 지원하지 않음.  
-이런 경우 스코프 세이프 생성자 패턴 사용 가능함  
-
-new 연산자와 함께 생성자 함수에 의해 생성된 객체(인스턴스)는 프로토타입에 의해 생성자 함수와 연결됨.  
-이를 이용해 new 연산자와 함께 호출되었는지 확인 가능  
-```js
-function Circle (radius) {
-    //생성자 함수가 new 연산자와 함께 호출되면 함수의 선두에서 빈 객체를 생성하고 this에 바인딩함.  
-    //이때 this와 Circle은 프로토타입에 의해 연결됨
-    
-    //함수가 new 연산자와 함께 호출되지 않았다면 이 시점의 this는 전역 객체 window를 가리킴  
-    //즉, this와 Circle은 프로토타입에 의해 연결되지 않음
-    if(!(this instanceof Circle)) {
-        return new Circle(radius);
-    }
-    this.radius = radius;
-    this.getDiameter = function(){
-        return 2 * this.radius;
-    };
-}
-const circle = Circle(5);
-console.log(circle.getDiameter()); //10
-```
-
-참고로 대부분의 빌트인 생성자 함수 (Object, String, Number, ...)는   
-new 연산자와 함께 호출되었는지를 확인 후 적절한 값을 반환함
-
-
-Object와 Function 생성자 함수는 new 연산자 없이 호출해도 new 연산자와 함께 호출했을 때와 동일하게 동작함  
-String, Number, Boolean 생성자 함수는 new 연산자와 함께 호출했을 때 객체를 생성해 반환하지만   
-new 연산자 없이 호출하면 문자열, 숫자, 불리언 값을 반환함  
-이를 통해 데이터 타입을 변환하기도 함
-```js
-let obj = new Object();
-console.log(obj); //{}
-obj = Object();
-console.log(obj); //{}
-
-let f = new Function('x', 'return x ** x');
-console.log(f); //f anonymous(x) { return x ** x }
-f = Function('x', 'return x ** x');
-console.log(f); //f anonymous(x) { return x ** x }
-
-const str = String(123);
-console.log(str, typeof str); //123 string
-
-const num = Number('123');
-console.log(num, typeof num); //123 number
-
-const bool = Boolean('true');
-console.log(bool, typeof bool); //true boolean
+//일반 객체는 prototype 프로퍼티는 소유하지 않음
+({}).hasOwnProperty('prototype'); //false
 ```
