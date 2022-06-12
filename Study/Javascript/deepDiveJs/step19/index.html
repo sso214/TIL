@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>19장. 프로토타입 | sso214&#39;s TIL</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Today I Learned">
+    
+    <link rel="preload" href="/TIL/assets/css/0.styles.dd5ac3b9.css" as="style"><link rel="preload" href="/TIL/assets/js/app.9bee923c.js" as="script"><link rel="preload" href="/TIL/assets/js/2.e5153bce.js" as="script"><link rel="preload" href="/TIL/assets/js/61.0b5b3958.js" as="script"><link rel="prefetch" href="/TIL/assets/js/10.96c1a137.js"><link rel="prefetch" href="/TIL/assets/js/100.41b4f1f9.js"><link rel="prefetch" href="/TIL/assets/js/101.99720bb5.js"><link rel="prefetch" href="/TIL/assets/js/102.43ed3760.js"><link rel="prefetch" href="/TIL/assets/js/103.777fca0a.js"><link rel="prefetch" href="/TIL/assets/js/104.e0fd6889.js"><link rel="prefetch" href="/TIL/assets/js/105.a37f6f64.js"><link rel="prefetch" href="/TIL/assets/js/106.a7bff6fd.js"><link rel="prefetch" href="/TIL/assets/js/107.8e413a2d.js"><link rel="prefetch" href="/TIL/assets/js/108.ab860d91.js"><link rel="prefetch" href="/TIL/assets/js/109.f81c2ebc.js"><link rel="prefetch" href="/TIL/assets/js/11.99afb125.js"><link rel="prefetch" href="/TIL/assets/js/110.758c6f73.js"><link rel="prefetch" href="/TIL/assets/js/111.11ece66b.js"><link rel="prefetch" href="/TIL/assets/js/112.6ee5e44f.js"><link rel="prefetch" href="/TIL/assets/js/113.a165a5cf.js"><link rel="prefetch" href="/TIL/assets/js/114.db3e68dc.js"><link rel="prefetch" href="/TIL/assets/js/115.60ed61cb.js"><link rel="prefetch" href="/TIL/assets/js/116.50a919e8.js"><link rel="prefetch" href="/TIL/assets/js/117.067dfbf2.js"><link rel="prefetch" href="/TIL/assets/js/118.e66a8849.js"><link rel="prefetch" href="/TIL/assets/js/119.7665eabc.js"><link rel="prefetch" href="/TIL/assets/js/12.c8d94d1d.js"><link rel="prefetch" href="/TIL/assets/js/120.1be3487f.js"><link rel="prefetch" href="/TIL/assets/js/121.e634a96e.js"><link rel="prefetch" href="/TIL/assets/js/122.f01b7598.js"><link rel="prefetch" href="/TIL/assets/js/123.de1a66b2.js"><link rel="prefetch" href="/TIL/assets/js/124.2db6e796.js"><link rel="prefetch" href="/TIL/assets/js/125.11612c69.js"><link rel="prefetch" href="/TIL/assets/js/126.6c67d8ef.js"><link rel="prefetch" href="/TIL/assets/js/127.5f28e23b.js"><link rel="prefetch" href="/TIL/assets/js/128.17ef4bd4.js"><link rel="prefetch" href="/TIL/assets/js/129.e8b293d2.js"><link rel="prefetch" href="/TIL/assets/js/13.8e3b28f9.js"><link rel="prefetch" href="/TIL/assets/js/130.78c3a27a.js"><link rel="prefetch" href="/TIL/assets/js/131.24b4ce26.js"><link rel="prefetch" href="/TIL/assets/js/132.ee229abf.js"><link rel="prefetch" href="/TIL/assets/js/133.1834c440.js"><link rel="prefetch" href="/TIL/assets/js/134.8423ec9b.js"><link rel="prefetch" href="/TIL/assets/js/135.a23a0288.js"><link rel="prefetch" href="/TIL/assets/js/136.643bd62e.js"><link rel="prefetch" href="/TIL/assets/js/137.18c10881.js"><link rel="prefetch" href="/TIL/assets/js/138.dce9efa8.js"><link rel="prefetch" href="/TIL/assets/js/139.ca92cd6d.js"><link rel="prefetch" href="/TIL/assets/js/14.1fe39c87.js"><link rel="prefetch" href="/TIL/assets/js/140.46a21e22.js"><link rel="prefetch" href="/TIL/assets/js/141.b986502c.js"><link rel="prefetch" href="/TIL/assets/js/142.d7ee3c1d.js"><link rel="prefetch" href="/TIL/assets/js/15.a0460a6a.js"><link rel="prefetch" href="/TIL/assets/js/16.fcb082d8.js"><link rel="prefetch" href="/TIL/assets/js/17.8c442d4c.js"><link rel="prefetch" href="/TIL/assets/js/18.857b8f53.js"><link rel="prefetch" href="/TIL/assets/js/19.76fe55f2.js"><link rel="prefetch" href="/TIL/assets/js/20.186e629f.js"><link rel="prefetch" href="/TIL/assets/js/21.78e259c2.js"><link rel="prefetch" href="/TIL/assets/js/22.b69cf6df.js"><link rel="prefetch" href="/TIL/assets/js/23.011ff92a.js"><link rel="prefetch" href="/TIL/assets/js/24.b2a3de78.js"><link rel="prefetch" href="/TIL/assets/js/25.b59b9f2f.js"><link rel="prefetch" href="/TIL/assets/js/26.28a13163.js"><link rel="prefetch" href="/TIL/assets/js/27.36732435.js"><link rel="prefetch" href="/TIL/assets/js/28.028393d3.js"><link rel="prefetch" href="/TIL/assets/js/29.bd09bf57.js"><link rel="prefetch" href="/TIL/assets/js/3.67f4b115.js"><link rel="prefetch" href="/TIL/assets/js/30.7e7b16b6.js"><link rel="prefetch" href="/TIL/assets/js/31.543b9b3a.js"><link rel="prefetch" href="/TIL/assets/js/32.ba941ae4.js"><link rel="prefetch" href="/TIL/assets/js/33.fd29722b.js"><link rel="prefetch" href="/TIL/assets/js/34.0b0a2238.js"><link rel="prefetch" href="/TIL/assets/js/35.e51c15c7.js"><link rel="prefetch" href="/TIL/assets/js/36.eb33126c.js"><link rel="prefetch" href="/TIL/assets/js/37.0d37632b.js"><link rel="prefetch" href="/TIL/assets/js/38.dc529a56.js"><link rel="prefetch" href="/TIL/assets/js/39.7317284c.js"><link rel="prefetch" href="/TIL/assets/js/4.e52e661e.js"><link rel="prefetch" href="/TIL/assets/js/40.80b4d635.js"><link rel="prefetch" href="/TIL/assets/js/41.7e316f61.js"><link rel="prefetch" href="/TIL/assets/js/42.2bc373d3.js"><link rel="prefetch" href="/TIL/assets/js/43.da6ff52e.js"><link rel="prefetch" href="/TIL/assets/js/44.41a910a6.js"><link rel="prefetch" href="/TIL/assets/js/45.7a9cb95b.js"><link rel="prefetch" href="/TIL/assets/js/46.72d40211.js"><link rel="prefetch" href="/TIL/assets/js/47.022571e7.js"><link rel="prefetch" href="/TIL/assets/js/48.2b3d1ae2.js"><link rel="prefetch" href="/TIL/assets/js/49.9e178f56.js"><link rel="prefetch" href="/TIL/assets/js/5.e68a1f97.js"><link rel="prefetch" href="/TIL/assets/js/50.b4a36dca.js"><link rel="prefetch" href="/TIL/assets/js/51.752cc698.js"><link rel="prefetch" href="/TIL/assets/js/52.a2e80fc8.js"><link rel="prefetch" href="/TIL/assets/js/53.a4239d4d.js"><link rel="prefetch" href="/TIL/assets/js/54.ba6d131f.js"><link rel="prefetch" href="/TIL/assets/js/55.d9b9b566.js"><link rel="prefetch" href="/TIL/assets/js/56.96352b74.js"><link rel="prefetch" href="/TIL/assets/js/57.bd2d8ca4.js"><link rel="prefetch" href="/TIL/assets/js/58.bb6a1f1d.js"><link rel="prefetch" href="/TIL/assets/js/59.a9749da8.js"><link rel="prefetch" href="/TIL/assets/js/6.852d803a.js"><link rel="prefetch" href="/TIL/assets/js/60.dd126a97.js"><link rel="prefetch" href="/TIL/assets/js/62.e194fb46.js"><link rel="prefetch" href="/TIL/assets/js/63.d36aa07b.js"><link rel="prefetch" href="/TIL/assets/js/64.026aac8d.js"><link rel="prefetch" href="/TIL/assets/js/65.bf432bdc.js"><link rel="prefetch" href="/TIL/assets/js/66.8402813f.js"><link rel="prefetch" href="/TIL/assets/js/67.6f4203a8.js"><link rel="prefetch" href="/TIL/assets/js/68.7d5e52f8.js"><link rel="prefetch" href="/TIL/assets/js/69.515f9943.js"><link rel="prefetch" href="/TIL/assets/js/7.9c4b094e.js"><link rel="prefetch" href="/TIL/assets/js/70.30d83c44.js"><link rel="prefetch" href="/TIL/assets/js/71.bb4dd881.js"><link rel="prefetch" href="/TIL/assets/js/72.1685a445.js"><link rel="prefetch" href="/TIL/assets/js/73.7f588113.js"><link rel="prefetch" href="/TIL/assets/js/74.17804d38.js"><link rel="prefetch" href="/TIL/assets/js/75.51b63f63.js"><link rel="prefetch" href="/TIL/assets/js/76.16581fe5.js"><link rel="prefetch" href="/TIL/assets/js/77.ddb4fd13.js"><link rel="prefetch" href="/TIL/assets/js/78.811ec7f2.js"><link rel="prefetch" href="/TIL/assets/js/79.41f5daf8.js"><link rel="prefetch" href="/TIL/assets/js/8.7a8d8547.js"><link rel="prefetch" href="/TIL/assets/js/80.a4fb4753.js"><link rel="prefetch" href="/TIL/assets/js/81.949f3c7d.js"><link rel="prefetch" href="/TIL/assets/js/82.a9f44996.js"><link rel="prefetch" href="/TIL/assets/js/83.55f5af31.js"><link rel="prefetch" href="/TIL/assets/js/84.5985544d.js"><link rel="prefetch" href="/TIL/assets/js/85.cfe55fdd.js"><link rel="prefetch" href="/TIL/assets/js/86.99f699f9.js"><link rel="prefetch" href="/TIL/assets/js/87.2fe8f78e.js"><link rel="prefetch" href="/TIL/assets/js/88.80aee48c.js"><link rel="prefetch" href="/TIL/assets/js/89.4c9efe26.js"><link rel="prefetch" href="/TIL/assets/js/9.8863fc90.js"><link rel="prefetch" href="/TIL/assets/js/90.2f85e60a.js"><link rel="prefetch" href="/TIL/assets/js/91.b1930d3e.js"><link rel="prefetch" href="/TIL/assets/js/92.6dc44a59.js"><link rel="prefetch" href="/TIL/assets/js/93.0b31f53a.js"><link rel="prefetch" href="/TIL/assets/js/94.dfb1ecbd.js"><link rel="prefetch" href="/TIL/assets/js/95.fdcb4e89.js"><link rel="prefetch" href="/TIL/assets/js/96.974714ab.js"><link rel="prefetch" href="/TIL/assets/js/97.b5a3630b.js"><link rel="prefetch" href="/TIL/assets/js/98.bc2fc8a0.js"><link rel="prefetch" href="/TIL/assets/js/99.90601abe.js">
+    <link rel="stylesheet" href="/TIL/assets/css/0.styles.dd5ac3b9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/TIL/" class="home-link router-link-active"><!----> <span class="site-name">sso214's TIL</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/TIL/study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/TIL/log/" class="nav-link">
+  Log
+</a></div><div class="nav-item"><a href="/TIL/memo/" class="nav-link">
+  Memo
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="sso214" class="dropdown-title"><span class="title">sso214</span> <span class="arrow down"></span></button> <button type="button" aria-label="sso214" class="mobile-dropdown-title"><span class="title">sso214</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TIL/info/" class="nav-link">
+  Info
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/sso214" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/TIL/study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/TIL/log/" class="nav-link">
+  Log
+</a></div><div class="nav-item"><a href="/TIL/memo/" class="nav-link">
+  Memo
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="sso214" class="dropdown-title"><span class="title">sso214</span> <span class="arrow down"></span></button> <button type="button" aria-label="sso214" class="mobile-dropdown-title"><span class="title">sso214</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TIL/info/" class="nav-link">
+  Info
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/sso214" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/TIL/Study/" aria-current="page" class="sidebar-link">Study</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Canvas</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Django</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Etc</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>React</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ReactNative</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>TypeScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nodeJs</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_19장-프로토타입"><a href="#_19장-프로토타입" class="header-anchor">#</a> 19장. 프로토타입</h1> <p>JS는 명령형, 함수형, 프로토타입 기반 객체지향 프로그래밍을 지원하는 멀티 패러다임 프로그래밍 언어</p> <p>클래스와 상속, 캡슐화를 위한 키워드가 없어 객체지향 언어가 아니라고 오해하는 경우도 있지만<br>
+클래스 기반 객체지향 언어보다 더 강력하고 효율적인 객체지향 능력을 지니고 있는<br>
+프로토타입 기반의 객체지향 프로그래밍 언어.</p> <p>JS는 객체 기반의 프로그래밍 언어이며 자바스크립트를 이루고 있는 거의 모든 것이 객체<br>
+(원시 타입 값을 제외한 나머지 값들은 모두 객체)</p> <h4 id="클래스"><a href="#클래스" class="header-anchor">#</a> &lt;클래스&gt;</h4> <p>ES6에서 클래스가 도입되었지만 기존의 프로토타입 기반 객체지향 모델을 폐지하는 것은 아님<br>
+사실 클래스도 함수이며, 기존 프로토타입 기반 패턴의 문법적 설탕이라고 볼 수 있음</p> <p>클래스와 생성자 함수는 모두 프로토타입 기반의 인스턴스를 생성하지만<br>
+클래스는 생성자 함수에서 제공하지 않는 기능을 제공하며 더 엄격함</p> <p>따라 클래스를 프로토타입 기반 객체 생성 패턴의 단순한 문법적 설탕으로 보기보단<br>
+새로운 객체 생성 메커니즘으로 보는 것이 좀 더 합당함</p> <h2 id="_1-객체지향-프로그래밍"><a href="#_1-객체지향-프로그래밍" class="header-anchor">#</a> 1. 객체지향 프로그래밍</h2> <p>객체지향 프로그래밍 : 독립적인 객체의 집합으로 프로그램을 표현하려는 프로그래밍 패러다임</p> <p>실세계의 실체를 인식하는 철학적 사고를 프로그래밍에 접목시키려는 시도에서 시작함<br>
+실체는 특징이나 성질을 나타내는 속성을 가지고 있고, 속성을 통해 실체를 인식하거나 구별 가능함</p> <p>객체지향 프로그래밍은 객체의 상태를 나타내는 데이터(=프로퍼티)와<br>
+상태 데이터를 조작할 수 있는 동작(=메서드)을 하나의 논리적 단위로 묶어 생각함</p> <p>각 객체는 독립적인 부품으로 볼 수 있지만 다른 객체와 관계성을 가질 수 있음<br>
+다른 객체와 메세지를 주고받거나 데이터를 처리할 수도 있으며, 상태 데이터나 동작을 상속받아 사용하기도 함</p> <ul><li>객체 : 속성을 통해 여러 개의 값(상태 데이터, 동작)을 하나의 단위로 구성한 복합적인 자료구조</li> <li>추상화 : 다양한 속성 중 프로그램에 필요한 속성만 간추려 표현하는 것</li> <li>명령형 프로그래밍 : 프로그램을 명령어 또는 함수의 목록으로 보는 전통적인 절차지향적 관점</li></ul> <h2 id="_2-상속과-프로토타입"><a href="#_2-상속과-프로토타입" class="header-anchor">#</a> 2. 상속과 프로토타입</h2> <p>상속은 객체지향 프로그래밍의 핵심 개념<br>
+어떤 객체의 프로퍼티 또는 메서드를 다른 객체가 상속받아 그대로 사용할 수 있는 것을 의미</p> <p>JS는 프로토타입을 기반으로 상속을 구현해 불필요한 중복을 제거함<br>
+(기존의 코드를 적극적으로 재사용하는 방식)</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//생성자 함수</span>
+<span class="token keyword">function</span> <span class="token function">Circle</span><span class="token punctuation">(</span><span class="token parameter">radius</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">getArea</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//Math.PI는 원주율을 나타내는 상수</span>
+    <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>radius <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">const</span> circle1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//반지름이 1인 인스턴스 생성</span>
+<span class="token keyword">const</span> circle2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//반지름이 2인 인스턴스 생성</span>
+
+<span class="token comment">//Circle 생성자 함수는 인스턴스를 생성할 때마다 동일한 동작을 하는 </span>
+<span class="token comment">//getArea 메서드를 중복 생성하고 모든 인스턴스가 중복 소유함</span>
+<span class="token comment">//getArea 메서드는 하나만 생성해 모든 인스턴스가 공유해 사용하는 것이 바람직함</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle1<span class="token punctuation">.</span>getArea <span class="token operator">===</span> circle2<span class="token punctuation">.</span>getArea<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle1<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3.14...</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle2<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//12.56...</span>
+</code></pre></div><p>생성자 함수는 동일한 프로퍼티 구조를 갖는 객체를 여러 개 생성할 때 유용하지만<br>
+인스턴스 생성 시마다 메서드를 중복 생성하고 모든 인스턴스가 중복 소유함</p> <p>동일한 생성자 함수에 의해 생성된 모든 인스턴스가 동일한 메서드를 중복 사용하는 것은 메모리 낭비이고,<br>
+인스턴스 생성 시마다 메서드를 생성해 퍼포먼스에도 악영향을 주므로<br>
+모든 인스턴스가 동일한 내용의 메서드를 사용하는 경우 메서드는 하나만 생성해 공유해 사용하는 것이 바람직함</p> <p>-&gt; 상속(<strong>자바스크립트는 프로토타입을 기반을 상속을 구현</strong>)을 통해 불필요한 중복을 제거 가능함</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//생성자 함수</span>
+<span class="token keyword">function</span> <span class="token function">Circle</span><span class="token punctuation">(</span><span class="token parameter">radius</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//Circle 생성자 함수가 생성한 모든 인스턴스가 getArea 메서드를 공유해 사용할 수 있도록 프로토타입에 추가</span>
+<span class="token comment">//프로토타입은 Circle 생성자 함수의 prototype 프로퍼티에 바인딩되어 있음</span>
+<span class="token class-name">Circle</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">getArea</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>radius <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//인스턴스 생성</span>
+<span class="token keyword">const</span> circle1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> circle2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Circle 생성자 함수가 생성한 모든 인스턴스는 부모 객체의 역할을 하는</span>
+<span class="token comment">//프로토타입 Circle.prototype 으로부터 getArea 메서드를 상속받음</span>
+<span class="token comment">//즉, Circle 생성자 함수가 생성하는 모든 인스턴스는 하나의 getArea 메서드를 공유함</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle1<span class="token punctuation">.</span>getArea <span class="token operator">===</span> circle2<span class="token punctuation">.</span>getArea<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle1<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3.14...</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle2<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//12.56...</span>
+</code></pre></div><p>Circle 생성자 함수가 생성한 모든 인스턴스는 자신의 프로토타입(상위 객체 역할을 하는)<br>
+Circle.prototype의 모든 프로퍼티와 메서드를 상속 받음<br>
+getArea 메서드는 하나만 생성되어 프로토타입인 Circle.prototype의 메서드로 할당되어 있음<br>
+따라 Circle 생성자 함수가 생성하는 모든 인스턴스는 getArea 메서드를 상속받아 사용 가능<br>
+(= radius 프로퍼티만 개별적으로 소유하고 내용이 동일한 메서드는 상속을 통해 공유해 사용함)</p> <p>상속은 코드의 재사용 관점에서 매우 유용<br>
+공통적으로 사용할 프로퍼티나 메서드를 프로토타입에 미리 구현해두면 생성자 함수가 생성할 모든 인스턴스는<br>
+별도의 구현없이 상위(부모) 객체인 프로토타입의 자산을 공유해 사용 가능함</p> <h2 id="_3-프로토타입-객체"><a href="#_3-프로토타입-객체" class="header-anchor">#</a> 3. 프로토타입 객체</h2> <ul><li>(=프로토타입)</li> <li>객체 간 상속을 구현하기 위해 사용됨</li> <li>어떤 객체의 상위 객체 역할을 하는 객체로서 다른 객체에 공유 프로퍼티(메서드 포함)를 제공함</li> <li>프로토타입을 상속받은 하위 객체는 상위 객체의 프로퍼티를 자신의 프로퍼티처럼 자유롭게 사용 가능</li></ul> <p>모든 객체는 [[Prototype]] 내부 슬롯을 가짐<br>
+[[Prototype]] 내부 슬롯의 값 = 프로토타입의 참조(null인 경우 있음)<br>
+객체 생성 시 객체 생성 방식에 따라 프로토타입이 결정되고 [[Prototype]]에 저장됨<br>
+ex)<br>
+객체 리터럴에 의해 생성된 객체의 프로토타입 = Object.prototype<br>
+생성자 함수에 의해 생성된 객체의 프로토타입 = 생성자 함수의 prototype 프로퍼티에 바인딩되어 있는 객체</p> <p>모든 객체는 하나의 프로토타입을 가지며 모든 프로토타입은 생성자 함수와 연결되어 있음<br>
+([[Prototype]] 내부 슬롯의 값이 null인 객체는 프로토타입 없음)</p> <p>객체 : __proto__접근자 프로퍼티를 통해 프로토타입에 간접적으로 접근 가능<br>
+프로토타입 : 자신의 constructor 프로퍼티를 통해 생성자 함수에 접근 가능<br>
+생성자 함수 : 자신의 prototype 프로퍼티를 통해 프로토타입에 접근 가능</p> <h3 id="_3-1-proto-접근자-프로퍼티"><a href="#_3-1-proto-접근자-프로퍼티" class="header-anchor">#</a> 3-1. __proto__접근자 프로퍼티</h3> <p>모든 객체는 __proto__접근자 프로퍼티를 통해<br>
+자신의 프로토타입([[Prototype]] 내부 슬롯)에 간접적으로 접근 가능</p> <h4 id="_3-1-1-proto-는-접근자-프로퍼티다"><a href="#_3-1-1-proto-는-접근자-프로퍼티다" class="header-anchor">#</a> 3-1-1. __proto__는 접근자 프로퍼티다.</h4> <ul><li><p>내부 슬롯은 프로퍼티가 아니기 때문에 내부 슬롯과 내부 메서드는 직접적으로 접근하거나 호출 불가<br>
+단, 일부 내부 슬롯과 내부 메서드에 한해 간접적으로 접근할 수 있는 수단을 제공함<br>
+[[Prototype]] 내부 슬롯에도 직접 접근 불가하며, __proto__접근자 프로퍼티를 통해<br>
+간접적으로 [[Prototype]] 내부 슬롯의 값(=프로토타입)에 접근 가능</p></li> <li><p>접근자 프로퍼티는 자체적으로 값([[Value]] 프로퍼티 어트리뷰트)을 갖지 않고 다른 데이터 프로퍼티의<br>
+값을 읽거나 저장할 때 사용하는 접근자 함수([[Get]], [[Set]]프로퍼티 어트리뷰트)로 구성된 프로퍼티</p></li> <li><p>Object.prototype의 접근자 프로퍼티인 __proto__는 getter/setter 함수라고 부르는 접근자 함수<br>
+([[Get]], [[Set]] 프로퍼티 어트리뷰트에 할당된 함수)를 통해 프로토타입을 취득하거나 할당함</p> <ul><li>__proto__접근자 프로퍼티를 통해 프로토타입에 접근 시 내부적으로<br>
+__proto__접근자 프로퍼티의 getter 함수인 [[Get]]이 호출됨</li> <li>__proto__접근자 프로퍼티를 통해 새로운 프로토타입을 할당 시<br>
+__proto__접근자 프로퍼티의 setter 함수인 [[Set]]이 호출됨</li></ul></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> parent <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//getter 함수인 get __proto__가 호출되어 obj 객체의 프로토타입을 취득</span>
+obj<span class="token punctuation">.</span>__proto__<span class="token punctuation">;</span>
+<span class="token comment">//setter 함수인 set __proto__가 호출되어 obj 객체의 프로토타입을 교체</span>
+obj<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+</code></pre></div><h4 id="_3-1-2-proto-접근자-프로퍼티는-상속을-통해-사용된다"><a href="#_3-1-2-proto-접근자-프로퍼티는-상속을-통해-사용된다" class="header-anchor">#</a> 3-1-2. __proto__접근자 프로퍼티는 상속을 통해 사용된다.</h4> <ul><li>__proto__접근자 프로퍼티는 객체가 직접 소유하는 프로퍼티가 아닌 Object.prototype의 프로퍼티</li> <li>모든 객체는 상속을 통해 Object.prototype.__proto__접근자 프로퍼티를 사용 가능</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'Leo'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//person 객체는 __proto__ 프로퍼티를 소유하지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'__proto__'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+
+<span class="token comment">//__proto__프로퍼티는 모든 객체의 프로토타입 객체인 Object.prototype의 접근자 프로퍼티</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">'__proto__'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//{get:f, set:f, enumerable:fasle, configurable:true}</span>
+
+<span class="token comment">//모든 객체는 Object.prototype의 접근자 프로퍼티 __proto__를 상속받아 사용 가능</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><blockquote><p><strong>Object.prototype</strong><br>
+모든 객체는 프로토타입 계층 구조인 프로토타입 체인에 묶여 있음<br>
+자바스크립트 엔진은 객체의 프로퍼티(메서드 포함)에 접근하려고 할 때 해당 객체에<br>
+접근하려는 프로퍼티가 없다면 __proto__접근자 프로퍼티가 가리키는 참조를 따라<br>
+자신의 부모 역할을 하는 프로토타입의 프로퍼티를 순차적으로 검색함<br> <br>
+프로토타입 체인의 종점(=프로토타입 체인의 최상위 객체는) Object.prototype 이며,<br>
+이 객체의 프로퍼티와 메서드는 모든 객체에 상속됨</p></blockquote> <h4 id="_3-1-3-proto-접근자-프로퍼티를-통해-프로토타입에-접근하는-이유"><a href="#_3-1-3-proto-접근자-프로퍼티를-통해-프로토타입에-접근하는-이유" class="header-anchor">#</a> 3-1-3. __proto__접근자 프로퍼티를 통해 프로토타입에 접근하는 이유</h4> <p><strong>상호 참조에 의해 프로토타입 체인이 생성되는 것을 방지</strong>하기 위해서</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> parent <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> child <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//child의 프로토타입을 parent로 설정</span>
+child<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+<span class="token comment">//parent의 프로토타입을 child로 설정</span>
+parent<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> child<span class="token punctuation">;</span> <span class="token comment">//TypeError</span>
+</code></pre></div><p>서로가 자신의 프로토타입이 되는 코드가 정상적으로 처리되면 비정상적인 프로토타입 체인이<br>
+만들어지기 때문에 __proto__접근자 프로퍼티는 에러를 발생시킴</p> <p>프로토타입 체인은 단방향 링크드 리스트로 구현되어야 함<br>
+(=프로퍼티 검색 방향이 한방향으로만 흘러가야 함)<br>
+서로가 자신의 프로토타입이 되는(=순환 참조하는) 비정상적인 프로토타입 체인이 만들어지면<br>
+프로토타입타입 체인 종점이 존재하지 않게 때문에 프로퍼티 검색 시 무한 루프에 빠짐</p> <p>따라 아무런 체크 없이 무조건적으로 프로토타입을 교체하지 못하도록 __proto__접근자 프로퍼티를 통해<br>
+프로토타입에 접근하고 교체하도록 구현되어 있음</p> <h4 id="_3-1-4-proto-접근자-프로퍼티를-코드-내에서-직접-사용하는-것은-권장하지-않는다"><a href="#_3-1-4-proto-접근자-프로퍼티를-코드-내에서-직접-사용하는-것은-권장하지-않는다" class="header-anchor">#</a> 3-1-4. __proto__접근자 프로퍼티를 코드 내에서 직접 사용하는 것은 권장하지 않는다.</h4> <ul><li><p>__proto__접근자 프로퍼티는 ES5까지 ECMAScript 사양에 포함되지 않은 비표준.<br>
+브라우저 호환성을 고려해 ES6에서 표준으로 채택함 (현재 대부분-IE11이상-의 브라우저에서 지원함)</p></li> <li><p>모든 객체가 __proto__접근자 프로퍼티를 사용할 수 있는 것은 아니기 때문에<br>
+코드 내에서 __proto__접근자 프로퍼티를 직접 사용하는 것은 권장하지 않음<br>
+(직접 상속을 통해 Object.prototype을 상속받지 않는 객체를 생성할 수도 있기 때문에<br>
+__proto__접근자 프로퍼티를 사용할 수 없는 경우 있음)</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//obj는 프로토타입 체인의 종점. 따라 Object.__proto__를 상속 받을 수 없음</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//obj는 Object.__proto__를 상속받을 수 없음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>__proto__<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+
+<span class="token comment">//따라 __proto__보다 Object.getPrototypeOf 메서드를 사용하는 편이 좋음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//null</span>
+</code></pre></div></li> <li><p>따라 프로토타입의 참조를 취득하고 싶은 경우 Object.getPrototypeOf 메서드를 사용하고,<br>
+프로토타입을 교체하고 싶은 경우 Object.setPrototypeOf 메서드 사용을 권장</p> <p>두 메서드는 <code>get Object.prototype.__proto__</code>,<br> <code>set Object.prototype.__proto</code>의 처리 내용과 정확히 일치함</p> <ul><li>Object.getPrototypeOf : ES5에서 도입, IE9 이상에서 지원</li> <li>Object.setPrototypeOf : ES6에서 도입, IE11 이상에서 지원</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> parent <span class="token operator">=</span> <span class="token punctuation">{</span> x <span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//obj 객체의 프로토타입을 취득</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//obj.__prototo__;</span>
+<span class="token comment">//obj 객체의 프로토타입을 교체</span>
+Object<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//obj.__proto__ = parent;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+</code></pre></div></li></ul> <h3 id="_3-2-함수-객체의-prototype-프로퍼티"><a href="#_3-2-함수-객체의-prototype-프로퍼티" class="header-anchor">#</a> 3-2. 함수 객체의 prototype 프로퍼티</h3> <ul><li>함수 객체만이 소유</li> <li>생성자 함수가 생성할 인스턴스의 프로토타입을 가리킴</li> <li>생성자 함수로 호출할 수 없는 함수(non-constructor : 화살표 함수, ES6 메서드 축약 표현으로 정의한 메서드)는<br>
+prototype 프로퍼티를 소유하지 않으며 프로토타입도 생성하지 않음</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//함수 객체는 prototype 프로퍼티를 소유함</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'prototype'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+<span class="token comment">//일반 객체는 prototype 프로퍼티를 소유하지 않음</span>
+<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'prototype'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+
+
+<span class="token comment">//화살표 함수는 non-constructopr</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Person</span> <span class="token operator">=</span> <span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//ES6의 메서드 축약 표현으로 정의한 메서드는 non-constructopr</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//non-constructopr는 prototype 프로퍼티를 소유하지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'prototype'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>foo<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'prototype'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+
+<span class="token comment">//non-constructopr는 프로토타입을 생성하지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>foo<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+</code></pre></div><p>생성자 함수로 호출하기 위해 정의하지 않은 일반 함수(함수 선언문, 함수 표현식)도 prototype 프로퍼티를<br>
+소유하지만 객체를 생성하지 않는 일반 함수의 prototype 프로퍼티는 아무런 의미가 없음</p> <p>모든 객체가 가지고 있는 (Object.prototype으로부터 상속받은) __proto__접근자 프로퍼티와<br>
+함수 객체만이 가지고 있는 prototype 프로퍼티는 결국 동일한 프로토타입을 가리킴<br>
+하지만 이들 프로퍼티를 사용하는 주체가 다름</p> <table><thead><tr><th style="text-align:left;">구분</th> <th style="text-align:left;">소유</th> <th style="text-align:left;">값</th> <th style="text-align:left;">사용 주체</th> <th style="text-align:left;">사용 목적</th></tr></thead> <tbody><tr><td style="text-align:left;">_<em>proto_</em><br>접근자 프로퍼티</td> <td style="text-align:left;">모든 객체</td> <td style="text-align:left;">프로토타입의<br>참조</td> <td style="text-align:left;">모든<br>객체</td> <td style="text-align:left;">객체가 자신의 프로토타입에<br>접근 또는 교체하기 위해 사용</td></tr> <tr><td style="text-align:left;">prototype<br>프로퍼티</td> <td style="text-align:left;">constructor</td> <td style="text-align:left;">프로토타입의<br>참조</td> <td style="text-align:left;">생성자<br>함수</td> <td style="text-align:left;">생성자 함수가 자신이 생성할 객체<br>(인스턴스)의 프로토타입을 할당하기<br>위해 사용</td></tr></tbody></table> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//생성자 함수</span>
+<span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> me <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Leo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//결국 Person.prototype과 me.__proto__는 동일한 프로토타입을 가리킴</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">.</span>prototype <span class="token operator">===</span> me<span class="token punctuation">.</span>__proto__<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><h3 id="_3-3-프로토타입의-constructor-프로퍼티와-생성자-함수"><a href="#_3-3-프로토타입의-constructor-프로퍼티와-생성자-함수" class="header-anchor">#</a> 3-3. 프로토타입의 constructor 프로퍼티와 생성자 함수</h3> <p>모든 프로토타입은 constructor 프로퍼티를 가짐<br>
+constructor 프로퍼티는 prototype 프로퍼티로 자신을 참조하고 있는 생성자 함수를 가리킴<br>
+이 연결은 생성자 함수가 생성될 때(즉, 함수 객체가 생성될 때) 이뤄짐</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//생성자 함수</span>
+<span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> me <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Leo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//me 객체의 생성자 함수는 Person</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Person<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><p>Person 생성자 함수로 생성된 me 객체는 프로토타입의 constructor 프로퍼티를 통해 생성자 함수와 연결됨</p> <p>me 객체에는 constructor 프로퍼티가 없지만 me 객체의 프로토타입인 Person.prototype에는 있음.<br>
+따라 me 객체는 프로토타입인 Person.prototype의 constructor프로퍼티를 상속받아 사용 가능</p> <h2 id="_4-리터럴-표기법에-의해-생성된-객체의-생성자-함수와-프로토타입"><a href="#_4-리터럴-표기법에-의해-생성된-객체의-생성자-함수와-프로토타입" class="header-anchor">#</a> 4. 리터럴 표기법에 의해 생성된 객체의 생성자 함수와 프로토타입</h2> <p>생성자 함수에 의해 생성된 인스턴스는 프로토타입의 constructor 프로퍼티에 의해 생성자 함수와 연결됨<br>
+이때 constructor 프로퍼티가 가리키는 생성자 함수는 인스턴스를 생성한 생성자 함수</p> <p>하지만 리터럴 표기법에 의한 객체 생성 방식과 같이 명시적으로<br>
+new 연산자와 함께 생성자 함수를 호출해 인스턴스를 생성하지 않는 객체 생성 방식도 있음</p> <p>리터럴 표기법에 의해 생성된 객체도 물론 프로토타입 존재함<br>
+하지만 해당 객체의 경우 프로토타입의 constructor 프로퍼티가 가리키는 생성자 함수가<br>
+반드시 객체를 생성한 생성자 함수라고 단정할 수는 없음</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//객체 리터럴</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//함수 리터럴</span>
+<span class="token keyword">const</span> <span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//배열 리터럴</span>
+<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">//정규 표현식 리터럴</span>
+<span class="token keyword">const</span> regexp <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">is</span><span class="token regex-delimiter">/</span><span class="token regex-flags">ig</span></span><span class="token punctuation">;</span>
+
+
+<span class="token comment">//obj 객체는 Object 생성자 함수로 생성한 객체가 아니라 객체 리터럴로 생성했지만 </span>
+<span class="token comment">//하지만 obj 객체의 생성자 함수는 Object 생성자 함수</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Object<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><p>obj 객체는 Object 생성자 함수로 생성한 객체가 아니라 객체 리터럴에 의해 생성된 객체지만<br>
+Object 생성자 함수와 constructor 프로퍼티로 연결되어 있음<br>
+그렇다면 객체 리터럴에 의해 생성된 객체는 사실 Object 생성자 함수로 생성되는 것은 아닐까?</p> <hr> <p>ECMAScript 사양을 살펴보면<br>
+Object 생성자 함수에 인수를 전달하지 않거나 undefined 또는 null을 인수로 전달하면서 호출 시 내부적으로는<br>
+추상 연산 OrdinaryObjectCreate를 호출해 Object.prototype을 프로토타입으로 갖는 빈 객체를 생성함</p> <blockquote><p>추상 연산 : ECMAScript 사양에서 내부 동작의 구현 알고리즘을 표현한 것<br>
+ECMAScript 사양에서 설명을 위해 사용되는 함수와 유사한 의사 코드라고 이해하면 됨</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//2. Object 생성자 함수에 의한 객체 생성</span>
+<span class="token comment">//인수가 전달되지 않았을 때 추상 연산 OrdinaryObjectCreate를 호출해 빈 객체를 생성함</span>
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{}</span>
+
+<span class="token comment">//1. new.target이 undefined나 Object가 아닌 경우</span>
+<span class="token comment">//인스턴스 -&gt; Foo.prototype -&gt; Object.prototype 순으로 프로토타입 체인이 생성됨</span>
+<span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token keyword">extends</span> <span class="token class-name">Object</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Foo{}</span>
+
+<span class="token comment">//3. 인수가 전달된 경우에는 인수를 객체로 변환함</span>
+<span class="token comment">//Nubmer 객체 생성</span>
+obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Number {123}</span>
+
+<span class="token comment">//String 객체 생성</span>
+obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token string">'123'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//String {'123'}</span>
+</code></pre></div><p>객체 리터럴이 평가될 떄는 추상 연산 OrdinaryObjectCreate를 호출해<br>
+빈 객체를 생성하고 프로퍼티를 추가하도록 정의되어 있음</p> <p>이처럼 Object 생성자 함수 호출과 객체 리터럴의 평가는 추상 연산 OrdinaryObjectCreate를 호출해<br>
+빈 객체를 생성하는 점에서 동일하나 세부 내용(new.target의 확인, 프로퍼티 추가하는 처리 등)은 다름<br>
+따라 객체 리터럴에 의해 생성된 객체는 Object 생성자 함수가 생성한 객체가 이님</p> <p>함수 객체의 경우 차이가 더 명확함<br>
+Function 생성자 함수를 호출해 생성한 함수는 렉시컬 스코프를 만들지 않고<br>
+전역 함수인 것처럼 스코프를 생성하며 클로저도 만들지 않음.<br>
+따라 함수 선언문과 함수 표현식을 평가해 함수 객체를 생성한 것은 Function 생성자 함수가 아님<br>
+하지만 constructor 프로퍼티를 통해 확인해보면 foo 함수의 생성자 함수는 Function 생성자 함수로 나옴</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//foo 함수는 Function 생성자 함수로 생성한 함수 객체가 아니라 함수 선언문으로 생성함</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">//하지만 constructor 프로퍼티를 통해 확인해보면 함수 foo의 생성자 함수는 Function 생성자 함수.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Function<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><p>리터럴 표기법에 의해 생성된 객체도 상속을 위해 프로토타입이 필요함<br>
+따라 리터럴 표기법에 의해 생성된 객체도 가상적인 생성자 함수를 가짐<br> <strong>프로토타입과 생성자 함수는 단독으로 존재할 수 없고 언제나 쌍으로 존재하기 떄문</strong><br>
+(프로토타입은 생성자 함수와 더불어 생성되며 prototype.constructor 프로퍼티에 의해 연결되어있음)</p> <p>리터럴 표기법에 의해 생성된 객체는 생성자 함수에 의해 생성된 객체는 아니지만<br>
+큰 틀에서 생각해보면 리터럴 표기법으로 생성한 객체도 생성자 함수로 생성한 객체와 본질적으로 큰 차이는 없음<br>
+생성 과정이나 스코프, 클로저 등의 미묘한 차이는 있지만 결국 동일한 특성을 가짐<br>
+따라 프로토타입의 constructor 프로퍼티를 통해 연결되있는 생성자 함수를<br>
+&quot;리터럴 표기법으로 생성한 객체를 생성한&quot; 생성자 함수로 생각해도 크게 무리는 없음</p> <p>리터럴 표기법에 의해 생성된 객체의 생성자 함수와 프로토타입</p> <table><thead><tr><th style="text-align:left;">리터럴 표기법</th> <th style="text-align:left;">생성자 함수</th> <th style="text-align:left;">프로토타입</th></tr></thead> <tbody><tr><td style="text-align:left;">객체 리터럴</td> <td style="text-align:left;">Object</td> <td style="text-align:left;">Object.prototype</td></tr> <tr><td style="text-align:left;">함수 리터럴</td> <td style="text-align:left;">Function</td> <td style="text-align:left;">Function.prototype</td></tr> <tr><td style="text-align:left;">배열 리터럴</td> <td style="text-align:left;">Array</td> <td style="text-align:left;">Array.prototype</td></tr> <tr><td style="text-align:left;">정규 표현식 리터럴</td> <td style="text-align:left;">RegExp</td> <td style="text-align:left;">RegExp.prototype</td></tr></tbody></table> <h2 id="_5-프로토타입의-생성-시점"><a href="#_5-프로토타입의-생성-시점" class="header-anchor">#</a> 5. 프로토타입의 생성 시점</h2> <p>객체는 리터럴 표기법 또는 생성자 함수에 의해 생성되므로 <strong>결국 모든 객체는 생성자 함수와 연결</strong>되어 있음<br>
+Object.create 메서드와 Class로 객체를 생성하는 방법도 있는데<br>
+해당 방법으로 생성한 객체도 생성자 함수와 연결되어 있음</p> <p><strong>프로토타입은 생성자 함수가 생성되는 시점에 더불어 생성됨</strong><br>
+프로토타입과 생성자 함수는 단독으로 존재할 수 없고 언제나 쌍으로 존재하기 때문</p> <p>생성자 함수는 사용자 정의 생성자 함수와 빌트인 생성자 함수로 구분할 수 있음<br>
+둘로 구분해 프로토타입 생성 시점을 알아보자</p> <h3 id="_5-1-사용자-정의-생성자-함수와-프로토타입-생성-시점"><a href="#_5-1-사용자-정의-생성자-함수와-프로토타입-생성-시점" class="header-anchor">#</a> 5-1. 사용자 정의 생성자 함수와 프로토타입 생성 시점</h3> <ul><li><strong>생성자 함수로서 호출할 수 있는 함수(=constructor)는 함수 정의가 평가되어<br>
+함수 객체를 생성하는 시점에 프로토타입도 더불어 생성됨</strong></li> <li>생성자 함수로 호출 불가능한 함수(=non-constructor)는 프로토타입이 생성되지 않음</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//함수 정의(constructor)가 평가되어 함수 객체 생성하는 시점에 프로토타입도 더불어 생성됨</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{constructor: f}</span>
+<span class="token comment">//생성자 함수</span>
+<span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//non-constructor 함수</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Person2</span> <span class="token operator">=</span> <span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//non-constructor 함수는 프로토타입이 생성되지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Person2</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+</code></pre></div><p>함수 선언문은 런타임 이전에 자바스크립트 엔진에 의해 먼저 실행되기 때문에<br>
+Person 생성자 함수는 어떤 코드보다 먼저 평가되어 함수 객체가 되며 이때 프로토타입도 더불어 생성됨</p> <p>생성된 프로토타입은 오직 constructor 프로퍼티만 가지며<br>
+생성자 함수의 prototype 프로퍼티에 바인딩 됨</p> <p>프로토타입도 객체이고 모든 객체는 프로토타입을 가지므로 프로토타입도 자신의 프로토타입을 갖음<br>
+생성된 프로토타입의 프로토타입은 언제나 Object.prototype</p> <h3 id="_5-2-빌트인-생성자-함수와-프로토타입-생성-시점"><a href="#_5-2-빌트인-생성자-함수와-프로토타입-생성-시점" class="header-anchor">#</a> 5-2. 빌트인 생성자 함수와 프로토타입 생성 시점</h3> <p>Object, String, Function, Array 등 빌트인 생성자 함수도 일반 함수와 마찬가지로<br>
+빌트인 생성자 함수가 생성되는 시점에 프로토타입이 생성됨</p> <p>모든 빌트인 생성자 함수는 전역 객체가 생성되는 시점에 생성됨<br>
+생성된 프로토타입은 빌트인 생성자 함수의 prototype 프로퍼티에 바인딩됨</p> <p>이처럼 객체가 생성되기 이전 생성자 함수와 프로토타입은 이미 객체화되어 존재함<br> <strong>이후 생성자 함수 또는 리터럴 표기법으로 객체를 생성하면 프로토타입은<br>
+생성된 객체의 [[Prototype]] 내부 슬롯에 할당됨</strong><br>
+이로써 생성한 생성된 객체는 프로토타입을 상속받음</p> <h4 id="전역-객체"><a href="#전역-객체" class="header-anchor">#</a> &lt;전역 객체&gt;</h4> <p>전역 객체는 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 생성되는 특수 객체<br>
+전역 객체는 클라이언트 사이드 환경에서는 window, 서버 사이드 환경에서는 global 객체를 의미함</p> <p>전역 객체는 표준 빌트인 객체들(Object, String 등)과 환경에 따른 호스트 객체<br>
+(클라이언트 Web API, Node.js의 호스트 API), var 키워드로 선언한 전역 변수와<br>
+전역 함수를 프로퍼티로 가짐<br>
+Math, Reflect, JSON을 제외한 표준 빌트인 객체는 모두 생성자 함수</p> <p>표준 빌트인 객체인 Object도 전역 객체의 프로퍼티며 전역 객체가 생성되는 시점에 생성됨</p> <h2 id="_6-객체-생성-방식과-프로토타입의-결정"><a href="#_6-객체-생성-방식과-프로토타입의-결정" class="header-anchor">#</a> 6. 객체 생성 방식과 프로토타입의 결정</h2> <p>객체는 다양한 생성 방법이 있음</p> <ul><li>객체 리터럴</li> <li>Object 생성자 함수</li> <li>생성자 함수</li> <li>Object.create 메서드</li> <li>클래스(ES6)</li></ul> <p>다양한 방식으로 생성된 모든 객체는 세부적인 객체 생성 방식의 차이는 있으나<br>
+추상 연산 OrdinaryObjectCreate 에 의해 생성된다는 공통점 있음</p> <h4 id="추상-연산-ordinaryobjectcreate"><a href="#추상-연산-ordinaryobjectcreate" class="header-anchor">#</a> 추상 연산 OrdinaryObjectCreate</h4> <ul><li>필수적으로 자신이 생성할 객체의 프로토타입을 인수로 전달받음</li> <li>자신이 생성할 객체에 추가할 프로퍼티 목록을 옵션으로 전달할 수 있음</li> <li>빈 객체 생성 -&gt;<br>
+객체에 추가할 프로퍼티 목록이 인수로 전달된 경우 프로퍼티를 객체에 추가 -&gt;<br>
+인수로 전달받은 프로토타입을 자신이 생성한 객체의 [[Prototype]] 내부 슬롯에 할당 -&gt;<br>
+생성한 객체를 반환</li></ul> <p>즉, 프로토타입은 추상 연산 OrdinaryObjectCreate에 전달되는 인수에 의해 결정됨<br>
+이 인수는 객체가 생성되는 시점에 객체 생성 방식에 의해 결정됨</p> <h3 id="_6-1-객체-리터럴에-의해-생성된-객체의-프로토타입"><a href="#_6-1-객체-리터럴에-의해-생성된-객체의-프로토타입" class="header-anchor">#</a> 6-1. 객체 리터럴에 의해 생성된 객체의 프로토타입</h3> <p>산객체 리터럴에 의해 생성되는 객체의 프로토타입은 Object.prototype</p> <h3 id="_6-2-object-생성자-함수에-의해-생성된-객체의-프로토타입"><a href="#_6-2-object-생성자-함수에-의해-생성된-객체의-프로토타입" class="header-anchor">#</a> 6-2. Object 생성자 함수에 의해 생성된 객체의 프로토타입</h3> <p>Object 생성자 함수에 의해 생성되는 객체의 프로토타입은 Object.prototype</p> <p>객체 리터럴과 Object 생성자 함수에 의한 객체 생성 방식의 차이는 프로퍼티를 추가하는 방식에 있음<br>
+객체 리터럴 방식은 객체 리터럴 내부에 프로퍼티를 추가하지만<br>
+Object 생성자 함수 방식은 일단 빈 객체를 생성한 이후 프로퍼티를 추가해야 함</p> <h3 id="_6-3-생성자-함수에-의해-생성된-객체의-프로토타입"><a href="#_6-3-생성자-함수에-의해-생성된-객체의-프로토타입" class="header-anchor">#</a> 6-3. 생성자 함수에 의해 생성된 객체의 프로토타입</h3> <p>생성자 함수에 의해 생성되는 객체의 프로토타입은 생성자 함수의 prototype 프로퍼티에 바인딩되어 있는 객체</p> <p>표준 빌트인 객체인 Object 생성자 함수와 더불어 생성된 프로토타입 Object.prototype은<br>
+다양한 빌트인 메서드(hasOwnProperty 등)을 가지고 있음.<br>
+하지만 사용자 정의 함수와 더불어 생성된 프로토타입의 프로퍼티는 constructor 뿐</p> <p>프로토타입은 객체이므로 일반 객체와 같이 프로토타입에도 프로퍼티를 추가/삭제할 수 있음<br>
+그리고 이렇게 추가/삭제된 프로퍼티는 프로토타입 체인에 즉각 반영됨</p> <h2 id="_7-프로토타입-체인"><a href="#_7-프로토타입-체인" class="header-anchor">#</a> 7. 프로토타입 체인</h2> <p>자바스크립트는 객체의 프로퍼티(메서드 포함)에 접근하려고 할 때 해당 객체에 접근하려는 프로퍼티가 없다면<br>
+[[Prototype]] 내부 슬롯의 참조를 따라 자신의 부모 역할을 하는 프로토타입의 프로퍼티를 순차적으로 검색함<br>
+=&gt; 이를 프로토타입 체인이라고 함<br>
+프로토타입 체인은 자바스크립트가 객체지향 프로그래밍의 상속을 구현하는 메커니즘</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//프로토타입 메서드</span>
+<span class="token class-name">Person</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">sayHello</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi! My name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> me <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Leo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//hasOwnProperty는 Object.prototype의 메서드</span>
+<span class="token comment">//me 객체는 프로토타입 체인을 따라 hasOwnProperty 메서드를 검색해 사용함</span>
+me<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><p>위의 코드 실행 시 자바스크립트 엔진은 다음과 같은 과정을 거쳐 메서드를 검색함 (프로퍼티 참조 경우도 마찬가지)</p> <ol><li>먼저 hasOwnProperty 메서드를 호출한 me 객체에서 hasOwnProperty 메서드를 검색.<br>
+me 객체에는 없으므로 프로토타입 체인을 따라 ([[Prototype]] 내부 슬롯에 바인딩되어 있는 프로토타입)<br>
+이동해 hasOwnProperty 메서드를 검색함</li> <li>Person.prototype에도 해당 메서드가 없으므로 프로토타입 체인을 따라 이동해 다시 검색함</li> <li>Object.prototype에는 해당 메서드가 존재함.<br>
+자바스크립트 엔진은 Object.prototype.hasOwnProperty 메서드를 호출함<br>
+이때 Object.prototype.hasOwnProperty 메서드의 this에는 me객체가 바인딩됨<div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//call 메서드 : this로 사용할 객체를 전달하면서 함수를 호출함  </span>
+<span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>me<span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">)</span> 
+</code></pre></div></li></ol> <h4 id="object-prototype"><a href="#object-prototype" class="header-anchor">#</a> Object.prototype</h4> <ul><li>프로토타입 체인의 최상위에 위치하는 객체 (=프로토타입 체인의 종점)</li> <li>모든 객체는 Object.prototype을 상속받음</li> <li>Object.prototype의 프로토타입 (=[[Prototype]] 내부 슬롯의 값)은 null</li> <li>Object.prototype에서도 프로퍼티를 검색할 수 없는 경우 undefined를 반환함 (에러 발생 X)</li></ul> <p>이처럼 자바스크립트 엔진은 프로토타입 체인을 따라 프로퍼티/메서드를 검색함<br>
+따라 프로토타입 체인은 상속과 프로퍼티 검색을 위한 메커니즘이라고 할 수 있음<br>
+이에 반해, 프로퍼티가 아닌 식별자는 스코프체인에서 검색함<br>
+따라 스코프체인은 식별자 검색을 위한 메커니즘이라고 할 수 있음</p> <div class="language-js extra-class"><pre class="language-js"><code>me<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>위 예제의 경우 먼저 스코프 체인에서 me 식별자를 검색 -&gt;<br>
+me 식별자는 전역에서 선언되었으므로 전역 스코프에서 검색됨 -&gt;<br>
+me 식별자 검색 후 me 객체의 프로토타입 체인에서 hasOwnProperty 메서드를 검색함</p> <p>이처럼 스코프 체인과 프로토타입 체인은 서로 연관없이 별도로 동작하는게 아니라<br>
+서로 협력해 식별자와 프로퍼티를 검색하는데 사용됨</p> <h2 id="_8-오버라이딩과-프로퍼티-섀도잉"><a href="#_8-오버라이딩과-프로퍼티-섀도잉" class="header-anchor">#</a> 8. 오버라이딩과 프로퍼티 섀도잉</h2> <ul><li>프로토타입 프로퍼티 : 프로토타입이 소유한 프로퍼티</li> <li>인스턴스 프로퍼티 : 인스턴스가 소유한 프로퍼티</li></ul> <p>프로토타입 프로퍼티와 같은 명의 프로퍼티를 인스턴스에 추가 시 프로토타입 체인을 따라<br>
+프로토타입 프로퍼티를 검색해 덮어쓰는게 아니라 인스턴스 프로퍼티로 추가함<br>
+이떄 인스턴스 메서드는 프로토타입 메서드를 오버라이딩했고 프로토타입 메서드는 가려짐<br>
+이처럼 상속 관게에 의해 프로퍼티가 가려지는 현상을 프로퍼티 섀도잉이라고 함</p> <ul><li>오버라이딩 : 상위 클래스가 가지고 있는 메서드를 하위 클래스가 재정의해 사용하는 방식</li> <li>오버로딩 : 함수의 이름은 동일하지만 매개변수의 타입 또는 개수가 다른 메서드를 구현하고<br>
+매개변수에 의해 메서드를 구별해 호출하는 방식. 자바스크립트는 오버로딩을 지원하지 않지만<br>
+arguments 객체를 사용해 구현 가능함</li></ul> <p>프로퍼티 삭제 경우도 마찬가지<br>
+프로토타입 메서드가 아닌 인스턴스 메서드가 삭제됨</p> <p>이처럼 하위 객체를 통해 프로토타입의 프로퍼티를 변경, 삭제하는 것은 불가능<br>
+하위 객체를 통해 프로토타입의 get 액세스는 허용되지만 set 액세스는 허용되지 않음</p> <p>프로토타입 프로퍼티를 변경, 삭제하려면 프로토타입에 직접 접근해야 함</p> <h2 id="_9-프로토타입의-교체"><a href="#_9-프로토타입의-교체" class="header-anchor">#</a> 9. 프로토타입의 교체</h2> <p>프로토타입은 임의의 다른 객체로 변경 가능함<br>
+즉, 부모 객체인 프로토타입을 동적으로 변경가능하다는 걸 의미<br>
+이런 특징을 활용해 객체 간의 상속 관계를 동적으로 변경하 룻 있음<br>
+프로토타입은 생성자 함수 또는 인스턴스에 의해 교체 가능함</p> <p>프로토타입 교체를 통해 객체 간의 상속 관계를 동적으로 변경하는 것은 많이 번거로움<br>
+따라 프로토타입은 직접 교체하지 않는게 좋음<br>
+상속 관계를 인위적으로 설정하려면 직접 상속이 더 편리하고 안전함<br>
+또한 ES6에서 도입된 클래스 사용 시 간편하고 직관적으로 상속 관계 구현 가능함</p> <h3 id="_9-1-생성자-함수에-의한-프로토타입의-교체"><a href="#_9-1-생성자-함수에-의한-프로토타입의-교체" class="header-anchor">#</a> 9-1. 생성자 함수에 의한 프로토타입의 교체</h3> <p>프로토타입 교체 시 constructor 프로퍼티와 생성자 함수 간의 연결이 파고됨<br>
+프로토타입으로 교체한 객체 리터럴에 constructor 프로퍼티를 추가해<br>
+프로토타입의 constructor 프로퍼티를 되살림</p> <h3 id="_9-2-인스턴스에-의한-프로토타입의-교체"><a href="#_9-2-인스턴스에-의한-프로토타입의-교체" class="header-anchor">#</a> 9-2. 인스턴스에 의한 프로토타입의 교체</h3> <p>프로토타입은 생성자 함수의 prototype 프로퍼티 뿐 아니라<br>
+인스턴스의 __proto__접근자 프로퍼티를 통해서도 접근 가능함<br>
+따라 프로토타입 교체도 가능함</p> <p>생성자 함수의 prototype 프로퍼티에 다른 임의의 객체를 바인딩하는 것은<br>
+미래에 생성한 인스턴스의 프로토타입을 교체하는 것<br>
+__proto__접근자 프로퍼티르 통해 프로토타입을 교체하는 것은<br>
+이미 생성된 객체의 프로토타이븡ㄹ 교체하는 것임</p> <p>생성자 함수에 의한 프로토타입 교체와 인스턴스에 의한 프로토타입 교체는<br>
+별다른 차이가 없어보이지만 미묘한 차이가 있음</p> <ul><li>생성자 함수에 의한 프로토타입 교체 :<br>
+생성자 함수의 프로퍼티가 교체된 프로토타입을 가리킴</li> <li>인스턴스에 의한 프로토타입 교체 :<br>
+생성자 함수의 prototype 프로퍼티가 교체된 프로토타입을 가리키지 않음</li></ul> <h2 id="_10-instanceof-연산자"><a href="#_10-instanceof-연산자" class="header-anchor">#</a> 10. instanceof 연산자</h2> <ul><li><code>객체 instanceof 생성자함수</code></li> <li>좌변 : 객체를 가리키는 식별자, 우변 : 생성자 함수를 가리키는 식별자를 피연산자로 받음</li> <li>우변의 피연산자가 함수가 아닌 경우 TypeError 발생</li> <li>우변 생성자 함수의 prototype에 바인딩된 객체가 좌변 객체의<br>
+프로토타입 체인 상에 존재하면 ture, 그렇지 않은 경우 false로 평가됨</li> <li>프로토타입의 constructor 프로퍼티가 가리키는 생성자 함수를 찾는게 아니라<br>
+생성자 함수의 prototype에 바인딩 된 객체가 프로토타입 체인 상에 존재하는지 확인함</li> <li>me instanceof Person :<br>
+me 객체의 프로토타입 체인 상에 Person.prototype에 바인딩된 객체가 존재하는지 확인</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//생성자 함수</span>
+<span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> me <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Leo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Person.prototype이 me 객체의 프로토타입 체인 상에 존재하므로 true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Person</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+<span class="token comment">//Object.prototype이 me 객체의 프로토타입 체인 상에 존재하므로 true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Object</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+
+<span class="token comment">//프로토타입으로 교체할 객체</span>
+<span class="token keyword">const</span> parent <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//프로토타입의 교체</span>
+Object<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>me<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Person 생성자 함수와 parent 객체는 연결되어 있지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">.</span>prototype <span class="token operator">===</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Person<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+
+<span class="token comment">//Person.prototype이 me 객체의 프로토타입 체인 상에 존재하지 않으므로 false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Person</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+<span class="token comment">//Object.prototype이 me 객체의 프로토타입 체인 상에 존재하므로 true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Object</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+
+<span class="token comment">//parent 객체를 Person 생성자 함수의 prototype 프로퍼티에 바인딩</span>
+<span class="token class-name">Person</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+
+<span class="token comment">//Person.prototype이 me 객체의 프로토타입 체인 상에 존재하므로 true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Person</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token comment">//Object.prototype이 me 객체의 프로토타입 체인 상에 존재하므로 true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Object</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><p>instanceof 연산자를 함수로 표현</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isInstanceof</span><span class="token punctuation">(</span><span class="token parameter">instance<span class="token punctuation">,</span> constructor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//프로토타입 취득</span>
+  <span class="token keyword">const</span> prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">//재귀 탈출 조건</span>
+  <span class="token comment">//prototype이 null이면 프로토타입 체인의 종점에 다다른 것</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>prototype <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+  <span class="token comment">//프로토타입이 생성자 함수의 prototype 프로퍼티에 바인딩된 객체라면 true 반환</span>
+  <span class="token comment">//그렇지 않다면 재귀 호출로 프로토타입 체인 상의 상위 프로토타입으로 이동하여 확인함</span>
+  <span class="token keyword">return</span> prototype <span class="token operator">===</span> constructor<span class="token punctuation">.</span>prototype <span class="token operator">||</span> <span class="token function">isInstanceof</span><span class="token punctuation">(</span>prototype<span class="token punctuation">,</span> constructor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isInstanceof</span><span class="token punctuation">(</span>me<span class="token punctuation">,</span> Person<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isInstanceof</span><span class="token punctuation">(</span>me<span class="token punctuation">,</span> Object<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isInstanceof</span><span class="token punctuation">(</span>me<span class="token punctuation">,</span> Array<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+</code></pre></div><p>따라 생성자 함수에 의해 프로토타입이 교체되어 constructor 프로퍼티와 생성자 함수 간의<br>
+연결이 파괴되어도 생성자 함수의 prototype 프로퍼티와 프로토타입 간의 연결은 파괴되지 않으므로<br>
+instanceof는 아무런 영향을 받지 않음</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> Person <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">//생성자 함수의 prototype 프로퍼티를 통해 프로토타입 교체</span>
+  <span class="token class-name">Person</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi! My name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> me <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Leo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//constructor 프로퍼티와 생성자 함수 간의 연결이 파괴되도 instanceof는 아무런 영향을 받지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Person<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+<span class="token comment">//Person.prototype이 me 객체의 프로토타입 체인 상에 존재함</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Person</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+<span class="token comment">//Object.prototype이 me 객체의 프로토타입 체인 상에 존재함</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>me <span class="token keyword">instanceof</span> <span class="token class-name">Object</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><h2 id="_11-직접-상속"><a href="#_11-직접-상속" class="header-anchor">#</a> 11. 직접 상속</h2> <h3 id="_11-1-object-create에-의한-직접-상속"><a href="#_11-1-object-create에-의한-직접-상속" class="header-anchor">#</a> 11-1. Object.create에 의한 직접 상속</h3> <h4 id="object-create-메서드"><a href="#object-create-메서드" class="header-anchor">#</a> &lt;Object.create 메서드&gt;</h4> <ul><li>명시적으로 프로토타입을 지정해 새로운 객체를 생성함</li> <li>다른 객체 생성 방식과 마찬가지로 추상 연산 OrdinaryObjectCreate를 호출함</li> <li>첫 번째 매개변수에는 생성할 객체의 프로토타입으로 지정할 객체 전달.<br>
+두 번째 매개변수에는 생성할 객체의 프로퍼티 키와 프로퍼티 디스크립터 객체로 이뤄진 객체 전달<br>
+(Object.defineProperties 메서드의 두 번째 인수와 동일. 옵션이라 생략 가능함)</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/**
+ * 지정된 프로토타입 및 프로퍼티를 갖는 새로운 객체를 생성해 반환함
+ * @param {object} prototype - 생성할 객체의 프로토타입으로 지정할 객체
+ * @param {object} [propertiesObject] - 생성할 객체의 프로퍼티를 갖는 객체
+ * @returns {object} 지정된 프로토타입 및 프로퍼티를 갖는 새로운 객체
+ * **/</span>
+Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>prototype<span class="token punctuation">[</span><span class="token punctuation">,</span> propertiesObject<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Object.create 메서드는 첫 번째 매개변수에 전달한 객체의 프로토타입 체인에 속하는 객체를 생성함<br>
+즉, 객체를 생성하면서 직접적으로 상속을 구현하는 것.<br>
+이 메서드의 장점은 아래와 같음</p> <ul><li>new 연산자 없이도 객체 생성 가능</li> <li>프로토타입을 지정하면서 객체 생성 가능</li> <li>객체 리터럴에 의해 생성된 객체도 상속받을 수 있음</li></ul> <p>참고로 Object.prototype의 빌트인 메서드인 Object.prototype.hasOwnProperty 등은<br>
+모든 객체의 프로토타입 체인의 종점, 즉 Object.prototype의 메서드이므로 모든 객체가 상속받아 호출 가능함</p> <p><code>console.log(obj.hasOwnProperty('a))</code><br>
+근데 ESLint에서는 위와 같이 Object.prototype의 빌트인 메서드를 객체가 직접 호출하는 것을 권장하지 않음<br>
+Object.create 메서들르 통해 프로토타입 체인의 종점에 위치하는 객체를 생성할 수 있기 때문<br>
+프로토타입 체인의 종점에 위치하는 객체는 Object.prototype의 빌트인 메서드를 사용할 수 없음</p> <p>따라 에러 발생 위험을 없애기 위해 Object.prototype의 빌트인 메서드는 간접적으로 호출하는 것이 좋음</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//TypeError</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><h3 id="_11-2-객체-리터럴-내부에서-proto-에-의한-직접-상속"><a href="#_11-2-객체-리터럴-내부에서-proto-에-의한-직접-상속" class="header-anchor">#</a> 11-2. 객체 리터럴 내부에서 __proto__에 의한 직접 상속</h3> <p>Object.create 메서드에 의한 직접 상속은 앞에서 다룬 것처럼 여러 장점이 있음<br>
+하지만 두 번째 인자로 프로퍼티를 정의하는 것은 번거로움<br>
+일단 객체 생성 이후 프로퍼티 추가하는 방법도 있으나 이 또한 깔끔한 방법은 아님</p> <p>ES6에서는 객체 리터럴 내부에 __proto__접근자 프로퍼티를 사용해 직접 상속을 구현할 수 있음</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> myProto <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//객체 리터럴에 의해 객체 생성하면서 프로토타이븡ㄹ 지정해 직접 상속받을 수 있음</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  y<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+  <span class="token comment">//객체를 직접 상속받음</span>
+  <span class="token comment">//obj -&gt; myProto -&gt; Object.prototype -&gt; null</span>
+  __proto__<span class="token operator">:</span> myProto
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>x<span class="token punctuation">,</span> obj<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//10 20</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> myProto<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+<span class="token comment">//위 코드는 아래와 동일함</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>myProto<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  y<span class="token operator">:</span> <span class="token punctuation">{</span>value<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span> writable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> enumerable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> configurable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_12-정적-프로퍼티-메서드"><a href="#_12-정적-프로퍼티-메서드" class="header-anchor">#</a> 12. 정적 프로퍼티/메서드</h2> <p>정적 프로퍼티/메서드란 생성자 함수로 인스턴스를 생성하지 않아도 참조/호출할 수 있는 프로퍼티/메서드를 말함<br>
+생성자 함수는 객체이므로 자신의 프로퍼티/메소드를 소유할 수 있음<br>
+생성자 함수 객체가 소유한 프로퍼티/메서드를 정적 프로퍼티/메서드라고 함</p> <p>생성자 함수가 생성한 인스턴스는 자신의 프로토타입 체인에 속한 객체의 프로퍼티/메서드에 접근 가능하지만<br>
+정적 프로퍼티/메서드는 인스턴스의 프로토타입 체인에 속한 객체의 프로퍼티/메서드가 아니므로<br>
+인스턴스로 참조/호출할 수 없음</p> <p>ex.<br>
+Object.create 메서드는 Object 생성자 함수의 정적 메서드,<br>
+Object.prototype.hasOwnProperty 메서드는 Object.prototype의 메서드<br>
+따라 Object.create 메서드는 인스턴스(Object 생성자 함수가 생성한 객체)로 호출 불가<br>
+Object.pototype.hasOwnProperty 메서드는 모든 객체가 호출 가능함</p> <p>만약 인스턴스/프로토타입 메서드 내에서 this를 사용하지 않는다면 그 메서드는 정적 메서드로 변경 가능함<br>
+인스턴스가 호출한 인스턴스/프로토타입 메서드 내에서 this는 인스턴스를 가리킴<br>
+메서드 내에서 인스턴스를 참조할 필요가 없다면 정적 메서드로 변경해도 동작함<br>
+프로토타입 메서드를 호출하려면 인스턴스를 생성해야만 하지만 정적 메서드는 인스턴스를 생성하지 않아도 호출 가능</p> <p>참고로 프로토타입 프로퍼티/메서드를 표기 시 prototype을 #으로 포기하는 경우도 있음<br>
+Object.prototype.isPrototypeOf -&gt; Object#isPrototypeOf</p> <h2 id="_13-프로퍼티-존재-확인"><a href="#_13-프로퍼티-존재-확인" class="header-anchor">#</a> 13. 프로퍼티 존재 확인</h2> <h3 id="_13-1-in-연산자"><a href="#_13-1-in-연산자" class="header-anchor">#</a> 13-1. in 연산자</h3> <ul><li>객체 내 특정 프로퍼티가 존재하는지 여부를 확인함</li> <li>in 연산자는 확인 대상 객체의 프로퍼티 뿐 아니라<br>
+확인 대상 객체가 상속받은 모든 프로토타입의 프로퍼티를 확인함</li> <li>in 연산자 대신 ES6에서 도입된 Reflect.has 메서드를 사용할 수도 있음 (in 연산자와 동일하게 동작함)</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//key : 프로퍼티 키를 나타내는 문자열</span>
+<span class="token comment">//object : 객체로 평가되는 표현식</span>
+key <span class="token keyword">in</span> object
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Leo'</span><span class="token punctuation">,</span>
+  address<span class="token operator">:</span> <span class="token string">'Seoul'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//person 객체에 name 프로퍼티가 존재</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'name'</span> <span class="token keyword">in</span> person<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'toString'</span> <span class="token keyword">in</span> person<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Reflect<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>person<span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Reflect<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>person<span class="token punctuation">,</span> <span class="token string">'toString'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+</code></pre></div><h3 id="_13-2-object-prototype-hasownproperty-메서드"><a href="#_13-2-object-prototype-hasownproperty-메서드" class="header-anchor">#</a> 13-2. Object.prototype.hasOwnProperty 메서드</h3> <ul><li>Object.prototype.hasOwnProperty 메서드를 사용해도 객체에 특정 프로퍼티가 존재하는지 확인 가능</li> <li>인수로 전달받은 프로퍼티 키가 객체 고유의 프로퍼티 키인 경우에만 true 반환함<br>
+(상속받느 프로토타입의 프로퍼티 키인 경우 false 반환)</li></ul> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'toString'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//false</span>
+</code></pre></div><h2 id="_14-프로퍼티-열거"><a href="#_14-프로퍼티-열거" class="header-anchor">#</a> 14. 프로퍼티 열거</h2> <h3 id="_14-1-for-in-문"><a href="#_14-1-for-in-문" class="header-anchor">#</a> 14-1. for ...in 문</h3> <ul><li>객체의 프로토타입 체인 상에 존재하는 모든 프로토타입의 프로퍼티 중<br>
+프로퍼티 어트리뷰트 [[Enumerable]]의 값이 true 프로퍼티를 순회하며 열거함</li> <li>객체의 프로퍼티 개수만큼 순회하며 for...in 문의 변수 선언문에서 선언한 변수에 프로퍼티 키를 할당함</li> <li>프로퍼티 키가 심벌인 프로퍼티는 열거하지 않음</li> <li>상속받은 프로퍼티는 제외하고 객체 자신의 프로퍼티만 열겨하려면<br>
+Object.prototype.hasOwnProperty 메서드를 사용해 객체 자신의 프로퍼티인지 확인해야 함</li> <li>for ...in문은 프로퍼티 열거 시 순서를 보장하지 않으므로 주의 필요<br>
+but. 대부분의 모던 브라우저는 순서를 보장하고 숫자(사실 문자열)인 프로퍼티의 키에 대해서는 정렬을 실시함</li> <li>배열에는 for...in문을 사용하지 말고 for문이나 for..of, Array.prototype.forEach 메서드 사용을 권장<br>
+배열도 객체이므로 프로퍼티와 상속받은 프로퍼티가 포함될 수 있음</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//for (변수선언문 in 객체) {...}</span>
+
+<span class="token keyword">const</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Leo'</span><span class="token punctuation">,</span>
+  address<span class="token operator">:</span> <span class="token string">'Seoul'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//for ...in 문의 변수 prop에 person 객체의 프로퍼티키가 할당됨 </span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key <span class="token operator">+</span> <span class="token string">': '</span> <span class="token operator">+</span> person<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//name: Leo</span>
+<span class="token comment">//address: Seoul</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> sym <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'Leo'</span><span class="token punctuation">,</span>
+  address<span class="token operator">:</span> <span class="token string">'Seoul'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span>sym<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+  __proto__<span class="token operator">:</span> <span class="token punctuation">{</span>age<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key <span class="token operator">+</span> <span class="token string">': '</span> <span class="token operator">+</span> person<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//name: Leo</span>
+<span class="token comment">//address: Seoul</span>
+<span class="token comment">//age: 20</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//객체 자신의 프로퍼티인지 확인</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>person<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key <span class="token operator">+</span> <span class="token string">': '</span> <span class="token operator">+</span> person<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//name: Leo</span>
+<span class="token comment">//address: Seoul</span>
+</code></pre></div><h3 id="_14-2-object-keys-values-entries-메서드"><a href="#_14-2-object-keys-values-entries-메서드" class="header-anchor">#</a> 14-2. Object.keys/values/entries 메서드</h3> <p>객체 자신의 고유 프로퍼티만 열거하기 위해서는 for ...in문을 사용하는 것보다<br>
+Object.keys/values/entries 메서드 사용을 권장함</p> <ul><li>Object.keys : 객체 자신의 열거 가능한 프로퍼티 키를 배열로 반환함</li> <li>Object.values : 객체 자신의 열거 가능한 프로퍼티 값을 배열로 반환함</li> <li>Object.entries : 객체 자신의 열거 가능한 프로퍼티 키와 값의 쌍의 배열을 배열에 담아 반환함</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/TIL/assets/js/app.9bee923c.js" defer></script><script src="/TIL/assets/js/2.e5153bce.js" defer></script><script src="/TIL/assets/js/61.0b5b3958.js" defer></script>
+  </body>
+</html>
