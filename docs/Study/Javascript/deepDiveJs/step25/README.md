@@ -706,6 +706,8 @@ const me = new Person('Lee');
   // getName = () => this.name;
   }
   
+  console.log('delete');
+  
   const me = new Person();
   console.log(me); // Person {name: "Lee", getName: ƒ}
   console.log(me.getName()); // Lee
