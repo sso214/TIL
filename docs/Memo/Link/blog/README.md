@@ -2,7 +2,6 @@
 title: 관심있는 개발 블로그 및 github
 ---
 
-
 ## 개인
 * [velopert](https://velog.io/@velopert)
 * [캡틴판교](https://joshua1988.github.io/)
@@ -12,13 +11,15 @@ title: 관심있는 개발 블로그 및 github
 * [토이프로젝트 루비콘](https://lubycon.io/)
 * [루비콘 거북이 개발자](https://evan-moon.github.io/)
 * [노마드 코더](https://www.youtube.com/channel/UCUpJs89fSBXNolQGOYKn0YQ)
-* [프론트엔드 엔지니어 진유림](https://milooy.wordpress.com/)
+* [프론트엔드 엔지니어 진유림](https://milooy.github.io/)
 * [아이다르](https://github.com/Sukhanberliyev)
 * [Inkyo](https://ingg.dev/)
 * [JoMingyu](https://github.com/JoMingyu)
 * [Dev Ed Youtube](https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q)
 * [modolee](https://velog.io/@modolee)
 * [모던 자바스크립트 핵심 가이드 저자 블로그](https://inspiredwebdev.com/)
+* [조은님](https://euncho.medium.com/)
+* [Interactive Developer](https://blog.cmiscm.com/?page_id=3023)
 
 
 ## 회사
@@ -48,3 +49,7 @@ title: 관심있는 개발 블로그 및 github
 * [codecademy](https://www.codecademy.com/catalog/all)
 * [openbase](https://openbase.com/categories/js/best-react-user-interface-libraries) : 유용한 라이브러리 찾기 좋음
 * [poiemaweb](https://poiemaweb.com/js-execution-context)
+
+
+## 기타
+* [SIDE](https://sideproject.co.kr/)
