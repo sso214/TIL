@@ -243,19 +243,3 @@ name, caller, agruments, __proto__ 프로퍼티들은 ECMA 표준은 아님
 (크롬 브라우저에서는 Function Prototype 객체를 Empty() 함수라고 명함)  
 Function Prototype 객체도 함수 객체이므로 name, caller, arguments 등과 같은 함수 객체의 프로퍼티가 존재  
 
-
-#### length 프로퍼티
-
-
-
-
-## 함수의 다양한 형태
-
-
-## 함수 호출과 this
-
-
-## 프로토타입 체이닝
-
-
-

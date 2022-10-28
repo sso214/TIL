@@ -3,6 +3,7 @@ title: 관심있는 개발 블로그 및 github
 ---
 
 ## 개인
+* [피터님](https://chodragon9.github.io/)
 * [velopert](https://velog.io/@velopert)
 * [캡틴판교](https://joshua1988.github.io/)
 * [초보몽키의 개발공부로그](https://wayhome25.github.io/)
