@@ -3,7 +3,9 @@ title : UTC, GMT
 date : 2021.06.17
 ---
 
-datepicker를 사용하다가 GMT나 UTC에 대해 몰라서 찾아봤다.  
+# UTC, GMT
+
+datepicker를 사용하다가 GMT나 UTC가 헷갈려서 찾아봤다.  
 
 
 ## GMT

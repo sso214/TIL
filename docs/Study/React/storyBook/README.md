@@ -4,16 +4,6 @@ date : 2021.08.18
 ---
 
 # Storybook
-오랜만에 다른 회사 FE팀은 어떤 플로우로 일하나 궁금해서 모두싸인 엔지니어 가이드 공식 노션을 보게 되었다. 
-확실히 회사차원에서 코드리뷰가 이뤄지고 개발 문화가 있는 개발팀은 정말 성장하기 좋은 환경인 것 같다. (특히 코드리뷰 너무 부럽다 ㅠㅠ)  
-<br/>
-아무튼 글을 읽다가 코드 관리에 대해 서로 다른 저장소에서 여러 서비스를 모노레포로 운영하고 있다고 해서 
-모노레포를 검색해보다가 Storybook 이라는 오픈 소스를 알게 되었다. 
-카카오 FE팀에서도 컴포넌트나 테스트 자동화를 위해 활용한다고 해서 궁금해서 찾아봤다.  
-Storybook이 개발된지 벌써 4-5년이나 됐다고 하던데 뒤쳐지지 않도록 평소에 꾸준히 여러 다양한 정보들에 관심을 가지고 적극적으로 많이 찾아봐야겠다.   
-
-<br/>
-<br/>
 
 ## Storybook이란?
 > Storybook is a user interface development environment and playground for UI components. The tool enables developers to create components independently and showcase components interactively in an isolated development environment.
@@ -32,7 +22,7 @@ react의 경우는 react-docgen 등을 사용하면 컴포넌트 소스로 문�
 뿐만 아니라 컴포넌트의 동적인 움직임에 대해 웹서버를 띄우지 않고도 디자이너와 편리하게 협업도 가능하다.
 <br/>
 <br/>
-개인적인 프로젝트보다는 크고 여러명이 같이 협업하는 프로젝트에 매우 유용할 것 같다. 
+개인적인 프로젝트보다는 크고 여러명이 같이 협업하는 프로젝트에 매우 유용할 것 같다.  
 조만간 회사에서 새로운 프로젝트에 투입될 것 같은데 이야기 꺼내봐야지.  
 <br/>
 <br/>

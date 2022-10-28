@@ -4,7 +4,7 @@ date : 2021.06.30
 ---
 
 ## SemVer
-SemVer : Semantic Versioning
+**SemVer : Semantic Versioning**  
 SemVer 이란 소프트웨어 릴리즈 버전 넘버에 대한 네이밍 시스템으로  
 버전 형식에 의미를 부여해 체계적인 버전 관리를 위한 방식이다.
 

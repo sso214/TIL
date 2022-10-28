@@ -1,6 +1,8 @@
 ---
-title: 관심있는 개발 블로그 및 github
+title: 기술 블로그들과 github
 ---
+
+# 기술 블로그들과 github
 
 ## 개인
 * [피터님](https://chodragon9.github.io/)

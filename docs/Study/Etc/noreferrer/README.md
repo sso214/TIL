@@ -39,6 +39,6 @@ gmail은 이런 공격을 막기 위해 Anchor 태그에 data-saferedirecturl �
   
 
 > 참고  
-> https://blog.coderifleman.com/2017/05/30/tabnabbing_attack_and_noopener/
+> * [Tabnabbing 공격과 rel=noopener 속성](https://blog.coderifleman.com/2017/05/30/tabnabbing_attack_and_noopener/)
 
 
