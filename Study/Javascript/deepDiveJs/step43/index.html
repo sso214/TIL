@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>43장. Ajax | sso214&#39;s TIL</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Today I Learned">
+    
+    <link rel="preload" href="/TIL/assets/css/0.styles.dd5ac3b9.css" as="style"><link rel="preload" href="/TIL/assets/js/app.f9e688c1.js" as="script"><link rel="preload" href="/TIL/assets/js/2.f771dbe5.js" as="script"><link rel="preload" href="/TIL/assets/js/89.56e734b9.js" as="script"><link rel="prefetch" href="/TIL/assets/js/10.f47f9410.js"><link rel="prefetch" href="/TIL/assets/js/100.ddb16764.js"><link rel="prefetch" href="/TIL/assets/js/101.541c4da6.js"><link rel="prefetch" href="/TIL/assets/js/102.f0336a50.js"><link rel="prefetch" href="/TIL/assets/js/103.138dd674.js"><link rel="prefetch" href="/TIL/assets/js/104.64ec2866.js"><link rel="prefetch" href="/TIL/assets/js/105.ce9c46e5.js"><link rel="prefetch" href="/TIL/assets/js/106.a3de6de1.js"><link rel="prefetch" href="/TIL/assets/js/107.da20dce9.js"><link rel="prefetch" href="/TIL/assets/js/108.e71833f3.js"><link rel="prefetch" href="/TIL/assets/js/109.f9039969.js"><link rel="prefetch" href="/TIL/assets/js/11.ef9a23f0.js"><link rel="prefetch" href="/TIL/assets/js/110.861a8f24.js"><link rel="prefetch" href="/TIL/assets/js/111.96ad2f14.js"><link rel="prefetch" href="/TIL/assets/js/112.a1aa7724.js"><link rel="prefetch" href="/TIL/assets/js/113.a04876d5.js"><link rel="prefetch" href="/TIL/assets/js/114.45ff9fbe.js"><link rel="prefetch" href="/TIL/assets/js/115.2d4401df.js"><link rel="prefetch" href="/TIL/assets/js/116.26c179bd.js"><link rel="prefetch" href="/TIL/assets/js/117.f78e82e3.js"><link rel="prefetch" href="/TIL/assets/js/118.a8085e55.js"><link rel="prefetch" href="/TIL/assets/js/119.0d1e889b.js"><link rel="prefetch" href="/TIL/assets/js/12.4fb4905c.js"><link rel="prefetch" href="/TIL/assets/js/120.a83cd4f9.js"><link rel="prefetch" href="/TIL/assets/js/121.46cfbad6.js"><link rel="prefetch" href="/TIL/assets/js/122.dd3fa5e7.js"><link rel="prefetch" href="/TIL/assets/js/123.9fcf58c7.js"><link rel="prefetch" href="/TIL/assets/js/124.ef46d363.js"><link rel="prefetch" href="/TIL/assets/js/125.1869683c.js"><link rel="prefetch" href="/TIL/assets/js/126.b0c11642.js"><link rel="prefetch" href="/TIL/assets/js/127.47f5e3e3.js"><link rel="prefetch" href="/TIL/assets/js/128.fcd66afb.js"><link rel="prefetch" href="/TIL/assets/js/129.679c9117.js"><link rel="prefetch" href="/TIL/assets/js/13.f73cf031.js"><link rel="prefetch" href="/TIL/assets/js/130.b5bf4eea.js"><link rel="prefetch" href="/TIL/assets/js/131.89a7994e.js"><link rel="prefetch" href="/TIL/assets/js/132.b933e2bf.js"><link rel="prefetch" href="/TIL/assets/js/133.ab6f8036.js"><link rel="prefetch" href="/TIL/assets/js/134.1a473eed.js"><link rel="prefetch" href="/TIL/assets/js/135.d93fd680.js"><link rel="prefetch" href="/TIL/assets/js/136.26383400.js"><link rel="prefetch" href="/TIL/assets/js/137.c2cfe467.js"><link rel="prefetch" href="/TIL/assets/js/138.b98b93dd.js"><link rel="prefetch" href="/TIL/assets/js/139.5ec2df9b.js"><link rel="prefetch" href="/TIL/assets/js/14.5ef41c49.js"><link rel="prefetch" href="/TIL/assets/js/140.2516ecec.js"><link rel="prefetch" href="/TIL/assets/js/141.3f9b9cdd.js"><link rel="prefetch" href="/TIL/assets/js/142.83873ad9.js"><link rel="prefetch" href="/TIL/assets/js/143.e3e5d1b1.js"><link rel="prefetch" href="/TIL/assets/js/144.ec272627.js"><link rel="prefetch" href="/TIL/assets/js/145.75c48965.js"><link rel="prefetch" href="/TIL/assets/js/146.dcae26d9.js"><link rel="prefetch" href="/TIL/assets/js/147.984ed7cd.js"><link rel="prefetch" href="/TIL/assets/js/148.7c56d4c6.js"><link rel="prefetch" href="/TIL/assets/js/149.5cdf91ce.js"><link rel="prefetch" href="/TIL/assets/js/15.995d28da.js"><link rel="prefetch" href="/TIL/assets/js/150.498e8a11.js"><link rel="prefetch" href="/TIL/assets/js/151.7061e665.js"><link rel="prefetch" href="/TIL/assets/js/152.6eecd3d9.js"><link rel="prefetch" href="/TIL/assets/js/153.0f6d456a.js"><link rel="prefetch" href="/TIL/assets/js/154.4aa7ab6d.js"><link rel="prefetch" href="/TIL/assets/js/155.e9b07ba1.js"><link rel="prefetch" href="/TIL/assets/js/156.115f9f36.js"><link rel="prefetch" href="/TIL/assets/js/157.6582ac0b.js"><link rel="prefetch" href="/TIL/assets/js/158.8786e9f0.js"><link rel="prefetch" href="/TIL/assets/js/159.da9c323b.js"><link rel="prefetch" href="/TIL/assets/js/16.a5b45ecf.js"><link rel="prefetch" href="/TIL/assets/js/160.3c9356e4.js"><link rel="prefetch" href="/TIL/assets/js/161.72241bf1.js"><link rel="prefetch" href="/TIL/assets/js/162.34bd5f55.js"><link rel="prefetch" href="/TIL/assets/js/163.30e40e7c.js"><link rel="prefetch" href="/TIL/assets/js/164.97799ef3.js"><link rel="prefetch" href="/TIL/assets/js/165.29b93886.js"><link rel="prefetch" href="/TIL/assets/js/17.d72c01e6.js"><link rel="prefetch" href="/TIL/assets/js/18.447c505b.js"><link rel="prefetch" href="/TIL/assets/js/19.6c048798.js"><link rel="prefetch" href="/TIL/assets/js/20.1f985ee0.js"><link rel="prefetch" href="/TIL/assets/js/21.491825f7.js"><link rel="prefetch" href="/TIL/assets/js/22.c5be7d75.js"><link rel="prefetch" href="/TIL/assets/js/23.6f3ff941.js"><link rel="prefetch" href="/TIL/assets/js/24.27162c67.js"><link rel="prefetch" href="/TIL/assets/js/25.90d6c24c.js"><link rel="prefetch" href="/TIL/assets/js/26.0b39228b.js"><link rel="prefetch" href="/TIL/assets/js/27.82a0f40f.js"><link rel="prefetch" href="/TIL/assets/js/28.2644587a.js"><link rel="prefetch" href="/TIL/assets/js/29.34074a02.js"><link rel="prefetch" href="/TIL/assets/js/3.076ff747.js"><link rel="prefetch" href="/TIL/assets/js/30.3a731de4.js"><link rel="prefetch" href="/TIL/assets/js/31.a8b576d4.js"><link rel="prefetch" href="/TIL/assets/js/32.1987eb46.js"><link rel="prefetch" href="/TIL/assets/js/33.eb4531d1.js"><link rel="prefetch" href="/TIL/assets/js/34.4ade04e1.js"><link rel="prefetch" href="/TIL/assets/js/35.f82e864e.js"><link rel="prefetch" href="/TIL/assets/js/36.031c9dd4.js"><link rel="prefetch" href="/TIL/assets/js/37.88e21a96.js"><link rel="prefetch" href="/TIL/assets/js/38.ccc33b45.js"><link rel="prefetch" href="/TIL/assets/js/39.4e352e7b.js"><link rel="prefetch" href="/TIL/assets/js/4.e3ffd4e9.js"><link rel="prefetch" href="/TIL/assets/js/40.80cb32c4.js"><link rel="prefetch" href="/TIL/assets/js/41.0e7011c0.js"><link rel="prefetch" href="/TIL/assets/js/42.52451a6b.js"><link rel="prefetch" href="/TIL/assets/js/43.e7150500.js"><link rel="prefetch" href="/TIL/assets/js/44.425511a5.js"><link rel="prefetch" href="/TIL/assets/js/45.c8a5a88f.js"><link rel="prefetch" href="/TIL/assets/js/46.251b8c38.js"><link rel="prefetch" href="/TIL/assets/js/47.eb741fd6.js"><link rel="prefetch" href="/TIL/assets/js/48.e741df21.js"><link rel="prefetch" href="/TIL/assets/js/49.03d4fea0.js"><link rel="prefetch" href="/TIL/assets/js/5.ec0e461c.js"><link rel="prefetch" href="/TIL/assets/js/50.36ad14f7.js"><link rel="prefetch" href="/TIL/assets/js/51.c868c42e.js"><link rel="prefetch" href="/TIL/assets/js/52.fe63d705.js"><link rel="prefetch" href="/TIL/assets/js/53.e10b3cb0.js"><link rel="prefetch" href="/TIL/assets/js/54.1158f2c4.js"><link rel="prefetch" href="/TIL/assets/js/55.f24730af.js"><link rel="prefetch" href="/TIL/assets/js/56.24bddef0.js"><link rel="prefetch" href="/TIL/assets/js/57.2ea4417f.js"><link rel="prefetch" href="/TIL/assets/js/58.039d3107.js"><link rel="prefetch" href="/TIL/assets/js/59.84c37526.js"><link rel="prefetch" href="/TIL/assets/js/6.f401999e.js"><link rel="prefetch" href="/TIL/assets/js/60.717ad78e.js"><link rel="prefetch" href="/TIL/assets/js/61.02dac972.js"><link rel="prefetch" href="/TIL/assets/js/62.c9dfd9d7.js"><link rel="prefetch" href="/TIL/assets/js/63.0cc9b324.js"><link rel="prefetch" href="/TIL/assets/js/64.1d9d16e6.js"><link rel="prefetch" href="/TIL/assets/js/65.bb18a4c7.js"><link rel="prefetch" href="/TIL/assets/js/66.8c0a8938.js"><link rel="prefetch" href="/TIL/assets/js/67.e494060d.js"><link rel="prefetch" href="/TIL/assets/js/68.f3a05199.js"><link rel="prefetch" href="/TIL/assets/js/69.7423de44.js"><link rel="prefetch" href="/TIL/assets/js/7.8e298897.js"><link rel="prefetch" href="/TIL/assets/js/70.ec8cd6f7.js"><link rel="prefetch" href="/TIL/assets/js/71.a7cbf400.js"><link rel="prefetch" href="/TIL/assets/js/72.77e1a947.js"><link rel="prefetch" href="/TIL/assets/js/73.263adae3.js"><link rel="prefetch" href="/TIL/assets/js/74.d6885f6e.js"><link rel="prefetch" href="/TIL/assets/js/75.dbe2b5b4.js"><link rel="prefetch" href="/TIL/assets/js/76.de4b476b.js"><link rel="prefetch" href="/TIL/assets/js/77.d9769285.js"><link rel="prefetch" href="/TIL/assets/js/78.2becc0ec.js"><link rel="prefetch" href="/TIL/assets/js/79.fb13603f.js"><link rel="prefetch" href="/TIL/assets/js/8.cb9c5b27.js"><link rel="prefetch" href="/TIL/assets/js/80.442d805c.js"><link rel="prefetch" href="/TIL/assets/js/81.77dc18c4.js"><link rel="prefetch" href="/TIL/assets/js/82.d6b36fe3.js"><link rel="prefetch" href="/TIL/assets/js/83.32c87fba.js"><link rel="prefetch" href="/TIL/assets/js/84.71870a5b.js"><link rel="prefetch" href="/TIL/assets/js/85.dc7a35ca.js"><link rel="prefetch" href="/TIL/assets/js/86.6a68a564.js"><link rel="prefetch" href="/TIL/assets/js/87.0dbbbec1.js"><link rel="prefetch" href="/TIL/assets/js/88.d5978c78.js"><link rel="prefetch" href="/TIL/assets/js/9.abe93009.js"><link rel="prefetch" href="/TIL/assets/js/90.ffc2aba1.js"><link rel="prefetch" href="/TIL/assets/js/91.dbb61d6c.js"><link rel="prefetch" href="/TIL/assets/js/92.8e0a5413.js"><link rel="prefetch" href="/TIL/assets/js/93.f013ac8b.js"><link rel="prefetch" href="/TIL/assets/js/94.5862a8b3.js"><link rel="prefetch" href="/TIL/assets/js/95.dc1f47ed.js"><link rel="prefetch" href="/TIL/assets/js/96.3f9b18ae.js"><link rel="prefetch" href="/TIL/assets/js/97.f97a0ac0.js"><link rel="prefetch" href="/TIL/assets/js/98.62be6a02.js"><link rel="prefetch" href="/TIL/assets/js/99.4e63f272.js">
+    <link rel="stylesheet" href="/TIL/assets/css/0.styles.dd5ac3b9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/TIL/" class="home-link router-link-active"><!----> <span class="site-name">sso214's TIL</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/TIL/study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/TIL/log/" class="nav-link">
+  Log
+</a></div><div class="nav-item"><a href="/TIL/memo/" class="nav-link">
+  Memo
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="sso214" class="dropdown-title"><span class="title">sso214</span> <span class="arrow down"></span></button> <button type="button" aria-label="sso214" class="mobile-dropdown-title"><span class="title">sso214</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TIL/info/" class="nav-link">
+  Info
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/sso214" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/TIL/study/" class="nav-link">
+  Study
+</a></div><div class="nav-item"><a href="/TIL/log/" class="nav-link">
+  Log
+</a></div><div class="nav-item"><a href="/TIL/memo/" class="nav-link">
+  Memo
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="sso214" class="dropdown-title"><span class="title">sso214</span> <span class="arrow down"></span></button> <button type="button" aria-label="sso214" class="mobile-dropdown-title"><span class="title">sso214</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TIL/info/" class="nav-link">
+  Info
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/sso214" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/TIL/Study/" aria-current="page" class="sidebar-link">Study</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Canvas</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Django</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Etc</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Interview</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>React</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ReactNative</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>TypeScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nodeJs</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_43장-ajax"><a href="#_43장-ajax" class="header-anchor">#</a> 43장. Ajax</h1> <h2 id="_1-ajax란"><a href="#_1-ajax란" class="header-anchor">#</a> 1. Ajax란?</h2> <ul><li><p>자바스크립트를 사용해 브라우저가 서버에게 비동기 방식으로 데이터를 요청하고,<br>
+서버가 응답한 데이터를 수신하여 웹페이지를 동적으로 갱신하는 프로그래밍 방식</p></li> <li><p>Ajax는 브라우저에서 제공하는 Web API인 XMLHttpRequest 객체를 기반으로 동작함<br>
+XMLHttpRequest는 HTTP 비동기 통신을 위한 메서드와 프로퍼티를 제공함</p></li> <li><p>1999년 마이크로소프트가 개발한 XMLHttpRequest는 주목을 받지 못하다가<br>
+2005년 구글이 발표한 구글 맵스를 통해 자바스크립트의 가능성을 확인하는 계기를 마련함<br>
+자바스크립트와 Ajax를 기반으로 동작하는 구글 맵스가 데스크톱 애플리케이션과<br>
+비교해 손색이 없을 정도의 퍼포먼스와 부드러운 화면 전환 효과를 보여준 것</p></li> <li><p>이전의 웹페이지는 화면 전환 시 서버로부터 새로운 HTML을 전송받아<br>
+웹페이지 전체를 처음부터 다시 렌더링하는 전통적인 방식 방식 사용함</p> <ul><li>완전한 HTML을 매번 다시 전송받기 때문에 불필요한 데이터 통신 발생</li> <li>변경할 필요가 없는 부분까지 처음부터 다시 렌더링 함 -&gt; 화면 전환 시 순간적으로 깜박이는 현상 발생</li> <li>클라이언트와 서버와의 통신이 동기 방식으로 동작하기 때문에 응답이 있을 때까지 다음 처리는 블로킹 됨</li></ul></li> <li><p>Ajax의 등장은 이전의 전통적인 패러다임을 획기적으로 전환함<br>
+서버로부터 필요한 데이터만 비동기 방식으로 전송받아 변경할 필요가 있는 부분만 한정적으로 렌더링하는 방식.<br>
+=&gt; 브라우저에서도 데스크톱 애플리케이션과 유사한 빠른 퍼포먼스와 부드러운 화면 전환이 가능해짐</p></li> <li><p>전통적인 방식과 비교했을 때 Ajax의 장점</p> <ul><li>필요한 데이터만 서버로부터 전송받기 때문에 불필요한 데이터 통신이 발생하지 않음</li> <li>불필요한 부분은 다시 렌더링하지 않음 =&gt; 따라 순간적으로 깜박이는 현상이 발생하지 않음</li> <li>서버와의 통신이 비동기 방식으로 동작하기 때문에 블로킹이 발생하지 않음</li></ul></li></ul> <h2 id="_2-json"><a href="#_2-json" class="header-anchor">#</a> 2. JSON</h2> <ul><li>JavaScript Object Notation</li> <li>클라이언트와 서버 간의 HTTP 통신을 위한 텍스트 데이터 포맷</li> <li>자바스크립트에 종속되지 않는 언어 독립형 데이터 포맷으로,<br>
+대부분의 프로그래밍 언어에서 사용 가능</li></ul> <h3 id="_2-1-json-표기-방식"><a href="#_2-1-json-표기-방식" class="header-anchor">#</a> 2-1. JSON 표기 방식</h3> <ul><li>JSON은 자바스크립트의 객체 리터럴과 유사하게 키와 값으로 구성된 순수한 텍스트</li> <li>키는 반드시 큰따옴표(작은따옴표 사용 불가)로 묶어야 함<br>
+값은 객체 리터럴과 같은 표기법을 그대로 사용 가능<br>
+하지만 문자열은 반드시 큰따옴표(작은따옴표 사용 불가)로 묶어야 함</li></ul> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Lee&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;age&quot;</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;alive&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;hobby&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;traveling&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;tennis&quot;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_2-2-json-stringify"><a href="#_2-2-json-stringify" class="header-anchor">#</a> 2-2. JSON.stringify</h3> <ul><li>JSON.stringify 메서드는 객체와 배열을 JSON 포맷의 문자열로 변환함</li> <li>클라이언트가 서버로 객체를 전송하려면 객체를 문자열화해야 하는데 이를 직렬화라고 함</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Lee'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">alive</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">hobby</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'traveling'</span><span class="token punctuation">,</span> <span class="token string">'tennis'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 객체를 JSON 포맷의 문자열로 변환한다.</span>
+<span class="token keyword">const</span> json <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> json<span class="token punctuation">,</span> json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// string {&quot;name&quot;:&quot;Lee&quot;,&quot;age&quot;:20,&quot;alive&quot;:true,&quot;hobby&quot;:[&quot;traveling&quot;,&quot;tennis&quot;]}</span>
+
+<span class="token comment">// 객체를 JSON 포맷의 문자열로 변환하면서 들여쓰기 한다.</span>
+<span class="token keyword">const</span> prettyJson <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> prettyJson<span class="token punctuation">,</span> prettyJson<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+string {
+    &quot;name&quot;: &quot;Lee&quot;,
+    &quot;age&quot;: 20,
+    &quot;alive&quot;: true,
+    &quot;hobby&quot;: [
+        &quot;traveling&quot;,
+        &quot;tennis&quot;
+    ]
+}
+*/</span>
+
+<span class="token comment">// replacer 함수. 값의 타입이 Number이면 필터링되어 반환되지 않는다.</span>
+<span class="token keyword">function</span> <span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// undefined: 반환하지 않음</span>
+    <span class="token keyword">return</span> <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">?</span> <span class="token keyword">undefined</span> <span class="token operator">:</span> value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// JSON.stringify 메서드에 두 번째 인수로 replacer 함수를 전달한다.</span>
+<span class="token keyword">const</span> strFilteredObject <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> filter<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> strFilteredObject<span class="token punctuation">,</span> strFilteredObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+string {
+    &quot;name&quot;: &quot;Lee&quot;,
+    &quot;alive&quot;: true,
+    &quot;hobby&quot;: [
+        &quot;traveling&quot;,
+        &quot;tennis&quot;
+    ]
+}
+*/</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> todos <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'HTML'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'CSS'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'JavaScript'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 배열을 JSON 포맷의 문자열로 변환한다.</span>
+<span class="token keyword">const</span> json <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>todos<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> json<span class="token punctuation">,</span> json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+string [
+    {
+        &quot;id&quot;: 1,
+        &quot;content&quot;: &quot;HTML&quot;,
+        &quot;completed&quot;: false
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;content&quot;: &quot;CSS&quot;,
+        &quot;completed&quot;: true
+    },
+    {
+        &quot;id&quot;: 3,
+        &quot;content&quot;: &quot;JavaScript&quot;,
+        &quot;completed&quot;: false
+    }
+]
+*/</span>
+</code></pre></div><h3 id="_2-3-json-parse"><a href="#_2-3-json-parse" class="header-anchor">#</a> 2-3. JSON.parse</h3> <ul><li>JSON 포맷의 문자열을 객체로 변환함</li> <li>서버로부터 클라이언트에게 전송된 JSON 데이터는 문자열.<br>
+이 문자열을 객체로 사용하려면 JSON 포맷의 문자열을 개체화해야 함 (=역직렬화)<div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Lee'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">alive</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hobby</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'traveling'</span><span class="token punctuation">,</span> <span class="token string">'tennis'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 객체를 JSON 포맷의 문자열로 변환한다.</span>
+<span class="token keyword">const</span> json <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// JSON 포맷의 문자열을 객체로 변환한다.</span>
+<span class="token keyword">const</span> parsed <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> parsed<span class="token punctuation">,</span> parsed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// object {name: &quot;Lee&quot;, age: 20, alive: true, hobby: [&quot;traveling&quot;, &quot;tennis&quot;]}</span>
+</code></pre></div></li> <li>배열이 JSON 포맷의 문자열로 변환되어 있는 경우 JSON.parse는 문자열을 배열 객체로 변환함<br>
+배열의 요소가 객체인 경우 배열의 요소까지 객체로 변환함<div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> todos <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'HTML'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'CSS'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'JavaScript'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 배열을 JSON 포맷의 문자열로 변환한다.</span>
+<span class="token keyword">const</span> json <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// JSON 포맷의 문자열을 배열로 변환한다. 배열의 요소까지 객체로 변환된다.</span>
+<span class="token keyword">const</span> parsed <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> parsed<span class="token punctuation">,</span> parsed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+object [
+{ id: 1, content: 'HTML', completed: false },
+{ id: 2, content: 'CSS', completed: true },
+{ id: 3, content: 'JavaScript', completed: false }
+]
+*/</span>
+</code></pre></div></li></ul> <h2 id="_3-xmlhttprequest"><a href="#_3-xmlhttprequest" class="header-anchor">#</a> 3. XMLHttpRequest</h2> <ul><li>브라우저는 주소창이나 HTML의 form, a 태그를 통해 HTTP 요청 전송 기능을 기본 제공함</li> <li>자바스크립트를 사용해 HTTP 요청을 전송하려면 XMLHttpRequest 객체를 사용함</li> <li>XMLHttpRequest 객체는 브라우저에서 제공하는 Web API</li> <li>HTTP 요청 전송과 HTTP 응답 수신을 위한 다양한 메서드와 프로퍼티를 제공함</li></ul> <h3 id="_3-1-xmlhttprequest-객체-생성"><a href="#_3-1-xmlhttprequest-객체-생성" class="header-anchor">#</a> 3-1. XMLHttpRequest 객체 생성</h3> <ul><li>XMLHttpRequest 생성자 함수를 호출해 생성함</li> <li>XMLHttpRequest 객체는 Web API 이므로 브라우저 환경에서만 정상적으로 실행됨</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//XMLHttpRequest 객체의 생성</span>
+<span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="_3-2-xmlhttprequest-객체의-프로퍼티와-메서드"><a href="#_3-2-xmlhttprequest-객체의-프로퍼티와-메서드" class="header-anchor">#</a> 3-2. XMLHttpRequest 객체의 프로퍼티와 메서드</h3> <h4 id="xmlhttprequest-객체의-프로토타입-프로퍼티"><a href="#xmlhttprequest-객체의-프로토타입-프로퍼티" class="header-anchor">#</a> &lt;XMLHttpRequest 객체의 프로토타입 프로퍼티&gt;</h4> <ul><li><strong>readyState</strong><br>
+HTTP 요청의 현재 상태를 나타내는 정수<br>
+아래와 같은 XMLHttpRequest 정적 프로퍼티를 값으로 가짐<br>
+UNSENT: 0, OPENED: 1, HEADERS_RECEIVED: 2, LOADING: 3, DONE: 4</li> <li><strong>status</strong><br>
+HTTP 요청에 대한 응답 상태(HTTP 상태 코드)를 나타내는 정수 (ex.200)</li> <li><strong>statusText</strong><br>
+HTTP 요청에 대한 응답 메시지를 나타내는 문자열 (ex. &quot;OK&quot;)</li> <li><strong>responseType</strong><br>
+HTTP 응답 타입 (ex. document, json, text, blob, arraybuffer)</li> <li><strong>response</strong><br>
+HTTP 요청에 대한 응답 몸체(response body).<br>
+responseType에 따라 타입이 다름</li> <li><strong>responseText</strong><br>
+서버가 전송한 HTTP 요청에 대한 응답 문자열</li></ul> <h4 id="xmlhttprequest-객체의-이벤트-핸들러-프로퍼티"><a href="#xmlhttprequest-객체의-이벤트-핸들러-프로퍼티" class="header-anchor">#</a> &lt;XMLHttpRequest 객체의 이벤트 핸들러 프로퍼티&gt;</h4> <ul><li><strong>onreadystatechange</strong><br>
+readyState 프로퍼티 값이 변경된 경우</li> <li><strong>onloadstart</strong><br>
+HTTP 요청에 대한 응답을 받기 시작한 경우</li> <li><strong>onprogress</strong><br>
+HTTP 요청에 대한 응답을 받는 도중 주기적으로 발생</li> <li><strong>onabort</strong><br>
+abort 메서드에 의해 HTTP 요청이 중단된 경우</li> <li><strong>onerror</strong><br>
+HTTP 요청에 에러가 발생한 경우</li> <li><strong>onload</strong><br>
+HTTP 요청이 성공적으로 완료한 경우</li> <li><strong>ontimeout</strong><br>
+HTTP 요청 시간이 초과한 경우</li> <li><strong>onloadend</strong><br>
+HTTP 요청이 완료한 경우. HTTP 요청이 성공 또는 실패하면 발생</li></ul> <h4 id="xmlhttprequest-객체의-메서드"><a href="#xmlhttprequest-객체의-메서드" class="header-anchor">#</a> &lt;XMLHttpRequest 객체의 메서드&gt;</h4> <ul><li><strong>open</strong><br>
+HTTP 요청 초기화</li> <li><strong>send</strong><br>
+HTTP 요청 전송</li> <li><strong>abort</strong><br>
+이미 전송된 HTTP 요청 중단</li> <li><strong>setRequestHeader</strong><br>
+특정 HTTP 요청 헤더의 값을 설정</li> <li><strong>getResponseHeader</strong><br>
+특정 HTTP 요청 헤더의 값을 문자열로 반환</li></ul> <h4 id="xmlhttprequest-객체의-정적-프로퍼티"><a href="#xmlhttprequest-객체의-정적-프로퍼티" class="header-anchor">#</a> &lt;XMLHttpRequest 객체의 정적 프로퍼티&gt;</h4> <ul><li><strong>UNSENT</strong> : 0 : open 메서드 호출 이전</li> <li><strong>OPENED</strong> : 1 : open 메서드 호출 이후</li> <li><strong>HEADERS_RECEIVED</strong> : 2 : send 메서드 호출 이후</li> <li><strong>LOADING</strong> : 3 : 서버 응답 중(응답 데이터 미완성 상태)</li> <li><strong>DONE</strong> : 4 : 서버 응답 완료</li></ul> <h3 id="_3-3-http-요청-전송"><a href="#_3-3-http-요청-전송" class="header-anchor">#</a> 3-3. HTTP 요청 전송</h3> <p>HTTP 요청을 전송하는 경우 아래 순서를 따름</p> <ol><li>XMLHttpRequest.prototype.open 메서드로 HTTP 요청 초기화</li> <li>필요에 따라 XMLHttpRequest.prototype.setRequestHeader 메서드로<br>
+특정 HTTP 요청의 헤더값을 설정</li> <li>XMLHttpRequest.prototype.send 메서드로 HTTP 요청을 전송</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// XMLHttpRequest 객체 생성</span>
+<span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 초기화</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'/users'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 헤더 설정</span>
+<span class="token comment">// 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json</span>
+xhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'content-type'</span><span class="token punctuation">,</span> <span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 전송</span>
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="xmlhttprequest-prototype-open"><a href="#xmlhttprequest-prototype-open" class="header-anchor">#</a> &lt;XMLHttpRequest.prototype.open&gt;</h4> <ul><li>open 메서드는 서버에 전송할 HTTP 요청을 초기화 함</li> <li>open 메서드를 호출하는 방법<div class="language-js extra-class"><pre class="language-js"><code>xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> url<span class="token punctuation">[</span><span class="token punctuation">,</span> async<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li>method : HTTP 요청 메서드 (&quot;GET&quot;, &quot;POST&quot;, &quot;PUT&quot;, &quot;DELETE&quot; 등)</li> <li>url : HTTP 요청을 전송할 URL</li> <li>async : 비동기 요청 여부. 옵션. 기본값은 true이며 비동기 방식으로 동작함</li></ul></li> <li>HTTP 요청 메서드는 클라이언트가 서버에게 요청의 종류와 목적을 알리는 방법<br>
+주로 5가지 요청 메서드(GET, POST, PUT, PATCH, DELETE 등)를 사용해 CRUD를 구현함</li></ul> <table><thead><tr><th style="text-align:left;">HTTP 요청 메서드</th> <th style="text-align:left;">종류</th> <th style="text-align:left;">목적</th> <th style="text-align:left;">페이로드</th></tr></thead> <tbody><tr><td style="text-align:left;">GET</td> <td style="text-align:left;">index/retrieve</td> <td style="text-align:left;">모든/특정 리소스 취득</td> <td style="text-align:left;">X</td></tr> <tr><td style="text-align:left;">POST</td> <td style="text-align:left;">create</td> <td style="text-align:left;">리소스 생성</td> <td style="text-align:left;">O</td></tr> <tr><td style="text-align:left;">PUT</td> <td style="text-align:left;">replace</td> <td style="text-align:left;">리소스의 전체 교체</td> <td style="text-align:left;">O</td></tr> <tr><td style="text-align:left;">PATCH</td> <td style="text-align:left;">modify</td> <td style="text-align:left;">리소스의 일부 수정</td> <td style="text-align:left;">O</td></tr> <tr><td style="text-align:left;">DELETE</td> <td style="text-align:left;">delete</td> <td style="text-align:left;">모든/특정 리소스 삭제</td> <td style="text-align:left;">X</td></tr></tbody></table> <h4 id="xmlhttprequest-prototype-send"><a href="#xmlhttprequest-prototype-send" class="header-anchor">#</a> &lt;XMLHttpRequest.prototype.send&gt;</h4> <ul><li>send 메서드는 open 메서드로 초기화된 HTTP 요청을 서버에 전송함</li> <li>기본적으로 서버에 전송하는 데이터는 GET, POST 요청 메서드에 따라 전송 방식에 차이 있음
+<ul><li>GET 요청 메서드의 경우 : 데이터를 URL의 일부분인 쿼리 문자열(query string)로 서버에 전송</li> <li>POST 요청 메서드의 경우 : 데이터(페이로드)를 요청 몸체(request body)에 담아 전송</li></ul></li> <li>요청 몸체에 담아 전송할 데이터(페이로드)를 인수로 전달 가능<br>
+(페이로드가 객체인 경우 반드시 JSON.stringify 메서드를 사용해 직렬화한 뒤 전달)<div class="language-js extra-class"><pre class="language-js"><code>xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'HTML'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li> <li>HTTP 요청 메서드가 GET인 경우 페이로드로 전달한 인수는 무시되고 요청 몸체는 null로 설정됨</li></ul> <h4 id="xmlhttprequest-prototype-setrequestheader"><a href="#xmlhttprequest-prototype-setrequestheader" class="header-anchor">#</a> &lt;XMLHttpRequest.prototype.setRequestHeader&gt;</h4> <ul><li>setRequestHeader 메서드는 특정 HTTP 요청의 헤더 값을 설정함</li> <li>반드시 open 메서드를 호출한 이후에 호출해야 함</li> <li>자주 사용하는 HTTP 요청 헤더는 Content-type, Accept가 있음</li> <li>Content-type : 요청 몸체에 담아 전송할 데이터의 MIME 타입 정보를 표현<br>
+아래는 자주 사용되는 MIME 타입
+<table><thead><tr><th style="text-align:left;">MIME 타입</th> <th style="text-align:left;">서브타입</th></tr></thead> <tbody><tr><td style="text-align:left;">text</td> <td style="text-align:left;">text/plain, text/html, text/css, text/javascript</td></tr> <tr><td style="text-align:left;">application</td> <td style="text-align:left;">application/json, application/x-www-form-urlencode</td></tr> <tr><td style="text-align:left;">multipart</td> <td style="text-align:left;">multipart/formed-data</td></tr></tbody></table> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// XMLHttpRequest 객체 생성</span>
+<span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 초기화</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'POST'</span><span class="token punctuation">,</span> <span class="token string">'/users'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 헤더 설정</span>
+<span class="token comment">// 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json</span>
+xhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'content-type'</span><span class="token punctuation">,</span> <span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 전송</span>
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'HTML'</span><span class="token punctuation">,</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li> <li>Accept : 서버가 응답할 데이터의 MIME 타입을 Accept로 지정 가능<br>
+만약 설정하지 않으면 send 메서드가 호출될 때 Accept 헤더가 */*로 전송됨<div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 서버가 응답할 데이터의 MIME 타입 지정: json</span>
+xhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'accept'</span><span class="token punctuation">,</span> <span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li></ul> <h3 id="_3-4-http-응답-처리"><a href="#_3-4-http-응답-처리" class="header-anchor">#</a> 3-4. HTTP 응답 처리</h3> <ul><li>서버가 전송한 응답을 처리하려면 XMLHttpRequest 객체가 발생시키는 이벤트를 캐치해야 함</li> <li>XMLHttpRequest 객체의 이벤트 핸들러 프로퍼티 중 HTTP 요청의 현재 상태를 나타내는 readyState<br>
+프로퍼티 값이 변경된 경우 발생하는 readystatechange 이벤트를 캐치해 HTTP 응답 처리 가능</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// XMLHttpRequest 객체 생성</span>
+<span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 초기화</span>
+<span class="token comment">// https://jsonplaceholder.typicode.com은 Fake REST API를 제공하는 서비스다.</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'https://jsonplaceholder.typicode.com/todos/1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 전송</span>
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// readystatechange 이벤트는 HTTP 요청의 현재 상태를 나타내는 readyState 프로퍼티가</span>
+<span class="token comment">// 변경될 때마다 발생한다.</span>
+xhr<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// readyState 프로퍼티는 HTTP 요청의 현재 상태를 나타낸다.</span>
+  <span class="token comment">// readyState 프로퍼티 값이 4(XMLHttpRequest.DONE)가 아니면 서버 응답이 완료되지 않은 상태다.</span>
+  <span class="token comment">// 만약 서버 응답이 아직 완료되지 않았다면 아무런 처리를 하지 않는다.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>readyState <span class="token operator">!==</span> XMLHttpRequest<span class="token punctuation">.</span><span class="token constant">DONE</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+  
+  <span class="token comment">// status 프로퍼티는 응답 상태 코드를 나타낸다.</span>
+  <span class="token comment">// status 프로퍼티 값이 200이면 정상적으로 응답된 상태이고</span>
+  <span class="token comment">// status 프로퍼티 값이 200이 아니면 에러가 발생한 상태다.</span>
+  <span class="token comment">// 정상적으로 응답된 상태라면 response 프로퍼티에 서버의 응답 결과가 담겨 있다.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>response<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// {userId: 1, id: 1, title: &quot;delectus aut autem&quot;, completed: false}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">,</span> xhr<span class="token punctuation">.</span>status<span class="token punctuation">,</span> xhr<span class="token punctuation">.</span>statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>send 메서드를 통해 HTTP 요청을 서버에 전송하면 서버는 응답을 반환함<br>
+하지만 언제 응답이 클라이언트에 도달할지는 알 수 없음<br>
+따라 readystatechange 이벤트를 통해 HTTP 요청의 현재 상태를 확인해야 함<br>
+readystatechange 이벤트는 HTTP 요청의 현재 상태를 나타내는 readyState 프로퍼티가 변경 시마다 발생함</p> <p>onreadystatechange 이벤트 핸들러 프러퍼티에 할당한 이벤트 핸들러는 HTTP 요청의 현재 상태를 나타내는<br>
+xhr.readyState가 XMLHttpRequest.DONE인지 확인해 서버 응답이 완료되었는지 확인함<br>
+서버의 응답이 완료되면 HTTP 요청에 대한 응답 상태(HTTP 응답 코드)를 확인해 정상처리와 에러처리를 구분함</p> <p>readystatechange 이벤트 대신 load 이벤트를 캐치해도 좋음<br>
+load 이벤트는 HTTP 요청이 성공적으로 완료된 경우 발생함<br>
+따라 load 이벤트를 캐치하는 경우 xhr.readyState가 XMLHttpRequest.DONE인지 확인할 필요 없음</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// XMLHttpRequest 객체 생성</span>
+<span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 초기화</span>
+<span class="token comment">// https://jsonplaceholder.typicode.com은 Fake REST API를 제공하는 서비스다.</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'https://jsonplaceholder.typicode.com/todos/1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// HTTP 요청 전송</span>
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// load 이벤트는 HTTP 요청이 성공적으로 완료된 경우 발생한다.</span>
+xhr<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// status 프로퍼티는 응답 상태 코드를 나타낸다.</span>
+  <span class="token comment">// status 프로퍼티 값이 200이면 정상적으로 응답된 상태이고</span>
+  <span class="token comment">// status 프로퍼티 값이 200이 아니면 에러가 발생한 상태다.</span>
+  <span class="token comment">// 정상적으로 응답된 상태라면 response 프로퍼티에 서버의 응답 결과가 담겨 있다.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>response<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// {userId: 1, id: 1, title: &quot;delectus aut autem&quot;, completed: false}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">,</span> xhr<span class="token punctuation">.</span>status<span class="token punctuation">,</span> xhr<span class="token punctuation">.</span>statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/TIL/assets/js/app.f9e688c1.js" defer></script><script src="/TIL/assets/js/2.f771dbe5.js" defer></script><script src="/TIL/assets/js/89.56e734b9.js" defer></script>
+  </body>
+</html>
