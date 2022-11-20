@@ -8,10 +8,6 @@
 웹 동화책을 만들어보고 싶은 꿈을 가지고 있습니다.<br><br>
 
 꾸준히 성장하고 싶은 마음으로 공부한 내용을 정리하는 블로그입니다.  
-<br>
-
-* email : sojam214@gmail.com
-* github : [https://github.com/sso214](https://github.com/sso214)
 
 <!--
 * motto : 가장 유능한 사람은 가장 배움에 힘쓰는 사람이다.
