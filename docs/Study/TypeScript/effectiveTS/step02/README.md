@@ -1108,5 +1108,151 @@ date : 2023.01.13
 * 따라 인덱스 시그니처에 number를 사용하기보다 Array, 튜플, ArrayLike 타입 사용을 권장함
 
 
-
 ## 17. 변경 관련된 오류 방지를 위해 readonly 사용하기
+```ts
+function arraySum(arr: readonly number[]) {
+    let sum = 0, num;
+    while((num = arr.pop()) !== undefined) {
+        //Error : readonly number[] 형식에 pop 속성이 없습니다.
+        sum += num;
+    }
+    return sum;
+}
+```
+* readonly를 사용하면 변경하면서 발생하는 오류를 방지할 수 있고,  
+  변경이 발생하는 코드도 쉽게 찾을 수 있음
+* `readonly number[]`는 타입이고, `number[]`와 구분되는 몇 가지 특징이 있음 
+  * 배열의 요소를 읽을 수 있지만, 쓸 수는 없음
+  * length를 읽을 수 있지만, 바꿀 수는 없음 (배열을 변경함)
+  * 배열을 변경하는 pop을 비롯한 다른 메서드를 호출할 수 없음
+* `number[]`는 `readonly number[]`보다 기능이 많기 때문에,   
+  `readonly number[]`의 서브타입이 됨.  
+  따라 변경 가능한 배열을 readonly 배열에 할당할 수 있음  
+  (그 반대는 불가능)
+  ```ts
+  const a: number[] = [1,2,3];
+  const b: readonly number[] = a;
+  const c: number[] = b; //Error: readonly number[] 타입은 readonly이므로 변경 가능한 number[] 타입에 할당될 수 없습니다.
+  ```
+  타입 단언문 없이 readonly 접근 제한자를 제거할 수 있다면   
+  readonly는 쓸모없으므로 오류 발생하는게 맞음
+* 매개변수를 readonly로 선언하면 아래와 같은 일이 생김
+  * TS는 매개변수가 함수 내에서 변경이 일어나는지 체크함
+  * 호출하는 쪽에서는 함수가 매개변수를 변경하지 않는다는 보장을 받게 됨
+  * 호출하는 쪽에서 함수에 readonly 배열을 매개변수로 넣을 수도 있음
+* JS/TS에서는 명시적으로 언급하지 않는 한, 함수가 매개변수를 변경하지 않는다고 가정함  
+  그러나 이로인해 타입 체크에 문제가 일어날 수 있음.  
+  따라 명시적인 방법을 사용하는 것이 좋음  
+* 만약 함수가 매개변수를 변경하지 않는다면, readonly로 선언해야 함  
+  더 넓은 타입으로 호출할 수 있고, 의도치 않은 변경은 방지될 것.    
+  즉, readonly 매개변수는 인터페이스를 명확하게 하며, 매개변수가 변경되는 것을 방지함
+* readonly로 선언해서 생긴 단점을 굳이 찾자면   
+  매개변수가 readonly로 선언되지 않은 함수를 호출해야 할 경우도 있다는 것.    
+  만약 함수가 매개변수를 변경하지 않고도 제어가 가능하다면 readonly로 선언하면 됨.  
+  어떤 함수를 readonly로 만들면 그 함수를 호출하는 다른 함수도 모두 readonly로 만들어야하기 때문에  
+  오히려 인터페이스를 명확히 하고 타입 안정성을 높일 수 있음  
+  그러나 타 라이브러리의 함수를 호출하는 경우 타입 선언을 바꿀 수 없으므로 타입 단언문을 사용해야 함   
+* readonly를 사용하면 지역 변수와 관련된 모든 종류의 변경 오류를 방지할 수 있음  
+  ```ts
+  function parseTaggedText(lines: string[]): string[][] {
+    const currPara: readonly string[] = [];
+    const paragraphs: string[][] = [];
+  
+    const addParagraph = () => {
+          if(currPara.length) {
+              paragraphs.push(currPara); //currpara의 내용이 삽입되지 않고 배열의 참조가 삽입됨
+            // Error: readonly string[] 형식의 인수는 string[]형식의 매개변수에 할당될 수 없습니다.
+              currPara.length = 0; //currpara 배열을 비움. 따라 paragraphs 요소에도 변경이 반영됨
+            // Error : 읽기 전용 속성이기 때문에 length에 할당할 수 없습니다.
+          }
+      };
+      
+      for (const line of lines) {
+          if (!line) {
+              addParagraph();
+          } else {
+              currPara.push(line); //readonly string[] 형식에 push 속성이 없습니다.
+          }
+      }
+      addParagraph();
+      return paragraphs;
+  }
+  /*
+  위 코드는 텍스트 문자열을 넣고 실행하면 [[], [], []] 출력이 됨. 오류.
+  문제점은 별칭과 변경을 동시에 사용해 발생함
+  위의 코드는 currPara를 let으로 선언하고 변환없는 메서드를 사용함으로써 오류를 고칠 수 있음  
+  */
+  let currPara: readonly string[] = [];
+  //...
+  currPara = []; //배열을 비움
+  //...
+  currPara = currPara.concat([line]);//concat은 원본을 수정하지 않고 새 배열을 반환함  
+  /*
+  선언부를 const에서 let으로 바꾸고 readonly를 추가함으로써 한쪽의 변경 가능성을 또 다른 쪽으로 옮긴 것.
+  currPara 변수는 이제 가리키는 배열을 자유롭게 변경할 수 있지만, 
+  그 배열 자체는 변경하지 못하게 됨
+  
+  여전히 남아있는 paragraphs에 대한 오류를 바로잡는 방법은 3가지가 있음
+  
+  1. currPara의 복사본을 만드는 방법
+  paragraphs.push([...currPara]);
+  currPara는 readonly로 유지되지만 복사본은 원하는대로 변경이 가능하므로 오류가 사라짐
+  
+  2. paragraphs(그리고 함수의 변환 타입)을 readonly string[]의 배열로 변경하는 방법
+  const paragraphs:(readonly string[])[] = [];
+  여기서 괄호가 중요한데 readonly string[][]은 
+  readonly 배열의 변경 가능한 배열이 아닌 변경 가능한 배열의 readonly 배열이기 때문.
+  이 방법은 동작하지만 해당 함수를 사용하는 사용자에게는 불편할 수 있음
+  이미 함수가 반환한 값에 대해 영향을 끼치는 것이 맞는 방법인지 고민해봐야 함
+  
+  3. 배열의 readonly 속성을 제거하기 위해 단언문을 사용하는 방법
+  paragraphs.push(currPara as string[]);
+  바로 다음 문장에서 currPara를 새 배열에 할당하므로 매우 공격적인 단언문처럼 보이지는 않음
+  */
+  ```
+* readonly는 얕게 동작한다는 것에 유의하며 사용해야 함  
+  만약 객체의 readonly 배열이 있다면, 그 객체 자체는 readonly가 아님
+  ```ts
+  const dates: readonly Date[] = [new Date()];
+  dates.push(new Date()); //readonly Date[] 형식에 push 속성이 없습니다.
+  dates[0].setFullYear(2037); //정상
+  ```
+* 비슷한 경우가 readonly의 사촌격이자 객체에 사용되는 Readonly 제너릭에도 해당됨
+  ```ts
+  interface Outer {
+      inner: {
+          x: number;
+      }
+  }
+  const o: Readonly<Outer> = { inner: {x: 0} };
+  o.inner = {x:1}; //Error: 읽기 전용 속성이기 때문에 inner에 할당할 수 없습니다.
+  o.inner.x = 1; //정상
+  ```
+  타입 별칭을 만든 뒤 정확히 무슨일이 일어나는지 IDE에서 확인할 수 있음
+  ```ts
+  type T = Readonly<Outer>;
+  // Type T = {
+  //     readonly inner: {
+  //        x: number; 
+  //     }
+  // }
+  ```
+* 중요한 것은 readonly 접근제어자는 inner에 적용되는 것이지 x는 아니라느 넋.  
+  현재 시점에는 deep readonly 타입이 기본으로 지원되지 않지만,  
+  제너릭을 만들면 깊은 readonly 타입 사용이 가능함  
+  그러나 제너릭은 만들기 까다롭기 때문에 라이브러리 사용을 권장함  
+  (ts-essentials의 DeepReadonly 제너릭 사용 등)
+* 인덱스 시그니처에도 readonly를 사용할 수 있음  
+  읽기는 허용하되 쓰기를 방지하는 효과가 있음 (객체의 속성이 변경되는 것을 방지) 
+  ```ts
+  let obj: {readonly [k: string]: number} = {};
+  //또는 Readonly<[k: string]: number>
+  obj.hi = 45; //...형식의 인덱스 시그니처는 읽기만 허용됩니다.
+  obj = {...obj, hi:12}; //정상
+  obj = {...obj, bye:34}; //정상
+  ```
+
+
+## 18. 매핑된 타입을 사용하여 값을 동기화하기
+* 매핑된 타입을 사용해 관련된 값과 타입을 동기화하도록 함
+* 인터페이스에 새로운 속성을 추가할 때, 선택을 강제하도록 매핑된 타입을 고려해야 함
