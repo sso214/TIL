@@ -112,3 +112,287 @@ fetchProduct(id);
 
 
 ## 21. 타입 넓히기
+* 런타임에 모든 변수는 유일한 값을 가지지만  
+  타입스크립트 정적 분석 시점에 변수는 '가능한' 값들의 집합인 타입을 가짐  
+* 상수를 사용해 변수를 초기화할 때 타입을 명시하지 않으면 타입 체커는 타입을 결정해야 함  
+  즉, 지정된 단일 값을 가지고 할당 가능한 값들의 집합을 유츄해야 한다는 뜻  
+* 타입스크립트에서는 이런 과정을 '넓히기'라고 부름  
+* 넓히기의 과정을 이해하면 오류의 원인을 파악하고 타입 구문을 더 효과적으로 사용할 수 있음  
+
+
+### 타입 넓히기란?
+```ts
+interface Vercor3 { x: number; y: number; z: number }
+function getComponent(vector: Vercor3, axis: 'x' | 'y' | 'z') {
+  return vector[axis];
+} //런타임에 오류 없이 실행되지만 에디터에서는 오류가 표시됨
+
+let x = 'x';
+let vec = { x:10, y:20, z:30 };
+getComponent(vec, x); //Error: 'string' 형식의 인수는 '"x"| "y"| "z"형식의 매개변수에 할당될 수 없습니다.'
+```
+* getComponent 함수는 두 번째 매개변수에 `'x' | 'y' | 'z'` 타입을 기대했지만,   
+  x의 타입은 할당 시점에 넓히기가 동작해서 string으로 추론됨    
+  string 타입은 `'x' | 'y' | 'z'` 타입에 할당 불가능하므로 오류 발생한 것
+* 타입 넓히기가 진행될 때, 주어진 값으로 추론 가능한 타입이 여러 개이기 때문에 과정이 모호함  
+  `const mixed = ['x', 1];` 여기서 mixed의 타입이 될 수 있는 후보들은 아래와 같음  
+  * `('x' | 1)[]`
+  * `['x', 1]`
+  * `[string, number]`
+  * `readonly [string, number]`
+  * `(string|number)[]`
+  * `readonly (string|number)[]`
+  * `[any, any]`
+  * `any[]`  
+  
+  정보가 충분치 않다면 mixed가 어떤 타입으로 추론되야 하는지 알 수 없으므로  
+  타입스크립트는 작성자의 의도를 추측함  
+  (위의 경우 `(string|number)[]`로 추측함)  
+* 그러나 타입스크립트가 추측한 답이 항상 옳을 수는 없음
+* 타입스크립트는 타입을 추론할 때, 명확성과 유연성 사이의 균형을 유지하려고 함   
+
+### 타입 넓히기 과정을 제어하는 방법
+타입스크립트는 넓히기의 과정을 제어할 수 있도록 몇 가지 방법을 제공함   
+
+#### const 사용
+* let 대신 const로 변수를 선언한다면 더 좁은 타입이 됨  
+  (실제로 const를 사용하면 앞에서 발생한 오류가 해결됨)  
+  ```ts
+  const x = 'x'; //타입이 'x'
+  let vec = {x:10, y:20, z:30};
+  getComponent(vec, x); //정상
+  ```
+* const로 선언된 x는 재할당될 수 없으므로 타입스크립트는 좁은 타입('x')로 추론할 수 있음  
+  따라 문자 리터럴 타입 'x'는 `'x' | 'y' | 'z'`에 할당 가능하므로 코드가 타입 체커를 통과함  
+* 다만 const는 만능이 아님  
+  객체와 배열의 경우 여전히 문제 있음  
+  `const mixed = ['x', 1];`은 배열에 대한 문제를 보여줌  
+  튜플 타입을 추론해야할지, 요소들은 어떤 타입으로 추론해야할지 알 수 없음  
+  비슷한 문제가 객체에서도 발생함  
+* 객체의 경우 타입스크립트의 넓히기 알고리즘은 각 요소를 let으로 할당된 것처럼 다룸  
+  ```ts
+  const v = {
+    x:1,
+  };
+  v.x = 3; //정상
+  v.x = '3'; //Error: "3" 형식은 'number' 형식에 할당할 수 없습니다.
+  v.y = 4; //Error: {x:number}형식에 'y'속성이 없습니다.
+  v.name = 'Pythoagoras'; //Error: {x:number}형식에 'name'속성이 없습니다.
+  ```
+  위 코드는 JS에서 정상.  
+  v의 타입은 구체적인 정도에 따라 다양한 모습으로 추론될 수 있음  
+  객체의 경우 타입스크립트의 넓히기 알고리즘은 각 요소를 let으로 할당된 것처럼 다루기 떄문에 v의 타입은 {x: number}가 됨.    
+  덕분에 v.x를 다른 숫자로 재할당할 수 있지만 string으로는 안되며, 다른 속성을 추가하지도 못함 (객체를 한번에 만들어야 함)    
+  따라 마지막 세 문장에서 위 코드는 오류가 발생함  
+* 
+
+#### 타입스크립트의 기본 동작을 재정의하는 3가지 방법
+타입스크립트는 명확성과 유연성 사이의 균형을 유지하려고 함    
+오류를 잡기 위해서는 충분히 구체적으로 타입을 추론해야 하지만,    
+잘못된 추론을 할 정도로 구체적으로 수행하지는 않음      
+(예를 들면 1과 같은 값으로 초기화되는 속성을 적당히 number 타입으로 추론함)  
+=> 타입 추론의 강도를 직접 제어하려면 타입스크립트의 기본 동작을 재정의해야 함  
+
+1. 명시적 타입 구문을 제공
+  ```ts
+  const v: { x: 1|3|5 }= {
+    x: 1,
+  }; //타입이 { x: 1|3|5 }
+  ```
+2. 타입 체커에 추가적인 문맥을 제공  
+   (예를 들어, 함수의 매개변수로 값을 전달)  
+3. const 단언문을 사용  
+   변수 선언 시 사용하는 const와 다름.   
+   const 단언문은 온전히 타입 공간의 기법.  
+  ```ts
+  const v1 = {
+    x: 1,
+    y: 2
+  }; //타입은 {x:number, y:number}
+  
+  const v2 = {
+    x: 1 as const,
+    y: 2,
+  }; //타입은 {x:1, y:number}
+  
+  const v3 = {
+    x: 1,
+    y: 2,
+  } as const; //타입은 {readonly x:1; readonly y:2;}
+  //v3에는 넓히기가 동작하지 않음  
+  //v3가 진짜 상수라면 주석에 보이는 추론된 타입이 실제로 원하는 형태일 것
+  ```
+  값 뒤에 as const를 작성하면 타입스크립트는 최대한 좁은 타입으로 추론함  
+  또한 배열을 튜플 타입으로 추론할 때도 as const를 사용할 수 있음
+  ```ts
+  const a1 = [1,2,3]; //타입이 number[]
+  const a2 = [1,2,3] as const; //타입이 readonly [1,2,3]
+  ```
+
+### 결론
+* 넓히기로 인해 오류가 발생한다면 명시적 타입 구문 또는 const 단언문 추가를 고려해야 함  
+* 단언문으로 인해 추론이 어떻게 변화하는지 편집기를 통해 주기적으로 타입을 살펴보면 도움됨
+
+
+## 22. 타입 좁히기
+* 타입 넓히기의 반대는 타입 좁히기
+* 타입스크립트가 넓은 타입으로부터 좁은 타입으로 진행하는 과정을 뜻함
+* 가장 일반적인 예시는 null 체크
+  ```ts
+  const el = document.getElementById('foo'); //타입이 HTMLElement | null
+  if(el) {
+    el //타입이 HTMLElement
+    el.innerHTML = 'Party Time'.blink();
+  } else {
+    el //타입이 null
+    alert('No element #foo'); 
+  }
+  ```
+  만약 el이 null이라면, 분기문의 첫 번째 블록이 실행되지 않음  
+  즉, 첫 번째 블록에서 null을 제외하므로 더 좁은 타입이 되어 작업이 훨씬 편해짐  
+* 타입 체커는 일반적으로 이런 조건문에서 타입 좁히기를 잘해내지만,  
+  타입 별칭이 존재한다면 그러지 못할 수도 있음 
+
+
+### 기본적인 타입 좁히기
+* 분기문에서 예외를 던지거나 함수를 반환해 블록의 나머지 부분에서 변수의 타입을 좁힐 수도 있음  
+  ```ts
+  const el = document.getElementById('foo'); //타입이 HTMLElement | null
+  if(!el) throw new Error('Unable to find #foo'); 
+  el; //이제 타입은 HTMLElement
+  el.innerHTML = 'Party Time'.blink();
+  ```
+* instanceof를 사용해 타입을 좁힐 수도 있음
+  ```ts
+  function contains(text: string, search: string | RegExp) {
+    if(search instanceof RegExp) {
+      search; //타입이 RegExp
+      return !!search.exec(text);
+    }
+    search; //타입이 string
+    return text.includes(search);
+  }
+  ```
+* 속성 체크로 타입을 좁힐 수도 있음
+  ```ts
+  interface A {a:number}
+  interface B {b:number}
+  function pickAB(ab: A | B) {
+    if('a' in ab) {
+      ab //타입이 A
+    } else {
+      ab //타입이 B
+    }
+    ab //타입이 A | B
+  }
+  ```
+* Array.isArray 같은 일부 내장 함수로 타입 좁힐 수 있음
+  ```ts
+  function contains(text:string, terms: string|string[]) {
+    const termList = Array.isArray(terms) ? terms : [terms];
+    termList; //타입이 string[]
+  }
+  ```
+* 이 외에도 타입을 좁히는 방법은 많음
+
+### 태그된/구별된 유니온과 사용자 정의 타입 가드를 사용한 타입 좁히기
+* 타입스크립트는 일반적으로 조건문에서 타입을 좁히는데 매우 능숙함  
+  그러나 타입을 섣불리 판단하는 실수를 저지르기 쉬우므로 꼼꼼히 따져봐야 함  
+  예를 들어 밑의 코드는 유니온 타입에서 null을 제외하기 위해 잘못된 방법을 사용함
+  ```ts
+  const el = document.getElementById('foo'); //타입이 HTMLElement | null
+  if(typeof el === 'object') {
+    el; //타입이 HTMLElement | null
+  }
+  ```
+  JS에서 typeof null이 'object' 타입이기 떄문에 if 구문에서 null이 제외되지 않음  
+  또한 기본형 값이 잘못되어도 비슷한 사례 발생함
+  ```ts
+  function foo(x?: number | string | null) {
+    if(!x) {
+      x; //타입이 number | string | null | undefined
+    }
+  }
+  ```
+  빈 문자열과 0 모두 false가 되기 떄문에, 타입은 좁혀지지 않음  
+* 타입을 좁히는 또 다른 일반적인 방법은 명시적 '태그'를 붙이는 것
+  ```ts
+  interface UploadEvent { type: 'upload', filename: string; contens: string }
+  interface DownloadEvent {type: 'download'; filename: string}
+  type AppEvent = UploadEvent | DownloadEvent;
+  function handleEvent(e: AppEvent) {
+    switch (e.type) {
+      case 'download': 
+        e //타입이 DownloadEvent
+        break;
+      case 'upload':
+        e //타입이 UploadeEvent
+        break;
+    }
+  }
+  ```
+  이 패턴은 '태그된 유니온', '구별된 유니온' 이라고 불리며 타입스크립트 어디에서나 찾아볼 수 있음  
+  만약 타입스크립트가 타입을 식별하지 못한다면 식별을 돕기 위해 커스텀 함수를 도입할 수도 있음 
+  ```ts
+  function isInputElement(el: HTMLElement): el is HTMLInputElement {
+    return 'value' in el;
+  }
+  function getElementContent(el: HTMLElement) {
+    if(isInputElement(el)) {
+      el; //타입이 HTMLInputElement
+      return e.value;
+    }
+    el; //타입이 HTMLELement
+    return el.textContent;
+  }
+  ```
+  이런 기법을 '사용자 정의 타입 가드'라고 함  
+  반환 타입의 `el is HTMLInputElement`는 함수의 반환이 true인 경우,   
+  타입 체커에게 매개변수의 타입을 좁힐 수 있다고 알려줌  
+* 어떤 함수들은 타입 가드를 사용해 배열과 객체의 타입 좁히기를 할 수 있음  
+  예를 들어, 배열에서 어떤 탐색을 수행할 때 undefined가 될 수 있은 타입을 사용할 수 있음
+  ```ts
+  const jackson5 = ['Jackie', 'Tito', 'Jermaine', 'Marlon', 'Michael'];
+  const members = ['Janet', 'Michael'].map(who => jackson5.find(n => n === who)); //타입이 (string | undefined)[]
+  
+  //filter 함수를 사용해 undefined를 걸러내려 해도 잘 동작하지 않음
+  const members2 = ['Janet', 'Michael'].map(who => jackson5.find(n => n === who)).filter(who => who !== undefined); //타입이 (string | undefined)[]
+  
+  //이럴 땐 타입 가드를 사용하면 타입을 좁힐 수 있음
+  function isDefined<T>(x: T | undefined): x is T {
+    return x !== undefined;
+  }
+  const members3 = ['Janet', 'Michael'].map(who => jackson5.find(n => n === who)).filter(isDefined); //타입이 string[]
+  ```
+* IDE에서 타입을 조사하는 습관을 가지면 타입 좁히기가 어떻게 동작하는지 알 수 있음  
+  타입이 어떻게 좁혀지는지 이해해야 타입 추론에 대한 개념을 잡을 수 있고, 오류 발생의 원인을 알 수 있으며,  
+  타입 체커를 더 호율적으로 이용할 수 있음  
+
+
+## 23. 한꺼번에 객체 생성하기
+* 변수의 값은 변경될 수 있지만, 타입스크립트의 타입은 일반적으로 변경되지 않음  
+* 이런 특성 때문에 일부 JS 패턴을 타입스크립트로 모델링하는게 쉬워짐  
+  즉, 객체를 생성할 때는 속성을 하나씩 추가하기보다는 여러 속성을 포함해 한꺼번에 생성해야 타입 추론에 유리함
+  ```ts
+  const pt = {};
+  pt.x = 3; //Error: '{}' 형식에 'x' 속성이 없습니다.
+  pt.y = 4; //Error: '{}' 형식에 'y' 속성이 없습니다.
+  ```
+  타입스크립트에서는 pt 타입이 {} 값을 기준으로 추론되기 떄문에 각 할당문에 오류가 발생함  
+  존재하지 않는 속성을 추가할 수는 없음  
+  인터페이스를 정의하거나 객체를 한번에 정의하면 오류가 해결됨  
+* 객체를 반드시 제각각 나눠 만들어야 한다면, 타입 단언문(as)를 사용해 타입 체커를 통과하게 할 수 있음
+  ```ts
+  interface Point { x: number; y: number; }
+  const pt = {} as Point;
+  pt.x = 3;
+  pt.y = 4; //정상
+  
+  //물론 이 경우에도 선언 시 객체를 한꺼번에 만드는게 더 나음
+  const pt2 = {
+    x: 3,
+    y: 4
+  };
+  ```
+* 작은 객체들을 조합해 큰 객체를 만들어야하는 경우에도 여러 단계를 거치는 것은 좋지 않은 생각.  
+  
