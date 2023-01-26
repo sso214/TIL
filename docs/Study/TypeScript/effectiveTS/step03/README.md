@@ -395,4 +395,78 @@ getComponent(vec, x); //Error: 'string' 형식의 인수는 '"x"| "y"| "z"형식
   };
   ```
 * 작은 객체들을 조합해 큰 객체를 만들어야하는 경우에도 여러 단계를 거치는 것은 좋지 않은 생각.  
+  ```ts
+  const pt = {x: 3, y: 4};
+  const id = {name: 'Pythagoras'};
+  const namedPoint = {};
+  Object.assign(namedPoint, pt, id);
+  namedPoint.name; //Error: '{}' 형식에 'name' 속성이 없습니다.
+  ```
+  객체 전개 연산자(...)를 사용하면 큰 객체를 한꺼번에 만들 수 있음
+  ```ts
+  const namedPoint = {...pt, ...id};
+  namedPoint.name; //정상, 타입이 string
+  ```
+  객체 전개 연산자를 사용하면 타입 걱정 없이 필드 단위로 객체를 생성할 수도 있음  
+  이때 모든 업데이트마다 새 변수를 사용해 각각 새로운 타입을 얻도록 하는게 중요함  
+  ```ts
+  const pt0 = {};
+  const pt1 = {...pt0, x:3};
+  const pt: Point = {...pt1, y:4}; //정상
+  ```
+  이 방법은 객체에 속성을 추가하고 타입스크립트가 새로운 타입을 추론할 수 있게 해 유용함
+* 타입에 안전한 방식으로 조건부 속성을 추가하려면   
+  속성을 추가하지 않는 null 또는 {}로 객체 전개를 사용하면 됨
+  ```ts
+  declare let hasMiddle: boolean;
+  const firstLast = {first: 'Harry', last: 'Truman'};
+  const presidnet = {...firstLast, ...(hasMiddle ? {middle: 'S'} : {})};
+  ```
+  IDE에서 president 심벌에 마우스를 올리면 타입이 선택적 속성을 가진 것으로 추론됨을 확인할 수 있음
+  ```ts
+  const presidnet: {
+      middle?: string;
+      first: string;
+      last: string;
+  }
+  ```
+* 전개 연산자로 한꺼번에 여러 속성을 추가할 수도 있음
+  ```ts
+  declare let hasDates: boolean;
+  const nameTitle = {name: 'Khufu', title: 'Pharaoh'};
+  const pharaoh = {
+    ...nameTitle,
+    ...(hasDates ? {start: -2589, end: -2566} : {})
+  };
   
+  //pharaoh 심벌의 타입은 유니온으로 추론됨
+  // const pharaoh: {
+  //     start: number;
+  //     end: number;
+  //     name: string;
+  //     title: string;
+  // } | {
+  //     name: string;
+  //     title: string;
+  // }
+  
+  //해당 타입에서는 start를 읽을 수 없음
+  pharaoh.start //Error {name: string, title: string} 형식에 start 속성이 없습니다.
+  ```
+  선택적 필드 방식으로 표현하려면 헬퍼 함수를 사용하면 됨
+  ```ts
+  function addOptional<T extends Object, U extends Object>(
+      a: T, b: U | null
+  ): T & Partial<U> {
+      return {...a, ...b};
+  }
+  
+  const pharaoh = addOptional(nameTitle, hasDates ? {start: -2589, end:-2566} : null);
+  pharaoh.start; //정상, 타입이 number | undefined
+  ```
+* 객체나 배열을 변환해 새로운 객체나 배열을 생성하고 싶은 경우 루프 대신   
+  내장된 함수형 기법 또는 Lodash 같은 유틸리티 라이브러리를 사용하는게   
+  '한꺼번에 객체 생성하기' 관점에서 보면 옳음
+
+
+## 24. 일관성 있는 별칭 사용하기
