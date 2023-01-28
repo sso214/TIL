@@ -813,7 +813,7 @@ bbox의 타입은 정확히 유지되지만, polygon.bbox의 값과 같게 유�
 
 ### 문맥의 소실로 인해 발생하는 오류와 해결방안
 
-### 튜플 사용 시 주의점
+#### 튜플 사용 시 주의점
 튜플을 사용하면서 문맥과 값을 분리함
 ```ts
 function panTo(where: [number, number]) {/*...*/}
@@ -834,9 +834,95 @@ any를 사용하지 않고 오류를 고칠 수 있는 방법은
   ```
 2. 상수 문맥을 제공  
    const는 단지 값이 가리키는 참조가 변하지 않는 얕은 상수인 반면,  
-   as const는 그 값이 내부까지 상수라는 사실을 타입스크립트에게 알려줌
+   as const는 그 값이 내부까지 상수라는 사실을 타입스크립트에게 알려줌  
+   loc는 이제 `number[]`가 아닌 `readonly number[]`으로 추론됨    
+   따라 너무 과하게 정확한데 panTo 타입 시그니처는 where의 내용이 불변이라고 보장하지 않음  
+   즉, loc 매개변수가 readonly 타입이므로 동작하지 않음
   ```ts
   const loc = [10,20] as const;
   panTo(loc); 
   //Error: readonly [10,20] 형식은 readonly이며, 변경 가능한 형식 [number,number]에 할당할 수 없습니다.
+  ```    
+  따라 any를 사용하지 않고 오류를 수정할 수 있는 최선의 해결책은   
+  panTo 함수에 readonly 구문을 추가하는 것
+  ```ts
+  function panTo(where: readonly [number, number]) {/*...*/}
+  const loc = [10, 20] as const;
+  panTo(loc); //정상
   ```
+
+타입 시그니처를 수정할 수 없는 경우라면 타입 구문을 사용해야 함  
+`as const`는 문맥 손실과 관련한 문제를 깔끔히 해결 가능하지만,  
+한 가지 단점을 가지고 있음.  
+만약 타입 정의에 실수가 있다면 (ex, 튜플에 세번째 요소를 추가한다면)  
+오류는 타입 정의가 아닌 호출되는 곳에서 발생하게 됨  
+특히 여러겹 중첩된 객체에서 오류가 발생한다면 근본적인 원인 파악이 어려움.
+```ts
+const loc = [10,20,30] as const; //실제 오류가 발생한 곳
+panTo(loc); //Error: readonly[10,20,30] 형식의 인수는 readonly[number, number] 형식의 매개변수에 할당될 수 없습니다.
+```
+
+#### 객체 사용 시 주의점
+문맥에서 값을 분리하는 문제는 문자열 리터럴이나 튜플을 포함하는 큰 객체에서 상수를 뽑아낼 때도 발생함  
+```ts
+type Language = 'JS' | 'TS' | 'Python';
+interface GovernedLangauge {
+    language : Language;
+    organization: string;
+}
+function complain(laguage: GovernedLangauge) {/*...*/}
+const ts = {language: 'TS', organization: 'Microsoft'}
+
+complain({ language: 'TS', organization: 'Microsoft' }); //정상
+complain(ts); //{language: string, organization: string} 형식의 인수는 GovernedLangauge 형식의 매개변수에 할당할 수 없습니다.
+```
+이 문제는 타입 선언을 추가하거나(`const ts:GovernedLangauge = ..`)   
+상수 단언(`as const`)를 사용해 해결함
+
+#### 콜백 사용 시 주의점
+콜백을 다른 함수로 전달할 때, 타입스크립트는 콜백의 매개변수 타입을 추론하기 위해 문맥을 사용함  
+```ts
+//callWithRandomNumbers의 타입 선언으로 인해 a,b의 타입이 number로 추론됨
+function callWithRandomNumbers(fn: (n1: number, n2:number) => void) {
+    fn(Math.random(), Math.random());
+}
+callWithRandomNumbers((a, b) => {
+  a; //타입이 number
+  b; //타입이 number
+  console.log(a + b);
+});
+
+//콜백을 상수로 뽑아내면 문맥이 소실되고 noImplicitAny 오류가 발생함
+const fn = (a,b) => {
+    //a, b 매개변수에는 암시적으로 any 형식이 포함됨
+    console.log(a + b);
+}
+callWithRandomNumbers(fn);
+```
+위와 같은 문제는 매개변수에 타입 구문을 추가해 해결할 수 있고,  
+가능할 경우 전체 함수 표현식에 타입 선언을 적용하는 방법이 있음  
+
+
+### ruffhs
+* 변수를 뽑아 별도로 선언했을 때 오류가 발생한다면 타입 선언을 추가해야 함
+* 변수가 정말 상수라면 상수 단언(`as const`)를 사용해야 함  
+  그러나 상수 단언을 사용하면 정의한 곳이 아닌 사용한 곳에서 오류가 발생하므로 주의해야 함
+
+
+## 27. 함수형 기법과 라이브러리로 타입 흐름 유지하기
+* 수년간 많은 라이브러리들은 표준 라이브러리의 역할을 대신하기 위해 노력함  
+  jQuery는 DOM과의 상호작용 뿐 아니라 객체와 배열을 순회하고 매핑하는 기능을 제공했으며,  
+  Underscore는 주로 일반적인 유틸리티 함수를 제공하는데 초점을 맞췄고,  
+  이런 노력을 바탕으로 Lodash가 만들어짐  
+  Ramda 같은 최근의 라이브러리는 함수형 프로그래밍의 개념을 JS 세계에 도입하고 있음
+* 이런 라이브러리들의 일부 기능은 순수 JS로 구현되어 있음  
+  이런 기법은 루프를 대체할 수 있기 때문에 JS에서 유용하게 사용되는데,  
+  TS와 조합해 사용하면 더욱 빛을 발함  
+  타입 정보가 그대로 유지되면서 타입 흐름이 계속 전달되도록 하기 때문  
+  (반면 직접 루프를 구현하면 타입 체크에 대한 관리도 직접해야 함)
+* JS에서는 프로젝트에 서드파티 라이브러리 종속성을 추가할 때 신중해야 함  
+  서드파티 라이브러리 기반으로 코드를 짧게 줄이는데 시간이 많이 소요된다면 사용하지 않는게 낫기 때문  
+  그러나 같은 코들르 TS로 작성한다면 서드파티 라이브러리를 사용하는 것이 무조건 유리함  
+  타입 정보를 참고하면 작업할 수 있기 떄문에 서드파티 라이브러리 기반으로 바꾸는데 시간이 훨씬 단축됨  
+* 즉, 타입 흐름을 개선하고, 가독성을 높이고, 명시적인 타입 구문의 필요성을 줄이기 위해   
+  직접 구현하기보다는 내장된 함수형 기법과 로대시 같은 유틸리티 라이브러리를 사용하는 것이 좋음
