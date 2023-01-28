@@ -3,7 +3,9 @@ title : SemVer
 date : 2021.06.30
 ---
 
-## SemVer
+# SemVer
+2021.06.30
+
 **SemVer : Semantic Versioning**  
 SemVer 이란 소프트웨어 릴리즈 버전 넘버에 대한 네이밍 시스템으로  
 버전 형식에 의미를 부여해 체계적인 버전 관리를 위한 방식이다.
@@ -31,11 +33,8 @@ SemVer 이란 소프트웨어 릴리즈 버전 넘버에 대한 네이밍 시스
   1.0.0-alpha 나 1.0.0-alpha.1 과 같은 형식.  
   정식배포 버전 과 비교 시 정식배포 버전의 우선순위가 높음 (1.0.0-alpha < 1.0.0)
 
-<br>
-<br>
-<br>
 
-> ### Reference
-> * [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
-> * [Semantic Versioning - MAJOR, MINOR, PATCH와 명세에 관하여](https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH%EC%99%80-%EB%AA%85%EC%84%B8%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC)
-> * [체계적인 버전 관리, SemVer](https://han41858.tistory.com/22)
+## Reference
+* [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
+* [Semantic Versioning - MAJOR, MINOR, PATCH와 명세에 관하여](https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH%EC%99%80-%EB%AA%85%EC%84%B8%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC)
+* [체계적인 버전 관리, SemVer](https://han41858.tistory.com/22)

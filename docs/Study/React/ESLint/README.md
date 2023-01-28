@@ -4,6 +4,8 @@ date : 2021.06.17
 ---
 
 # ESLint 설정 파일
+2021.06.17  
+
 ESLint Configuration은 eslintrc 파일이나 package.json의 eslintConfig 필드에 작성 가능함.   
 
 ESLint 핵심 구성 정보   
@@ -87,10 +89,7 @@ ESLint 핵심 구성 정보
   }
 }
 ```
-<br>
-<br>
-<br>
 
-> ### Reference
-> * [ESLint 공식문서](https://eslint.org/)
-> * [ESLint 설정 살펴보기](https://velog.io/@kyusung/eslint-config-2)
+## Reference
+* [ESLint 공식문서](https://eslint.org/)
+* [ESLint 설정 살펴보기](https://velog.io/@kyusung/eslint-config-2)

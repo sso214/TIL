@@ -4,6 +4,7 @@ date : 2021.08.20
 --- 
 
 # 많이 사용하는 npm install 옵션
+2021.08.20
 
 * `npm install` :   
   package.json - dependencies 에 있는 모든 패키지 설치 프로젝트 세팅 후 해당 명령어로 패키지 설치  
@@ -31,10 +32,6 @@ date : 2021.08.20
 * `npm install [package] --force` :  
   해당 패키지가 존재하더라도 원격 저장소에 있는 패키지 가져오기
   
-<br/>
-<br/>
-<br/>
-
-> ### Reference  
-> * [npm-install](https://docs.npmjs.com/cli/v7/commands/npm-install/)
-> * [npm install 명령어에 있는 option들](https://chimimode.github.io/2019-07-03-npm-install-option/)
+## Reference  
+* [npm-install](https://docs.npmjs.com/cli/v7/commands/npm-install/)
+* [npm install 명령어에 있는 option들](https://chimimode.github.io/2019-07-03-npm-install-option/)

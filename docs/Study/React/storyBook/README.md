@@ -3,7 +3,8 @@ title : storybook
 date : 2021.08.18
 ---
 
-# Storybook
+# Storybook  
+2021.08.18  
 
 ## Storybook이란?
 > Storybook is a user interface development environment and playground for UI components. The tool enables developers to create components independently and showcase components interactively in an isolated development environment.
@@ -130,20 +131,6 @@ Default.args = {
 };
 ```
 
-
-
-<br/>
-<br/>
-<br/>
-
-> ### Reference
-> * [Storybook](https://storybook.js.org/tutorials/intro-to-storybook/react/ko/get-started)
-> * [Storybook의 유용함](https://storybook.js.org/addons/@storybook/addon-jest)
-> * [storybook addon jest](https://medium.com/@j_podracer/storybook%EC%9D%98-%EC%9C%A0%EC%9A%A9%ED%95%A8-8581ea618c32)
-
-
-
-
 ### 스냅샷 테스트
 * 주어진 입력에 대해 컴포넌트의 양호한 출력 값을 기록한 뒤, 출력 값이 변할 때마다 컴포넌트에 플래그를 지정하는 방식
 * 새로운 버전의 컴포넌트를 보고 바뀐 부분을 빠르게 확인 가능함
@@ -156,3 +143,11 @@ import initStoryshots from '@storybook/addon-storyshots';
 initStoryshots();
 ```
 3. yarn test 실행
+
+
+## Reference
+* [Storybook](https://storybook.js.org/tutorials/intro-to-storybook/react/ko/get-started)
+* [Storybook의 유용함](https://storybook.js.org/addons/@storybook/addon-jest)
+* [storybook addon jest](https://medium.com/@j_podracer/storybook%EC%9D%98-%EC%9C%A0%EC%9A%A9%ED%95%A8-8581ea618c32)
+
+

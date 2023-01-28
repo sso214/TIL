@@ -4,6 +4,7 @@ date : 2021.06.17
 ---
 
 # React Native pod 캐시 지우기  
+2021.06.17  
 
 React Native 프로젝트를 설치하다가 pod install 과정에서 뭐가 잘못됐는지  
 `npm run ios`가 안돼서 여기저기 찾아봤다.  
@@ -21,5 +22,5 @@ $ pod install
 ```
 
 
-> ### Reference
-> * [“how to clear pod cache in react native” Code Answer](https://www.codegrepper.com/code-examples/javascript/how+to+clear+pod+cache+in+react+native)
+### Reference
+* [“how to clear pod cache in react native” Code Answer](https://www.codegrepper.com/code-examples/javascript/how+to+clear+pod+cache+in+react+native)

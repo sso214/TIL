@@ -4,6 +4,7 @@ date : 2022.12.21
 ---
 
 # TodoList Test 코드 작성
+2022.12.21  
 
 ## Recap
 TodoList를 활용한 간단한 테스트 코드 예시

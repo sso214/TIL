@@ -41,6 +41,7 @@ title: 기술 블로그들과 github
 * [브랜디](http://labs.brandi.co.kr)
 * [NHN](https://meetup.toast.com)
 * [쿠팡](https://medium.com/coupang-tech/technote/home)
+* [구름](https://blog.goorm.io/)
 
 ## Study
 * [Udemy](https://www.udemy.com/courses/development/)

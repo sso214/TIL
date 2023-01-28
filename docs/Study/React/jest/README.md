@@ -4,6 +4,7 @@ date : 2021.08.20
 ---
 
 # Jest
+2021.08.20
 
 ## jest
 * facebook에서 선보인 테스팅 도구
@@ -185,13 +186,9 @@ Mathcher : .toBe 부분에서 사용하는 함수
 * 특정 에러 지정
 
 
-<br/>
-<br/>
-<br/>
-
-> ### Reference
-> * [Jest](https://jestjs.io/)
-> * [Jest로 기본적인 테스트 작성하기](https://www.daleseo.com/jest-basic/)
-> * [코딩앙마 - Jest](https://www.youtube.com/watch?v=g4MdUjxA-S4&list=PLZKTXPmaJk8L1xCg_1cRjL5huINlP2JKt&index=1)
-> * [TDD를 적용해보자 2편-TDD 설정(React,Typescript)](https://velog.io/@xortm854/TDD%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90-2%ED%8E%B8TDD-%EC%84%A4%EC%A0%95ReactTypescript)
-> * [Jest 사용법](https://velog.io/@modolee/jest-user-guide-04)
+## Reference
+* [Jest](https://jestjs.io/)
+* [Jest로 기본적인 테스트 작성하기](https://www.daleseo.com/jest-basic/)
+* [코딩앙마 - Jest](https://www.youtube.com/watch?v=g4MdUjxA-S4&list=PLZKTXPmaJk8L1xCg_1cRjL5huINlP2JKt&index=1)
+* [TDD를 적용해보자 2편-TDD 설정(React,Typescript)](https://velog.io/@xortm854/TDD%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90-2%ED%8E%B8TDD-%EC%84%A4%EC%A0%95ReactTypescript)
+* [Jest 사용법](https://velog.io/@modolee/jest-user-guide-04)

@@ -3,13 +3,13 @@ title : Next.js
 date : 2021.08.20
 ---
 
+# Next.js
+2021.08.20
+
 ## Next.js란?
 React의 SSR(Server Side Rendering)을 쉽게 구현 가능하게 도와주는 프레임워크.  
 React도 자체적으로 구현 가능하지만 복잡하기 때문에 사용법이 간단한 Next.js 나옴.  
 react-router보다 코드 스플리팅 구조가 잘 되어있어 사용하기 편함.  
-
-<br/>
-<br/>
 
 * 일반적 React 렌더링 방식 (CSR-Client Side Rendering) :  
     1. render() 함수 실행
@@ -40,12 +40,8 @@ react-router보다 코드 스플리팅 구조가 잘 되어있어 사용하기 �
 * getInitialProps()  
   getInitialProps 함수 통해 데이터 가져올 수 있음. 데이터를 미리 가지고 오기 때문에 한번에 렌더링 가능
 
-<br/>
-<br/>
-<br/>
 
-> ### Reference
-> * [https://nextjs.org/](https://nextjs.org/)
-> * [Next.js 제대로 알고 쓰자](https://medium.com/@msj9121/next-js-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%95%8C%EA%B3%A0-%EC%93%B0%EC%9E%90-8727f76614c9)
-> * [Next.js 에서 타입스크립트, emotion 적용하기](https://blog.naver.com/PostView.naver?blogId=minhyupp&logNo=222239244566&from=search&redirect=Log&widgetTypeCall=true&directAccess=false)
-> 
+## Reference
+* [https://nextjs.org/](https://nextjs.org/)
+* [Next.js 제대로 알고 쓰자](https://medium.com/@msj9121/next-js-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%95%8C%EA%B3%A0-%EC%93%B0%EC%9E%90-8727f76614c9)
+* [Next.js 에서 타입스크립트, emotion 적용하기](https://blog.naver.com/PostView.naver?blogId=minhyupp&logNo=222239244566&from=search&redirect=Log&widgetTypeCall=true&directAccess=false)

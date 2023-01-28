@@ -1,9 +1,10 @@
 ---
-title : create-react-app IE 지원  
+title : CRA IE 지원  
 date : 2021.06.03
 ---
 
-# create-react-app IE 지원
+# CRA IE 지원  
+2021.06.03  
 
 CRA로 구축한 React 프로젝트가 구 IE에서는 빈 화면으로 노출이 되어서 CRA IE 지원하는 방법을 찾아봤다.   
 처음에는 babel 버전만 낮추면 되는 줄 알았는데 오..  
@@ -33,14 +34,9 @@ ES6 Proxy를 사용하기 때문에 IE 지원이 안된다고 한다 ㅠㅠ
 IE까지 지원해야하는 서비스라면 MobX 4로 downgrade 해야하는 상황 ㅠㅠ   
 너무 기본적인 사항이지만 프로젝트 스펙 정할 때 지원 브라우저 꼭 확인하고 작업해야겠다 ㅠㅠ  
 
-<br/>
-<br/>
-<br/>
-
-
-> ## Reference
-> * [Supported Browsers and Features](https://create-react-app.dev/docs/supported-browsers-features/)
-> * [react-app-polyfill](https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md)
-> * [CRA(create-react-app)에서 IE 지원하기](http://www.chidoo.me/index.php/2020/02/27/create-react-app-ie-support/)
-> * [IE11 지원하며 마주친 문제들](https://choyongjoon.com/ie11-issues/)
-> * [MobX](https://github.com/mobxjs/mobx#browser-support)
+## Reference
+* [Supported Browsers and Features](https://create-react-app.dev/docs/supported-browsers-features/)
+* [react-app-polyfill](https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md)
+* [CRA(create-react-app)에서 IE 지원하기](http://www.chidoo.me/index.php/2020/02/27/create-react-app-ie-support/)
+* [IE11 지원하며 마주친 문제들](https://choyongjoon.com/ie11-issues/)
+* [MobX](https://github.com/mobxjs/mobx#browser-support)

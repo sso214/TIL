@@ -5,7 +5,9 @@ date: 2021.05.31
 ---
 
 
-# MAC에서 React Native 개발 환경 구축
+# MAC에서 React Native 개발 환경 구축  
+2021.05.31  
+
 맥에서 React Native 앱 개발하는 방법으로는 Expo CLI, React Native CLI가 있는데  
 여기서는 내가 해 본 React Native CLI 방법을 다룬다.  
 XCode 시뮬레이터 연결해서 webstorm 사용했다.
@@ -35,7 +37,7 @@ XCode 시뮬레이터 연결해서 webstorm 사용했다.
 
 
 
-# npm run ios 안될 때
+## npm run ios 안될 때
 npm run ios가 안돼서 몇 시간동안 해결방안을 찾느라 고생했다.
 ```
 // ios > Pods > Pods.xcodeproj > Podfile 의 아래코드 주석처리
@@ -49,8 +51,8 @@ use_flipper!
 
 
 
-# pod install
-아 그리고 패키지를 새로 설치한게 있으면 pod를 다시 설치해주어야 한다.  
+## pod install
+그리고 패키지를 새로 설치한게 있으면 pod를 다시 설치해주어야 한다.  
 1. `cd ios`
 2. `pod install` (혹시 install 잘 안되면 `pod uninstall` 후 재설치)
 3. `npm run ios`

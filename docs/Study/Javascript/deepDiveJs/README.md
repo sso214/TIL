@@ -3,7 +3,8 @@ title : Deep Dive JS
 date : 2022.05.08
 ---
 
-# Deep Dive JS
+# Deep Dive JS  
+2022.05.08
 
 1. [프로그래밍](step01)
 2. [자바스크립트란?](step02)
@@ -36,8 +37,12 @@ date : 2022.05.08
 29. [Math](step29)
 30. [Date](step30)
 31. [RegExp](step31)
+
+<!--
 32. [](step32)
 33. [](step33)
+-->
+
 34. [이터러블](step34)
 35. [스프레드 문법](step35)
 38. [브라우저의 렌더링 과정](step38)

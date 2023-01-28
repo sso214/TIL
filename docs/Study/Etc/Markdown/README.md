@@ -1,8 +1,11 @@
 ---
-title: 마크다운 문법 정리
+title: Markdown
 description : 블로그 작성을 위한 마크다운 문법 정리
 date: 2021.05.31
 ---
+
+# Markdown
+2021.05.31
 
 ## Markdown 이란?
 Markdown은 2004년 John Gruber 와 Aaron Swartz가 만든 경량형 마크업 언어이다.<br>
@@ -219,8 +222,7 @@ console.log('sso214')
 - [ ] Task Lists
 
 
-<br><br><br>
-> 참고 : 
-> * [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-> * [마크다운(Markdown) 6분 순삭 정리 + 깃허브 리드미(ReadMe) 파일 작성 팁 ⭐️ (드림코딩 by 엘리)](https://www.youtube.com/watch?v=kMEb_BzyUqk&list=PLv2d7VI9OotSn1ThdDeqvBx8QuRSd01qv&index=2)
-> * [MarkDown 사용법 총정리 (heropy)](https://heropy.blog/2017/09/30/markdown/)
+## Reference
+* [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/)
+* [마크다운(Markdown) 6분 순삭 정리 + 깃허브 리드미(ReadMe) 파일 작성 팁 ⭐️ (드림코딩 by 엘리)](https://www.youtube.com/watch?v=kMEb_BzyUqk&list=PLv2d7VI9OotSn1ThdDeqvBx8QuRSd01qv&index=2)
+* [MarkDown 사용법 총정리 (heropy)](https://heropy.blog/2017/09/30/markdown/)

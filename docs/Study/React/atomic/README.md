@@ -3,15 +3,14 @@ title : 아토믹(Atomic) 디자인 패턴
 date : 2021.08.23
 ---
 
-# 아토믹(Atomic) 디자인 패턴 
+# 아토믹(Atomic) 디자인 패턴   
+2021.08.23  
 
 초기에 react 프로젝트를 시작할 때 우아한형제들 기술 블로그에서 
 [React에서 Mobx 경험기](https://techblog.woowahan.com/2599/) 라는 글을 읽고 해당 글을 베이스로 작업을 시작했다.  
 처음 사용하는 라이브러리나 프레임워크 같은 경우에는 프로젝트 구조를 어떻게 나눠야 하는지 몰라서 삽질을 많이 하는데 위 글에 많은 도움을 받았다.  
 해당 글에서는 효율적인 Directory 구조를 위해 atomic design 이라는 UI design 개념을 사용해 
 컴포넌트들을 작업하고 관리했는데 직접 사용해보니 효율적이라 정리 할 겸 기록한다.  
-
-<br/>
 
 ## Atomic 디자인 패턴이란?
 가장 작은 컴포넌트 단위를 베이스로 상위 컴포넌트를 만들어 코드 재사용을 최대화하는 방식.  
@@ -21,8 +20,6 @@ date : 2021.08.23
 * Organisms (유기체) : 분자들이 모여있는 특정 영역 (ex. header, 여러 카드 관리하는 그리드 등)
 * Templates (템플릿) : 여러 유기체가 모여있고 페이지보다 낮은 단위. 화면을 구성하는 영역
 * Pages (페이지) : 데이터를 가지고 화면 구성을 위해 필요한 단위들이 page 단위로 모여있는 것  
-
-<br/>
 
 ## 파일구조
 * common > components > atoms, molecules, organisms  
@@ -36,10 +33,6 @@ date : 2021.08.23
 * 의존성이 상하로 발생하기 때문에 하위컴포넌트의 에러가 상위컴포넌트에도 영향을 미침
 * 변화가 누적되면서 각각을 구성하는 컴포넌트가 많아질 때는 너무 복잡해짐
 
-<br/>
-<br/>
-<br/>
-
-> ### Reference
-> * [React에서 Mobx 경험기 (Redux와 비교기)](https://techblog.woowahan.com/2599/)
-> * [아토믹(Atomic) 컴포넌트 디자인 개발 패턴](https://brunch.co.kr/@skykamja24/580)
+## Reference
+* [React에서 Mobx 경험기 (Redux와 비교기)](https://techblog.woowahan.com/2599/)
+* [아토믹(Atomic) 컴포넌트 디자인 개발 패턴](https://brunch.co.kr/@skykamja24/580)

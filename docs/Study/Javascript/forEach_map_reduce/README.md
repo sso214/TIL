@@ -3,10 +3,8 @@ title : forEach()와 map()과 reduce()
 date : 2021.09.02
 ---
 
-# forEach()와 map()과 reduce()
-
-자바스크립트 책을 보면서 문제를 풀다가 결과는 같은데 나는 map()을 사용하고,   
-코드 예제에서는 forEach()를 사용한 것을 보고 문득 둘의 차이점이 궁금해져 찾아봤다.
+# forEach()와 map()과 reduce()  
+2021.09.02
 
 forEach()와 map(), reduce()는 모두 배열을 이용하는 메서드이다.  
 배열을 값을 조작하고 원하는 결과값을 도출해낸다.  

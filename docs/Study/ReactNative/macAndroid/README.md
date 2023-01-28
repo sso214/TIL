@@ -4,6 +4,7 @@ date : 2021.06.25
 ---
 
 # Mac android Simulator 연동하기
+2021.06.25  
 
 ## Homebrew
 * brew install  
@@ -106,10 +107,6 @@ gradle-wrapper.properties 파일에서 버전 6.5 이상으로 올려주면 됨
 * `react-native run-anroid`
 
 
-<br>
-<br>
-<br>
-
-> ### Reference
-> * [React Native CLI - Simulator 연동(android, ios)](https://wordbe.tistory.com/entry/React-Native-CLI-Simulator-%EC%97%B0%EB%8F%99android-ios)
-> * [MacOS 개발 환경 설정 하기](https://firework-ham.tistory.com/104)
+## Reference
+* [React Native CLI - Simulator 연동(android, ios)](https://wordbe.tistory.com/entry/React-Native-CLI-Simulator-%EC%97%B0%EB%8F%99android-ios)
+* [MacOS 개발 환경 설정 하기](https://firework-ham.tistory.com/104)

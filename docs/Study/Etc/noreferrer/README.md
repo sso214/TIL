@@ -4,6 +4,7 @@ date : 2022.06.16
 ---
 
 # noreferrer
+2022.06.16
 
 ## Tabnabbing
 * HTML 문서 내 링크(target이 _blank인)를 클릭했을 때 새롭게 열린 탭(페이지)에서   
@@ -38,7 +39,7 @@ gmail은 이런 공격을 막기 위해 Anchor 태그에 data-saferedirecturl �
   같은 스레드일 필요 없으며 새로운 페이지가 느리다고 부모 탭까지 느려지진 않음
   
 
-> 참고  
-> * [Tabnabbing 공격과 rel=noopener 속성](https://blog.coderifleman.com/2017/05/30/tabnabbing_attack_and_noopener/)
+## Reference  
+* [Tabnabbing 공격과 rel=noopener 속성](https://blog.coderifleman.com/2017/05/30/tabnabbing_attack_and_noopener/)
 
 

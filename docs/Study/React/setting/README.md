@@ -1,16 +1,15 @@
 ---
-title : CRA setting  
+title : CRA setup  
 date : 2021.06.17
 ---
 
-# CRA(create-react-app) + Typescript Setting
+# CRA + Typescript Setting  
+2021.06.17  
 
 ## CRA + Typescript
 ```shell
 $ npx create-react-app 프로젝트명 --template typescript
 ```
-
-<br>
 
 ## ESLint + Prettier 설치
 코드를 간편하게 작성할 수 있도록 도와주는 도구.   
@@ -126,28 +125,9 @@ preferences -> ESLint -> manual ESLint configuration 에서 설정
 * `npm run prettier` : 자동으로 코드 스타일 변경  
 * `npm run lint` : 규칙에 맞는지 검사  
 코드 입력 -> prettier -> eslint -> 코드 수정
-  
-
-
-<br>
-<br>
-<br>
-
-> ### Reference
-> * [CRA로 typescript 개발환경 설정하기 @_jouz_ryul](https://velog.io/@_jouz_ryul/CRA%EB%A1%9C-typescript-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
-> * [CRA - react typescript ESlint + Prettier 설정 @super_iaan](https://velog.io/@super_iaan/CRA-react-typescript-ESlint-Prettier-%EC%84%A4%EC%A0%95)
-> * [ESLint, Prettier 적용하기 @기록맨](https://velog.io/@recordboy/ESLint-Prettier-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)
-> * [Eslint 적용하기(React + Typescript + Prettier) @플타 앞발자](https://flamingotiger.github.io/javascript/eslint-setup/)
-> * [ESLint + Prettier + React(CRA) + TypeScript + AirBnB 설정하기](https://yeonhapark.github.io/posts/configure-eslint-with-typescript-react/)
-
-
----
----
----
-
 
 ## ESLint
-ECMAScript에 기반한 자바스크립트 코드 상의 버그를 개선하고 일관성 있는 코드 작ㅇ성을 위한 리포팅 동구.  
+ECMAScript에 기반한 자바스크립트 코드 상의 버그를 개선하고 일관성 있는 코드 작성을 위한 리포팅 동구.  
 사용자가 원하는 방식대로 플러그인을 이용해 다양한 룰을 적용할 수 있다.  
 (CRA에서는 react-scripts를 통해 이미 eslint가 포함되어있으므로 패키지 매니저를 설치할 필요가 없음)
 
@@ -173,3 +153,10 @@ jsx, Typescript, scss, less, JSON, markdown 등 다양한 언어를 지원
   * `eslint-plugin-prettier` : ESLint 룰로 프리티어 실행
   * `eslint-config-prettier` : prettier와 충돌/중복되는 ESLint 룰 비활성화. 
 
+
+## Reference
+* [CRA로 typescript 개발환경 설정하기 @_jouz_ryul](https://velog.io/@_jouz_ryul/CRA%EB%A1%9C-typescript-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
+* [CRA - react typescript ESlint + Prettier 설정 @super_iaan](https://velog.io/@super_iaan/CRA-react-typescript-ESlint-Prettier-%EC%84%A4%EC%A0%95)
+* [ESLint, Prettier 적용하기 @기록맨](https://velog.io/@recordboy/ESLint-Prettier-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)
+* [Eslint 적용하기(React + Typescript + Prettier) @플타 앞발자](https://flamingotiger.github.io/javascript/eslint-setup/)
+* [ESLint + Prettier + React(CRA) + TypeScript + AirBnB 설정하기](https://yeonhapark.github.io/posts/configure-eslint-with-typescript-react/)

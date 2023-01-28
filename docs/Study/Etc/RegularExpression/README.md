@@ -3,7 +3,9 @@ title : 정규표현식
 date : 2021.06.01
 ---
 
-## 정규표현식
+# 정규표현식
+2021.06.01
+
 **regex : regular expression**  
 - 1950년 미국의 수학자였던 Stephen이 개발  
 - 텍스트에서 원하는 특정한 패턴을 찾을 때 유용하게 사용할 수 있으며 유효성 검사시에도 사용 가능  
@@ -78,7 +80,7 @@ let test = /gr(e|a)y/; //gr
  
 
 
-> ## Reference
-> * [정규표현식 , 더이상 미루지 말자 🤩 @드림코딩 by 엘리](https://www.youtube.com/watch?v=t3M6toIflyQ&list=PLv2d7VI9OotSn1ThdDeqvBx8QuRSd01qv)
-> * [regexr](https://regexr.com/5mhou)
-> * [regexone](https://regexone.com/)
+### Reference
+* [정규표현식 , 더이상 미루지 말자 🤩 @드림코딩 by 엘리](https://www.youtube.com/watch?v=t3M6toIflyQ&list=PLv2d7VI9OotSn1ThdDeqvBx8QuRSd01qv)
+* [regexr](https://regexr.com/5mhou)
+* [regexone](https://regexone.com/)
