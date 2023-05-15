@@ -48,6 +48,7 @@ yarn add -D eslint-plugin-unused-imports
 
 eslintrc.json 파일에 추가
 ```json
+"plugins": ["unused-imports"],
 "rules": {
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
