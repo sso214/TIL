@@ -62,3 +62,10 @@
     - 응용 계층은 사용자의 요구에 따라 다양한 프로토콜을 지원함
     - 사용자가 실제로 상호 작용하는 애플리케이션에 대한 프로토콜을 정의함
     HTTP(웹 페이지 전송), FTP(파일 전송), SMTP(이메일 전송) 등의 응용 프로토콜이 이 계층에서 동작
+
+
+## Reference
+- [https://aws-hyoh.tistory.com/entry/TCPIP-쉽게-이해하기](https://aws-hyoh.tistory.com/entry/TCPIP-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)
+- https://overcome-the-limits.tistory.com/554
+- https://wooono.tistory.com/507
+- https://jeongkyun-it.tistory.com/180
